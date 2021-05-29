@@ -1,0 +1,17 @@
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/XGBceDotNetSDK.deps.json
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/XGBceDotNetSDK.runtimeconfig.json
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/XGBceDotNetSDK.runtimeconfig.dev.json
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/XGBceDotNetSDK.dll
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/ref/XGBceDotNetSDK.dll
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/XGBceDotNetSDK.pdb
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.GeneratedMSBuildEditorConfig.editorconfig
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.AssemblyInfoInputs.cache
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.AssemblyInfo.cs
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.csproj.CoreCompileInputs.cache
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.csproj.CopyComplete
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.dll
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/ref/XGBceDotNetSDK.dll
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.pdb
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.genruntimeconfig.cache
+/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/Debug/net5.0/XGBceDotNetSDK.csprojAssemblyReference.cache
