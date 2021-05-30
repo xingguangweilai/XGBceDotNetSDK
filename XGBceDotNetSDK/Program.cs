@@ -11,7 +11,7 @@ using XGBceDotNetSDK.Utils;
 namespace XGBceDotNetSDK
 {
     class SendSMS
-    {
+    { 
 
         public string mobile;
 
@@ -76,73 +76,73 @@ namespace XGBceDotNetSDK
             //};
 
 
-            XGSmsClientConfiguration smsClientConfiguration = new XGSmsClientConfiguration() { };
-
-
-            access_key_id = "00fdafe01c6a450c881d052b80f4afaf";
-            secret_access_key = "2026ad2bfefe4d54b04c50a44876ac6a";
-
-
-            SendSMS sendSMS = new SendSMS()
-            {
-                mobile = "18697762125",
-                //template = "sms-tmpl-IYQpaG59486",
-                //signatureId = "sms-sign-RLOmyr26320",
-                //contentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试工单标题" } }
-
-                template = "sms-tmpl-YqwEal08207",
-                signatureId = "sms-sign-RLOmyr26320",
-                contentVar = new Dictionary<string, string> { { "vCode","12306" } }
+            XGSmsClientConfiguration smsClientConfiguration = new XGSmsClientConfiguration() {
+                Credentials=new DefaultBceCredentials(access_key_id,secret_access_key),
+            Endpoint= "http://smsv3.bj.baidubce.com"
             };
 
-            var sendSMSJson = JsonConvert.SerializeObject(sendSMS);
 
-            BceIternalRequest bceIternalRequest = new BceIternalRequest();
-            bceIternalRequest.Credentials = new DefaultBceCredentials(access_key_id, secret_access_key);
-            bceIternalRequest.Headers = new Dictionary<string, string> { { "Host", Host }, { "Content-Type", "application/json;charset=UTF-8" } };
-            bceIternalRequest.QueryParams = new Dictionary<string, string>();
-            bceIternalRequest.HttpMethod = BceHttpMethod.POST;
-            bceIternalRequest.SignOptions = BceSignOption.defaultBceSignOption;
 
-            string urlpath = "http://" + Host + "/api/v3/sendSms";
-            if (bceIternalRequest.QueryParams.Count > 0)
-            {
-                urlpath += "?";
-                foreach (KeyValuePair<string, string> kvp in bceIternalRequest.QueryParams)
-                {
-                    urlpath += kvp.Key.Trim() + "=" + kvp.Value.Trim() + "&";
-                }
-                urlpath = urlpath.TrimEnd('&');
-            }
+        //    SendSMS sendSMS = new SendSMS()
+        //    {
+        //        mobile = "18697762125",
+        //        //template = "sms-tmpl-IYQpaG59486",
+        //        //signatureId = "sms-sign-RLOmyr26320",
+        //        //contentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试工单标题" } }
 
-            bceIternalRequest.Uri = new Uri(urlpath);
+        //        template = "sms-tmpl-YqwEal08207",
+        //        signatureId = "sms-sign-RLOmyr26320",
+        //        contentVar = new Dictionary<string, string> { { "vCode","12306" } }
+        //    };
 
-            new XGBceSignerV1().Sign(bceIternalRequest);
+        //    var sendSMSJson = JsonConvert.SerializeObject(sendSMS);
 
-            try
-            {
-                Console.WriteLine("发送成功：" + HttpPost(bceIternalRequest, sendSMSJson));
-            }
-            catch (WebException ex)
-            {
-                HttpWebResponse res = ex.Response as HttpWebResponse;
-                string strError = "";
-                if (res.StatusCode == HttpStatusCode.BadRequest)
-                {
-                    Stream s = res.GetResponseStream();
-                    StreamReader objReader = new StreamReader(s, System.Text.Encoding.UTF8);
-                    strError = objReader.ReadToEnd();
-                    objReader.Close();
-                }
-                else
-                {
-                    strError = ex.Message;
-                }
+        //    BceIternalRequest bceIternalRequest = new BceIternalRequest();
+        //    bceIternalRequest.Credentials = new DefaultBceCredentials(access_key_id, secret_access_key);
+        //    bceIternalRequest.Headers = new Dictionary<string, string> { { "Host", Host }, { "Content-Type", "application/json;charset=UTF-8" } };
+        //    bceIternalRequest.QueryParams = new Dictionary<string, string>();
+        //    bceIternalRequest.HttpMethod = BceHttpMethod.POST;
+        //    bceIternalRequest.SignOptions = BceSignOption.defaultBceSignOption;
 
-                Console.WriteLine(strError);
-            }
+        //    string urlpath = "http://" + Host + "/api/v3/sendSms";
+        //    if (bceIternalRequest.QueryParams.Count > 0)
+        //    {
+        //        urlpath += "?";
+        //        foreach (KeyValuePair<string, string> kvp in bceIternalRequest.QueryParams)
+        //        {
+        //            urlpath += kvp.Key.Trim() + "=" + kvp.Value.Trim() + "&";
+        //        }
+        //        urlpath = urlpath.TrimEnd('&');
+        //    }
 
-        }
+        //    bceIternalRequest.Uri = new Uri(urlpath);
+
+        //    new XGBceSignerV1().Sign(bceIternalRequest);
+
+        //    try
+        //    {
+        //        Console.WriteLine("发送成功：" + HttpPost(bceIternalRequest, sendSMSJson));
+        //    }
+        //    catch (WebException ex)
+        //    {
+        //        HttpWebResponse res = ex.Response as HttpWebResponse;
+        //        string strError = "";
+        //        if (res.StatusCode == HttpStatusCode.BadRequest)
+        //        {
+        //            Stream s = res.GetResponseStream();
+        //            StreamReader objReader = new StreamReader(s, System.Text.Encoding.UTF8);
+        //            strError = objReader.ReadToEnd();
+        //            objReader.Close();
+        //        }
+        //        else
+        //        {
+        //            strError = ex.Message;
+        //        }
+
+        //        Console.WriteLine(strError);
+        //    }
+
+        //}
 
         /// <summary>
         /// 发送POST请求

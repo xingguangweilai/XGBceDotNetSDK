@@ -11,12 +11,16 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Http\" />
+    <Folder Include="Http\Handler\" />
+  </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
         <Policies>
           <VersionControlPolicy>
-            <CommitMessageStyle IncludeDirectoryPaths="True" />
+            <CommitMessageStyle LineAlign="0" IncludeDirectoryPaths="True" />
           </VersionControlPolicy>
         </Policies>
       </Properties>
