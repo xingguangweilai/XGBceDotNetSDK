@@ -37,6 +37,7 @@ namespace XGBceDotNetSDK.Http.Handler
                 //metadata.setETag(CharMatcher.is ('"').trimFrom(eTag));
                 metadata.ETag = eTag.Trim('"');
             }
+            //TODO 日期格式化
             metadata.Expires = bceHttpResponse.GetHeaderAsRfc822Date("Expires");
             metadata.LastModified = bceHttpResponse.HttpResponse.LastModified;
             metadata.Server = bceHttpResponse.HttpResponse.Server;

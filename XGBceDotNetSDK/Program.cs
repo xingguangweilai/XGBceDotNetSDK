@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using XGBceDotNetSDK.Sign;
-using XGBceDotNetSDK.SMS;
+using XGBceDotNetSDK.Services.SMS;
 using XGBceDotNetSDK.Utils;
 
 namespace XGBceDotNetSDK
@@ -67,6 +67,8 @@ namespace XGBceDotNetSDK
         {
             Console.WriteLine("Hello World!");
 
+            new XGSmsClient();
+
 
             //Dictionary<string, string> dic = new Dictionary<string, string>() {
             //    { "content-type","json"},
@@ -76,73 +78,71 @@ namespace XGBceDotNetSDK
             //};
 
 
-            XGSmsClientConfiguration smsClientConfiguration = new XGSmsClientConfiguration() {
-                Credentials=new DefaultBceCredentials(access_key_id,secret_access_key),
-            Endpoint= "http://smsv3.bj.baidubce.com"
-            };
+            //XGSmsClientConfiguration smsClientConfiguration = new XGSmsClientConfiguration() {
+            //    Credentials=new DefaultBceCredentials(access_key_id,secret_access_key),
+            //Endpoint= "http://smsv3.bj.baidubce.com"
+            //};
 
+            //SendSMS sendSMS = new SendSMS()
+            //{
+            //    mobile = "18697762125",
+            //    //template = "sms-tmpl-IYQpaG59486",
+            //    //signatureId = "sms-sign-RLOmyr26320",
+            //    //contentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试工单标题" } }
 
+            //    template = "sms-tmpl-YqwEal08207",
+            //    signatureId = "sms-sign-RLOmyr26320",
+            //    contentVar = new Dictionary<string, string> { { "vCode", "12306" } }
+            //};
 
-        //    SendSMS sendSMS = new SendSMS()
-        //    {
-        //        mobile = "18697762125",
-        //        //template = "sms-tmpl-IYQpaG59486",
-        //        //signatureId = "sms-sign-RLOmyr26320",
-        //        //contentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试工单标题" } }
+            //var sendSMSJson = JsonConvert.SerializeObject(sendSMS);
 
-        //        template = "sms-tmpl-YqwEal08207",
-        //        signatureId = "sms-sign-RLOmyr26320",
-        //        contentVar = new Dictionary<string, string> { { "vCode","12306" } }
-        //    };
+            //BceIternalRequest bceIternalRequest = new BceIternalRequest();
+            //bceIternalRequest.Credentials = new DefaultBceCredentials(access_key_id, secret_access_key);
+            //bceIternalRequest.Headers = new Dictionary<string, string> { { "Host", Host }, { "Content-Type", "application/json;charset=UTF-8" } };
+            //bceIternalRequest.QueryParams = new Dictionary<string, string>();
+            //bceIternalRequest.HttpMethod = BceHttpMethod.POST;
+            //bceIternalRequest.SignOptions = BceSignOption.defaultBceSignOption;
 
-        //    var sendSMSJson = JsonConvert.SerializeObject(sendSMS);
+            //string urlpath = "http://" + Host + "/api/v3/sendSms";
+            //if (bceIternalRequest.QueryParams.Count > 0)
+            //{
+            //    urlpath += "?";
+            //    foreach (KeyValuePair<string, string> kvp in bceIternalRequest.QueryParams)
+            //    {
+            //        urlpath += kvp.Key.Trim() + "=" + kvp.Value.Trim() + "&";
+            //    }
+            //    urlpath = urlpath.TrimEnd('&');
+            //}
 
-        //    BceIternalRequest bceIternalRequest = new BceIternalRequest();
-        //    bceIternalRequest.Credentials = new DefaultBceCredentials(access_key_id, secret_access_key);
-        //    bceIternalRequest.Headers = new Dictionary<string, string> { { "Host", Host }, { "Content-Type", "application/json;charset=UTF-8" } };
-        //    bceIternalRequest.QueryParams = new Dictionary<string, string>();
-        //    bceIternalRequest.HttpMethod = BceHttpMethod.POST;
-        //    bceIternalRequest.SignOptions = BceSignOption.defaultBceSignOption;
+            //bceIternalRequest.Uri = new Uri(urlpath);
 
-        //    string urlpath = "http://" + Host + "/api/v3/sendSms";
-        //    if (bceIternalRequest.QueryParams.Count > 0)
-        //    {
-        //        urlpath += "?";
-        //        foreach (KeyValuePair<string, string> kvp in bceIternalRequest.QueryParams)
-        //        {
-        //            urlpath += kvp.Key.Trim() + "=" + kvp.Value.Trim() + "&";
-        //        }
-        //        urlpath = urlpath.TrimEnd('&');
-        //    }
+            //new XGBceSignerV1().Sign(bceIternalRequest);
 
-        //    bceIternalRequest.Uri = new Uri(urlpath);
+            //try
+            //{
+            //    Console.WriteLine("发送成功：" + HttpPost(bceIternalRequest, sendSMSJson));
+            //}
+            //catch (WebException ex)
+            //{
+            //    HttpWebResponse res = ex.Response as HttpWebResponse;
+            //    string strError = "";
+            //    if (res.StatusCode == HttpStatusCode.BadRequest)
+            //    {
+            //        Stream s = res.GetResponseStream();
+            //        StreamReader objReader = new StreamReader(s, System.Text.Encoding.UTF8);
+            //        strError = objReader.ReadToEnd();
+            //        objReader.Close();
+            //    }
+            //    else
+            //    {
+            //        strError = ex.Message;
+            //    }
 
-        //    new XGBceSignerV1().Sign(bceIternalRequest);
+            //    Console.WriteLine(strError);
+            //}
 
-        //    try
-        //    {
-        //        Console.WriteLine("发送成功：" + HttpPost(bceIternalRequest, sendSMSJson));
-        //    }
-        //    catch (WebException ex)
-        //    {
-        //        HttpWebResponse res = ex.Response as HttpWebResponse;
-        //        string strError = "";
-        //        if (res.StatusCode == HttpStatusCode.BadRequest)
-        //        {
-        //            Stream s = res.GetResponseStream();
-        //            StreamReader objReader = new StreamReader(s, System.Text.Encoding.UTF8);
-        //            strError = objReader.ReadToEnd();
-        //            objReader.Close();
-        //        }
-        //        else
-        //        {
-        //            strError = ex.Message;
-        //        }
-
-        //        Console.WriteLine(strError);
-        //    }
-
-        //}
+        }
 
         /// <summary>
         /// 发送POST请求

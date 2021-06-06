@@ -8,7 +8,7 @@ namespace XGBceDotNetSDK.BaseClass
     /// <summary>
     /// BCE客户端配置基类
     /// </summary>
-    public class XGBceClientBaseConfiguration
+    public class XGBceClientConfiguration
     {
         private string userAgent=DEFAULT_USER_AGENT;
         private XGRetryPolicy retryPolicy=XGRetryPolicy.DefaultRetryPolicy;
@@ -113,15 +113,15 @@ namespace XGBceDotNetSDK.BaseClass
         /// </summary>
         public bool RedirectsEnabled { get => redirectsEnabled; set => redirectsEnabled = value; }
 
-        public XGBceClientBaseConfiguration()
+        public XGBceClientConfiguration()
         {
         }
 
-        public XGBceClientBaseConfiguration(XGBceClientBaseConfiguration other):this(other,null)
+        public XGBceClientConfiguration(XGBceClientConfiguration other):this(other,null)
         {
         }
 
-        public XGBceClientBaseConfiguration(XGBceClientBaseConfiguration other, string endpo)
+        public XGBceClientConfiguration(XGBceClientConfiguration other, string endpo)
         {
             UserAgent = other.UserAgent;
             RetryPolicy = other.RetryPolicy;

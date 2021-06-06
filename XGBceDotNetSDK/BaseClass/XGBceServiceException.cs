@@ -3,8 +3,17 @@ namespace XGBceDotNetSDK.BaseClass
 {
     public enum XGBceErrorType
     {
+        /// <summary>
+        /// 客户端错误
+        /// </summary>
         Client,
+        /// <summary>
+        /// 服务端错误
+        /// </summary>
         Service,
+        /// <summary>
+        /// 未知错误
+        /// </summary>
         Unknown
     }
     public class XGBceServiceException:XGBceClientException
