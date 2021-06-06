@@ -14,8 +14,6 @@
   <ItemGroup>
     <Folder Include="Http\" />
     <Folder Include="Http\Handler\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\SMS\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

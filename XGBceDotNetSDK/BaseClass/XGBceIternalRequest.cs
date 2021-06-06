@@ -3,15 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Policy;
 using XGBceDotNetSDK.Sign;
+using XGBceDotNetSDK.Utils;
 
-namespace XGBceDotNetSDK.Utils
+namespace XGBceDotNetSDK.BaseClass
 {
-    public class BceIternalRequest
+    public class XGBceIternalRequest
     {
-        private Dictionary<String, String> queryParams = new Dictionary<string, string>();
+        private Dictionary<String, String> parameters = new Dictionary<string, string>();
         private Dictionary<String, String> headers = new Dictionary<string, string>();
-        private string content_type;
-        private string content_length;
         private DateTime date;
         private string host;
 
@@ -22,14 +21,9 @@ namespace XGBceDotNetSDK.Utils
         private XGBceCredentials credentials;
         private BceSignOption signOptions;
         //private boolean expectContinueEnabled;
-        public BceIternalRequest()
+        public XGBceIternalRequest()
         {
         }
-
-        /// <summary>
-        /// 请求参数
-        /// </summary>
-        public Dictionary<string, string> QueryParams { get => queryParams; set => queryParams = value; }
         /// <summary>
         /// 请求头
         /// </summary>
@@ -39,19 +33,7 @@ namespace XGBceDotNetSDK.Utils
                     foreach (KeyValuePair<string, string> kvp in value)
                     {
                         string headerkey = kvp.Key.Trim().ToLower();
-                        if (headerkey == "Content-Length".ToLower())
-                        {
-                            if (content_length == null || content_length.Length < 1)
-                                content_length = kvp.Value.Trim();
-                            continue;
-                        }
-                        else if (headerkey == "Content-Type".ToLower())
-                        {
-                            if (content_type == null || content_type.Length < 1)
-                                content_type = kvp.Value.Trim();
-                            continue;
-                        }
-                        else if (headerkey == "Host".ToLower())
+                        if (headerkey == "Host".ToLower())
                         {
                             if (host == null || host.Length < 1)
                                 host = kvp.Value.Trim();
@@ -82,8 +64,6 @@ namespace XGBceDotNetSDK.Utils
                 if(value!=null)
                     this.Date = signOptions.TimeStamp;
             } }
-        public string Content_type { get => content_type; set => content_type = value; }
-        public string Content_length { get => content_length; set => content_length = value; }
         public string Host { get => host; set => host = value; }
         public DateTime Date { get => date; set {
                 date = value;
@@ -93,22 +73,19 @@ namespace XGBceDotNetSDK.Utils
                     signOptions.TimeStamp = date;
 
             } }
-        public Dictionary<string,string> GetIternalHeaders()
-        {
-            Dictionary<string, string> iternalHeaders = new Dictionary<string, string>(headers);
-            if (content_type != null && content_type.Length > 0)
-                iternalHeaders.Add("Content-type", content_type);
-            if (host != null && host.Length > 0)
-                iternalHeaders.Add("Host", host);
-            if (content_length != null && content_length.Length > 0)
-                iternalHeaders.Add("Content-length", content_length);
-
-            return iternalHeaders;
-        }
+        /// <summary>
+        /// 请求参数
+        /// </summary>
+        public Dictionary<string, string> Parameters { get => parameters; set => parameters = value; }
 
         public string GetHttpMethodString()
         {
             return HttpUtil.BceHttpMethodToString(httpMethod);
+        }
+
+        public void AddHeader(string name,string value)
+        {
+            Headers.Add(name, value);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace XGBceDotNetSDK.Sign
         /// </summary>
         private readonly List<string> headerSignList = new List<string>(){@"Host", @"Content-Type", @"Content-Length", @"Content-MD5" };
         private string signedHeaders = "";
-        public void Sign(BceIternalRequest request)
+        public void Sign(XGBceIternalRequest request)
         {
             //前缀字符串
             string authStringPrefix = "bce-auth-v1/" + request.Credentials.AccessKeyId + "/" + HttpUtil.FormatUTCTime(request.SignOptions.TimeStamp) + "/" + request.SignOptions.ExpirationPeriodInSeconds;

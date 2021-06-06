@@ -1,5 +1,5 @@
 ﻿using System;
-namespace XGBceDotNetSDK.Utils
+namespace XGBceDotNetSDK.BaseClass
 {
     /// <summary>
     /// 请求协议

@@ -150,7 +150,7 @@ namespace XGBceDotNetSDK
         /// <param name="url">请求URL</param>
         /// <param name="data">请求参数</param>
         /// <returns></returns>
-        static string HttpPost(BceIternalRequest iternalRequest, string data)
+        static string HttpPost(XGBceIternalRequest iternalRequest, string data)
         {
             Console.WriteLine(data);
 
