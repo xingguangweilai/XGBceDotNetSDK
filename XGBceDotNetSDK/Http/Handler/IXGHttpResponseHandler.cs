@@ -12,6 +12,7 @@ namespace XGBceDotNetSDK.Http.Handler
         /// <param name="bceResponse"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool Handler(XGBceHttpResponse bceHttpResponse, XGAbstractBceResponse bceResponse);
+        bool Handler<T>(XGBceHttpResponse bceHttpResponse,ref T bceResponse) where T : XGAbstractBceResponse;
+
     }
 }

@@ -11,21 +11,21 @@ namespace XGBceDotNetSDK.Http.Handler
         {
         }
 
-        /// <summary>
+        /// <summary>X
         /// 处理响应
         /// </summary>
         /// <param name="bceHttpResponse"></param>
         /// <param name="bceResponse"></param>
         /// <returns></returns>
         /// <exception cref="XGBceServiceException"></exception>
-        public bool Handler(XGBceHttpResponse bceHttpResponse, XGAbstractBceResponse bceResponse)
+        public bool Handler<T>(XGBceHttpResponse bceHttpResponse,ref T bceResponse) where T:XGAbstractBceResponse
         {
             if (bceHttpResponse.StatusCode / 100 == 2)
                 return false;
             else
             {
                 XGBceServiceException bceServiceException = null;
-                Stream content = bceHttpResponse.Content;
+                Stream content = bceHttpResponse.Content.ReadAsStreamAsync().Result;
                 
                 if (content != null)
                 {
@@ -34,21 +34,26 @@ namespace XGBceDotNetSDK.Http.Handler
                         if (streamReader != null)
                         {
                             XGBceErrorResponse bceErrorResponse = JsonConvert.DeserializeObject<XGBceErrorResponse>(streamReader.ReadToEnd());
-                            if (bceErrorResponse.Message != null)
+                            if (bceErrorResponse!=null&&bceErrorResponse.Message != null)
                             {
-                                bceServiceException = new XGBceServiceException(bceErrorResponse.Message);
-                                bceServiceException.ErrorCode = bceErrorResponse.Code;
-                                bceServiceException.RequestId = bceErrorResponse.RequestId;
+                                bceServiceException = new XGBceServiceException(bceErrorResponse.Message)
+                                {
+                                    ErrorCode = bceErrorResponse.Code,
+                                    RequestId = bceErrorResponse.RequestId
+                                };
                             }
                             content.Close();
                         }
                     }
+
                 }
 
                 if (bceServiceException == null)
                 {
-                    bceServiceException = new XGBceServiceException(bceHttpResponse.StatusText);
-                    bceServiceException.RequestId = bceResponse.Metadata.BceRequestId;
+                    bceServiceException = new XGBceServiceException(bceHttpResponse.StatusText)
+                    {
+                        RequestId = bceResponse.Metadata.BceRequestId
+                    };
                 }
 
                 bceServiceException.StatusCode = bceHttpResponse.StatusCode;

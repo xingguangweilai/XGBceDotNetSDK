@@ -6,18 +6,43 @@ namespace XGBceDotNetSDK.BaseClass
     /// </summary>
     public abstract class XGRetryPolicy
     {
-        private int maxErrorRetry = 3;
-        private int maxDelayInMillis = 20000;
+        private int _maxErrorRetry = 3;
+        private int _maxDelay = 20;
+
+        public XGRetryPolicy(int maxErrorRetry, int maxDelay)
+        {
+            if (maxErrorRetry < 0)
+                throw new ArgumentException("maxErrorRetry需要是个非负数");
+            if (maxDelay < 0)
+                throw new ArgumentException("maxDelay需要是个非负数");
+
+            _maxErrorRetry = maxErrorRetry;
+            _maxDelay = maxDelay;
+        }
 
         /// <summary>
         /// 默认策略
         /// </summary>
-        public static XGDefaultRetryPolicy DefaultRetryPolicy = new();
+        public static XGDefaultRetryPolicy DefaultRetryPolicy = new XGDefaultRetryPolicy();
 
-        public abstract int getMaxErrorRetry();
+        /// <summary>
+        /// 获取最大错误重试次数
+        /// </summary>
+        /// <returns></returns>
+        public int MaxErrorRetry=>_maxErrorRetry;
 
-        public abstract  long getMaxDelayInMillis();
+        /// <summary>
+        /// 获取最大延迟时间
+        /// </summary>
+        /// <returns></returns>
+        public  long MaxDelay=>_maxDelay;
 
-        public abstract long getDelayBeforeNextRetryInMillis(XGBceClientException var1, int var2);
+        /// <summary>
+        /// 下次重试间隔
+        /// </summary>
+        /// <param name="var1"></param>
+        /// <param name="var2"></param>
+        /// <returns></returns>
+        public abstract long GetDelayBeforeNextRetry(XGBceClientException var1, int var2);
     }
 }

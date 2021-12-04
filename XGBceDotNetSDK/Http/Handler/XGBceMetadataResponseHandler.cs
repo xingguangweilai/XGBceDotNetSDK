@@ -16,31 +16,26 @@ namespace XGBceDotNetSDK.Http.Handler
         /// <param name="bceResponse"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public bool Handler(XGBceHttpResponse bceHttpResponse, XGAbstractBceResponse bceResponse)
+        public bool Handler<T>(XGBceHttpResponse bceHttpResponse,ref T bceResponse) where T: XGAbstractBceResponse
         {
             XGBceResponseMetadata metadata = bceResponse.Metadata;
             metadata.BceRequestId = bceHttpResponse.GetHeader("x-bce-request-id");
             metadata.BceContentSha256 = bceHttpResponse.GetHeader("x-bce-content-sha256");
-            metadata.ContentDisposition = bceHttpResponse.GetHeader("Content-Disposition");
-            metadata.ContentEncoding = bceHttpResponse.HttpResponse.ContentEncoding;
-            metadata.ContentLength = bceHttpResponse.HttpResponse.ContentLength;
-            metadata.ContentType = bceHttpResponse.HttpResponse.ContentType;
-            metadata.ContentMd5 = bceHttpResponse.GetHeader("Content-MD5");
-            metadata.ContentRange = bceHttpResponse.GetHeader("Content-Range");
-            metadata.Date = bceHttpResponse.GetHeaderAsRfc822Date("Date");
-            metadata.TransferEncoding = bceHttpResponse.GetHeader("Transfer-Encoding");
+            metadata.ContentDisposition = bceHttpResponse.Content.Headers.ContentDisposition;
+            metadata.ContentEncoding = bceHttpResponse.Content.Headers.ContentEncoding;
+            metadata.ContentLength = bceHttpResponse.Content.Headers.ContentLength;
+            metadata.ContentType = bceHttpResponse.Content.Headers.ContentType;
+            metadata.ContentMd5 = bceHttpResponse.Content.Headers.ContentMD5;
+            metadata.ContentRange = bceHttpResponse.Content.Headers.ContentRange;
+            //metadata.Date = bceHttpResponse.GetHeaderAsRfc822Date("Date");
+            metadata.Date = bceHttpResponse.HttpResponse.Headers.Date;
+            metadata.TransferEncoding = bceHttpResponse.HttpResponse.Headers.TransferEncoding;
             metadata.SymlinkTarget = bceHttpResponse.GetHeader("x-bce-symlink-target");
-            string eTag = bceHttpResponse.GetHeader("ETag");
-            if (eTag != null)
-            {
-                //TODO
-                //metadata.setETag(CharMatcher.is ('"').trimFrom(eTag));
-                metadata.ETag = eTag.Trim('"');
-            }
+            metadata.ETag = bceHttpResponse.HttpResponse.Headers.ETag;
             //TODO 日期格式化
-            metadata.Expires = bceHttpResponse.GetHeaderAsRfc822Date("Expires");
-            metadata.LastModified = bceHttpResponse.HttpResponse.LastModified;
-            metadata.Server = bceHttpResponse.HttpResponse.Server;
+            metadata.Expires = bceHttpResponse.Content.Headers.Expires;
+            metadata.LastModified = bceHttpResponse.Content.Headers.LastModified;
+            metadata.Server = bceHttpResponse.HttpResponse.Headers.Server;
 
             return false;
         }

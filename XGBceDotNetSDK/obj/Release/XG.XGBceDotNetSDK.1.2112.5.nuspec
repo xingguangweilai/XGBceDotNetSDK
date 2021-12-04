@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>XG.XGBceDotNetSDK</id>
+    <version>1.2112.5</version>
+    <authors>小桥流水人家</authors>
+    <icon>favicon.png</icon>
+    <description>百度智能云第三方 DotNetSDK</description>
+    <releaseNotes>新版本增加产品：媒体内容审核 VCR、媒体内容分析 MCA、物联网核心套件 IoTCore、文档服务 DOC</releaseNotes>
+    <tags>xg xg.xgbcedotnetsdk xgbcedotnetsdk bce baiduyun</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\bin\Release\netstandard2.0\XG.XGBceDotNetSDK.dll" target="lib\netstandard2.0\XG.XGBceDotNetSDK.dll" />
+    <file src="C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\favicon.png" target="\favicon.png" />
+  </files>
+</package>

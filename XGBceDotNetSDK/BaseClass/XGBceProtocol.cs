@@ -13,11 +13,11 @@ namespace XGBceDotNetSDK.BaseClass
         /// <summary>
         /// HTTP协议
         /// </summary>
-        public static XGBceProtocol HTTP = new XGBceProtocol(0);
+        public readonly static XGBceProtocol HTTP = new XGBceProtocol(0);
         /// <summary>
         /// HTTPS协议
         /// </summary>
-        public static XGBceProtocol HTTPS = new XGBceProtocol(1);
+        public readonly static XGBceProtocol HTTPS = new XGBceProtocol(1);
         /// <summary>
         /// 端口号
         /// </summary>

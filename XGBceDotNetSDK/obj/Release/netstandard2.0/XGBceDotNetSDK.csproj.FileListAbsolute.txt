@@ -1,0 +1,9 @@
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\bin\Release\netstandard2.0\XG.XGBceDotNetSDK.deps.json
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\bin\Release\netstandard2.0\XG.XGBceDotNetSDK.dll
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\bin\Release\netstandard2.0\XG.XGBceDotNetSDK.pdb
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XGBceDotNetSDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XGBceDotNetSDK.AssemblyInfoInputs.cache
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XGBceDotNetSDK.AssemblyInfo.cs
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XGBceDotNetSDK.csproj.CoreCompileInputs.cache
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XG.XGBceDotNetSDK.dll
+C:\Project\XGBceDotNetSDK\XGBceDotNetSDK\obj\Release\netstandard2.0\XG.XGBceDotNetSDK.pdb

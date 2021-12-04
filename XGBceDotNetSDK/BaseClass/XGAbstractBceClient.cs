@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using XGBceDotNetSDK.BaseClass;
 using XGBceDotNetSDK.Http.Handler;
 using XGBceDotNetSDK.Sign;
+using XGBceDotNetSDK.Utils;
 
 namespace XGBceDotNetSDK.BaseClass
 {
@@ -10,15 +12,15 @@ namespace XGBceDotNetSDK.BaseClass
         /// <summary>
         /// 默认域名
         /// </summary>
-        public static string DEFAULT_SERVICE_DOMAIN = "baidubce.com";
+        protected static string DEFAULT_SERVICE_DOMAIN = "baidubce.com";
         /// <summary>
         /// URL前缀
         /// </summary>
-        public static string URL_PREFIX = "v1";
+        protected static string URL_PREFIX = "v1";
         /// <summary>
         /// 默认编码
         /// </summary>
-        public static string DEFAULT_ENCODING = "UTF-8";
+        protected static string DEFAULT_ENCODING = "UTF-8";
         /// <summary>
         /// 默认Content-Type
         /// </summary>
@@ -34,16 +36,45 @@ namespace XGBceDotNetSDK.BaseClass
         public XGBceHttpClient Client { get => client; set => client = value; }
         public bool IsRegionSupported { get => true; }
 
-        public XGAbstractBceClient(XGBceClientConfiguration configuration, IXGHttpResponseHandler[] handlers, bool isHttpAsyncPutEnable)
+        public XGAbstractBceClient(XGBceClientConfiguration configuration)
         {
             serviceId = ComputeServiceId();
             config = configuration;
             endpoint = ComputeEndpoint();
-            client = new XGBceHttpClient(configuration, new XGBceSignerV1(), isHttpAsyncPutEnable);
-            responseHandlers = handlers;
+            if (config.Endpoint == null)
+                config.Endpoint = endpoint.AbsoluteUri;
+            client = new XGBceHttpClient(configuration, new XGBceSignerV1());
         }
 
-        public XGAbstractBceClient(XGBceClientConfiguration configuration, IXGHttpResponseHandler[] handlers) :this(configuration, handlers, false) { }
+        protected async Task<T> InvokeHttpClientAsync<T>(XGBceIternalRequest request) where T : XGAbstractBceResponse, new()
+        {
+            if (request.Content != null)
+            {
+                if (request.Content.Headers.ContentType==null)
+                {
+                    request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(mediaType: "application/json")
+                    {
+                        CharSet = "utf-8"
+                    };
+                }
+            }
+            return await client.SendAsyny<T>(request);
+        }
+
+        protected T InvokeHttpClient<T>(XGBceIternalRequest request)where T:XGAbstractBceResponse,new ()
+        {
+            if (request.Content != null)
+            {
+                if (request.Content.Headers.ContentType == null)
+                {
+                    request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(mediaType: "application/json")
+                    {
+                        CharSet = "utf-8"
+                    };
+                }
+            }
+            return client.Send<T>(request);
+        }
 
         public string ComputeServiceId()
         {
@@ -51,7 +82,7 @@ namespace XGBceDotNetSDK.BaseClass
             if (!nameSpace.StartsWith("XGBceDotNetSDK.Services.".ToLower()))
                 throw new Exception("请将类放入：XGBceDotNetSDK.Services.产品下");
             string [] ns = nameSpace.Split('.');
-            nameSpace = ns[ns.Length - 1];
+            nameSpace = ns[ns.Length-1];
             return nameSpace;
         }
 
@@ -63,9 +94,9 @@ namespace XGBceDotNetSDK.BaseClass
                 if (endpoint_ == null)
                 {
                     if (IsRegionSupported)
-                        endpoint_ = string.Format("%s://%s.%s.%s",config.Protocol.ToString(),serviceId,config.Region,"baidubce.com");
+                        endpoint_ = string.Format("{0}://{1}.{2}.{3}",config.Protocol.ToString().ToLower(),serviceId,config.Region.ToString(),"baidubce.com");
                     else
-                        endpoint_ = string.Format("%s://%s.%s", config.Protocol.ToString(), serviceId, "baidubce.com");
+                        endpoint_ = string.Format("{0}://{1}.{2}", config.Protocol.ToString().ToLower(), serviceId, "baidubce.com");
                 }
                 return new Uri(endpoint_);
             }

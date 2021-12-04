@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using XGBceDotNetSDK.Sign;
 
 namespace XGBceDotNetSDK.BaseClass
@@ -10,8 +11,8 @@ namespace XGBceDotNetSDK.BaseClass
         {
         }
 
+        [JsonIgnore]
         public XGBceCredentials Credentials { get => credentials; set => credentials = value; }
 
-        public abstract XGAbstractBceRequest RequestCredentials(XGBceCredentials bceCredentials);
     }
 }

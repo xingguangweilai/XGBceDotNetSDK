@@ -7,14 +7,21 @@ namespace XGBceDotNetSDK.BaseClass
         /// <summary>
         /// 默认区域
         /// </summary>
-        public static XGBceRegion DefaultRegion = new("bj");
+        public static XGBceRegion DefaultRegion = new XGBceRegion("bj");
         public XGBceRegion()
         {
         }
 
         public XGBceRegion(string regio)
         {
+            if (regio == null)
+                return;
             region = regio;
+        }
+
+        public override string ToString()
+        {
+            return region;
         }
     }
 }

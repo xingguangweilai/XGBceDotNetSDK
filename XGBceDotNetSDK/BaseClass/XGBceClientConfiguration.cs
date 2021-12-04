@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.InteropServices;
 using XGBceDotNetSDK.Sign;
 using XGBceDotNetSDK.Utils;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace XGBceDotNetSDK.BaseClass
 {
@@ -15,22 +17,21 @@ namespace XGBceDotNetSDK.BaseClass
         private IPAddress localAddress;
         private XGBceProtocol protocol=XGBceProtocol.HTTP;
         private string proxyHost=null;
-        private int proxyPort=-1;
+        private int? proxyPort;
         private string proxyUsername=null;
         private string proxyPassword=null;
         private string proxyDomain=null;
-        private string proxyWorkstation=null;
         private bool proxyPreemptiveAuthenticationEnabled;
-        private int maxConnections=50;
-        private int socketTimeoutInMillis=50000;
-        private int connectionTimeoutInMillis=50000;
+        private int connectionTimeout=50;
         private int socketBufferSizeInBytes=0;
         private string endpoint=null;
         private XGBceRegion region=XGBceRegion.DefaultRegion;
         private XGBceCredentials credentials=null;
         private bool redirectsEnabled = true;
 
-        private static string DEFAULT_USER_AGENT=@".netcore5.0";
+        private static readonly string DEFAULT_USER_AGENT= @"XGBceDotNet_" + SDKVERSION + "; " + Environment.OSVersion.ToString() + "; " + RuntimeInformation.OSArchitecture.ToString();
+
+        private static readonly string SDKVERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace XGBceDotNetSDK.BaseClass
         /// <summary>
         /// 代理端口
         /// </summary>
-        public int ProxyPort { get => proxyPort; set => proxyPort = value; }
+        public int? ProxyPort { get => proxyPort; set => proxyPort = value; }
         /// <summary>
         /// 代理-用户名
         /// </summary>
@@ -76,30 +77,22 @@ namespace XGBceDotNetSDK.BaseClass
         /// 代理-域名
         /// </summary>
         public string ProxyDomain { get => proxyDomain; set => proxyDomain = value; }
-        public string ProxyWorkstation { get => proxyWorkstation; set => proxyWorkstation = value; }
         public bool ProxyPreemptiveAuthenticationEnabled { get => proxyPreemptiveAuthenticationEnabled; set => proxyPreemptiveAuthenticationEnabled = value; }
         /// <summary>
-        /// 最大连接数
-        /// </summary>
-        public int MaxConnections { get => maxConnections; set => maxConnections = value > -1 ? value : 0; }
-        /// <summary>
-        /// 套接字超时时长
-        /// </summary>
-        public int SocketTimeoutInMillis { get => socketTimeoutInMillis; set => socketTimeoutInMillis = value > -1 ? value : 0; }
-        /// <summary>
         /// 连接超时时长
+        /// 秒
         /// </summary>
-        public int ConnectionTimeoutInMillis { get => connectionTimeoutInMillis; set => connectionTimeoutInMillis = value > -1 ? value : 0; }
+        public int ConnectionTimeout{ get => connectionTimeout; set => connectionTimeout = value > -1 ? value : 0; }
         public int SocketBufferSizeInBytes { get => socketBufferSizeInBytes; set => socketBufferSizeInBytes = value; }
         /// <summary>
-        /// 主机
+        /// 服务域名
         /// </summary>
         public string Endpoint { get {
                 string url = endpoint;
                 if (url != null && url.Length > 0 && url.IndexOf("://") < 0)
                     url = this.Protocol.ToString().ToLower() + "://" + url;
                 return url;
-            } set => endpoint = value??@""; }
+            } set => endpoint = value??""; }
         /// <summary>
         /// 区域
         /// </summary>
@@ -133,11 +126,8 @@ namespace XGBceDotNetSDK.BaseClass
             ProxyPort = other.ProxyPort;
             ProxyUsername = other.ProxyUsername;
             ProxyPassword = other.ProxyPassword;
-            ProxyWorkstation = other.ProxyWorkstation;
             ProxyPreemptiveAuthenticationEnabled = other.ProxyPreemptiveAuthenticationEnabled;
-            SocketTimeoutInMillis = other.SocketTimeoutInMillis;
-            ConnectionTimeoutInMillis = other.ConnectionTimeoutInMillis;
-            MaxConnections = other.MaxConnections;
+            ConnectionTimeout = other.ConnectionTimeout;
             SocketBufferSizeInBytes = other.SocketBufferSizeInBytes;
             Region = other.Region;
             Credentials = other.Credentials;
