@@ -31,7 +31,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 根据BOS Object创建文档
         /// </summary>
         /// <param name="docClient"></param>
-        public void RegisterDocument(XGDocClient docClient)
+        public static void RegisterDocument(XGDocClient docClient)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 发布文档
         /// </summary>
         /// <param name="docClient"></param>
-        public void PublishDocument(XGDocClient docClient)
+        public static void PublishDocument(XGDocClient docClient)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 查询文档
         /// </summary>
         /// <param name="docClient"></param>
-        public void QueryDocument(XGDocClient docClient)
+        public static void QueryDocument(XGDocClient docClient)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 文档列表
         /// </summary>
         /// <param name="docClient"></param>
-        public void ListDocuments(XGDocClient docClient)
+        public static void ListDocuments(XGDocClient docClient)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 查询文档转码结果图片列表
         /// </summary>
         /// <param name="docClient"></param>
-        public void ListDocumentImages(XGDocClient docClient)
+        public static void ListDocumentImages(XGDocClient docClient)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace XGBceDotNetSDKDemo.Example
         /// 删除文档
         /// </summary>
         /// <param name="docClient"></param>
-        public void DeleteDocument(XGDocClient docClient)
+        public static void DeleteDocument(XGDocClient docClient)
         {
             try
             {

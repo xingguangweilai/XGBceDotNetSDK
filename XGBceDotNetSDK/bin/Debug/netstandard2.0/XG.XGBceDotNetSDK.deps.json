@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "XG.XGBceDotNetSDK/1.2112.04": {
+      "XG.XGBceDotNetSDK/1.2112.5": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.1"
@@ -33,7 +33,7 @@
     }
   },
   "libraries": {
-    "XG.XGBceDotNetSDK/1.2112.04": {
+    "XG.XGBceDotNetSDK/1.2112.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

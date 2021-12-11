@@ -28,7 +28,8 @@ namespace XGBceDotNetSDKDemo
             Console.WriteLine("Hello World!");
 
             //new DocExample();
-
+            //new VcaExample();
+            new McpExample();
         }
     }
 }

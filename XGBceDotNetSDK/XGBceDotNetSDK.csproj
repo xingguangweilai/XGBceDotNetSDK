@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ReleaseVersion>1.2112.5</ReleaseVersion>
+    <ReleaseVersion>0.0.1</ReleaseVersion>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
     <FileVersion>1.2112.5</FileVersion>
@@ -27,6 +27,8 @@
     <None Remove="Services\IoTCore\Model\" />
     <None Remove="Services\DOC\" />
     <None Remove="Services\DOC\Model\" />
+    <None Remove="Services\MCP\" />
+    <None Remove="Services\MEDIA\Model\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -37,6 +39,8 @@
     <Folder Include="Services\IoTCore\Model\" />
     <Folder Include="Services\DOC\" />
     <Folder Include="Services\DOC\Model\" />
+    <Folder Include="Services\MEDIA\" />
+    <Folder Include="Services\MEDIA\Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="favicon.png">

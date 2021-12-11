@@ -16,7 +16,7 @@ namespace XGBceDotNetSDK.Services.DOC
     /// </summary>
     public class XGDocClient: XGAbstractBceClient
     {
-        private readonly string Document = "document";
+        private readonly static string Document = "document";
         public XGDocClient() : this(new XGBceClientConfiguration()) { }
 
         public XGDocClient(XGBceClientConfiguration configuration) : base(configuration){}
@@ -93,7 +93,7 @@ namespace XGBceDotNetSDK.Services.DOC
                 throw new ArgumentNullException("Title 不能为空");
             if(request.Format==null)
                 throw new ArgumentNullException("Format 不能为空");
-            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.DocVersion.ToString()+ Document);
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.DocVersion.ToString(), Document);
             iternalRequest.AddParameter("register");
             XGDocRegisterDocumentResponse response = InvokeHttpClient<XGDocRegisterDocumentResponse>(iternalRequest);
             return response;
@@ -116,7 +116,7 @@ namespace XGBceDotNetSDK.Services.DOC
                 throw new ArgumentNullException("Title 不能为空");
             if (request.Format == null)
                 throw new ArgumentNullException("Format 不能为空");
-            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.DocVersion.ToString() + Document);
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.DocVersion.ToString() , Document);
             iternalRequest.AddParameter("register");
             XGDocRegisterDocumentResponse response = await InvokeHttpClientAsync<XGDocRegisterDocumentResponse>(iternalRequest);
             return response;

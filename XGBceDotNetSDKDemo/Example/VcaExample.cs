@@ -1,6 +1,7 @@
 ﻿using System;
 using XGBceDotNetSDK.BaseClass;
 using XGBceDotNetSDK.Services.VCA;
+using XGBceDotNetSDK.Services.VCA.Model;
 using XGBceDotNetSDK.Sign;
 
 namespace XGBceDotNetSDKDemo.Example
@@ -20,17 +21,7 @@ namespace XGBceDotNetSDKDemo.Example
 
             XGVcaClient vcaClient = new XGVcaClient(bceClientConfiguration);
 
-            //try
-            //{
-            //    XGAnalyzeResponse analyzeResponse = vcaClient.Analyze("bos://视频地址");
-            //    Console.WriteLine("分析提交成功：" + analyzeResponse.ToString());
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("分析提交失败：" + ex.Message);
-            //}
-
-            //vcaClient.CancelAnalyze("bos://视频地址");
+            PuAnalyze(vcaClient);
 
             //try
             //{
@@ -80,6 +71,20 @@ namespace XGBceDotNetSDKDemo.Example
             //{
             //    Console.WriteLine("图片分析失败：" + ex.Message);
             //}
+        }
+
+        public static void PuAnalyze(XGVcaClient vcaClient)
+        {
+            try
+            {
+                XGAnalyzeResponse analyzeResponse = vcaClient.Analyze("");
+                Console.WriteLine("分析提交成功：" + analyzeResponse.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("分析提交失败：" + ex.Message);
+            }
+
         }
     }
 }

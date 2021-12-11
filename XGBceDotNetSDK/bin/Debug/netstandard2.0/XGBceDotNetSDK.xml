@@ -1756,6 +1756,3472 @@
             <returns>异步任务XGIoTCoreResponse</returns>
             <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
         </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGAbstractMediaRequest">
+            <summary>
+            音视频MCP抽象请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGAbstractMediaRequest.MediaVersion">
+            <summary>
+            DOC接口版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaBaseRequest">
+            <summary>
+            音视频处理MCP基础请求类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest">
+            <summary>
+            创建通知请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest.Name">
+            <summary>
+            通知名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest.Endpoint">
+            <summary>
+            通知消息接收地址
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest.Type">
+            <summary>
+            通知消息类型
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest.Token">
+            <summary>
+            通知消息鉴权token
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineConfig">
+            <summary>
+            队列配置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineConfig.Capacity">
+            <summary>
+            队列的并发能力(默认20)
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineConfig.Notification">
+            <summary>
+            通知名称
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineConfig.PipelineType">
+            <summary>
+            队列类型
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest">
+            <summary>
+            创建队列请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest.PipelineName">
+            <summary>
+            队列名称
+            <para>允许小写字母、数字以及下划线且必须以字母开头，长度小于40个字符</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest.Description">
+            <summary>
+            队列描述
+            <para>长度小于128个字符</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest.SourceBucket">
+            <summary>
+            输入Bucket
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest.TargetBucket">
+            <summary>
+            输出Bucket
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest.Config">
+            <summary>
+            队列的配置
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryption">
+            <summary>
+            HLS加解密信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryption.Strategy">
+            <summary>
+            视频加密策略
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryption.AesKey">
+            <summary>
+            AES128加密密钥
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoCodecOptions">
+            <summary>
+            视频编码的配置选项
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoCodecOptions.Profile">
+            <summary>
+            档次
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo">
+            <summary>
+            视频输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.Codec">
+            <summary>
+            视频编码信息集合
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.BitRateInBps">
+            <summary>
+            视频目标码率
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.Crf">
+            <summary>
+            恒定质量因子
+            <para>若设置了crf值，bitRateInBps可表示最大目标码率</para>
+            <para>取值范围：1 ~ 51</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.MaxFrameRate">
+            <summary>
+            目标视频最大帧率
+            <para>取值范围：10,15, 23.97, 24, 25, 29.97, 30, 50, 60</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.MaxWidthInPixel">
+            <summary>
+            目标视频的最大宽度
+            <para>取值范围：128 ~ 4096</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.MaxHeightInPixel">
+            <summary>
+            目标视频的最大高度
+            <para>取值范围：	96 ~ 3072</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.SizingPolicy">
+            <summary>
+            尺寸伸缩策略
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.AutoAdjustResolution">
+            <summary>
+            当原视频为竖形时，自动调整模板的宽小于高，保证缩放比最小，反之亦然
+            <para>仅当sizingPolicy为keep时可以设置</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoOutInfo.PlaybackSpeed">
+            <summary>
+            回放速度
+            <para>值低于1.0时为减速视频，高于1.0时为加速视频（不可同时指定音频设置）</para>
+            <para>取值范围：0.05 ~ 20.0</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioVolumeAdjust">
+            <summary>
+            音量相关参数设置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioVolumeAdjust.Mute">
+            <summary>
+            是否进行静音操作
+            <para>当设置了mute时，Job中不允许有audio类型的insert。mute和其它audio参数同时设置时，优先进行静音（mute）操作</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioVolumeAdjust.Norm">
+            <summary>
+            是否进行音频归一化操作
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioVolumeAdjust.Gain">
+            <summary>
+            音量调节的大小
+            <para>单位db，值为正则增大音量</para>
+            <para>取值范围：-60 ~ 60</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo">
+            <summary>
+            音频输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo.BitRateInBps">
+            <summary>
+            视频片段的起始时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo.SampleRateInHz">
+            <summary>
+            音频采样率
+            <para>取值范围：22050, 32000, 44100, 48000, 96000</para>
+            <para>不填写，表示与输入保持一致</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo.Channels">
+            <summary>
+            音频声道数目
+            <para>取值范围：1, 2</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo.PcmFormat">
+            <summary>
+            PCM音频格式
+            <para>仅当container=pcm时有效</para>
+            <para>取值范围：s16le</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioOutInfo.VolumeAdjust">
+            <summary>
+            音量相关参数设置
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaClip">
+            <summary>
+            截取音视频片段
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaClip.StartTimeInSecond">
+            <summary>
+            视频片段的起始时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaClip.DurationInSecond">
+            <summary>
+            视频片段的持续时间
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermark">
+            <summary>
+            多水印
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermark.Image">
+            <summary>
+            多水印watermarkId数组
+            <para>size最大为5</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermark.IsValid">
+            <summary>
+            水印是否有效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransCfg">
+            <summary>
+            转码配置信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransCfg.TransMode">
+            <summary>
+            转码模式
+            <para>当转码模式为twopass时，video不能为空。</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg">
+            <summary>
+            转码额外配置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.WatermarkDisableWhitelist">
+            <summary>
+            设置不加水印的条件
+            <para>当前可设置 portrait，表示竖屏视频不加水印</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.SegmentDurationInSecond">
+            <summary>
+            设置分片时长
+            <para>仅当container为hls,a-hls,dash时可以设置</para>
+            <para>取值范围：3.0 ~ 15.0，浮点数精度为小数点后三位以内</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.GopLength">
+            <summary>
+            设置gop长度
+            <para>仅当配置了video参数时可以设置；当segmentDurationInSecond和gopLength参数共存时，建议保证 segmentDurationInSecond*原视频帧率 为gopLength的整数倍</para>
+            <para>取值范围：[0, 250]，其中0表示结果视频只包含i帧</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.SkipBlackFrame">
+            <summary>
+            智能检测并裁剪片头黑帧，最长截取前5s黑帧
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.HoriToVeri">
+            <summary>
+            视频横转竖
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransExtraCfg.Stabilization">
+            <summary>
+            视频去抖动
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest">
+            <summary>
+            创建模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.PresetName">
+            <summary>
+            模板名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Description">
+            <summary>
+            转码模板描述
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Container">
+            <summary>
+            音视频文件的容器
+            <para>取值范围：mp4, flv, hls, mp3, m4a, a-hls, pcm, dash, ts</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Transmux">
+            <summary>
+            是否仅执行容器格式转换
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Clip">
+            <summary>
+            是否截取音视频片段
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Audio">
+            <summary>
+            音频输出信息的集合
+            <para>不设置audio相关参数则转码输出不包含音频流，如果保留音频流则必须设置此对象</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Video">
+            <summary>
+            视频输出信息的集合
+            <para>不设置vedio相关参数则转码输出不包含视频流，如果保留视频流则必须设置此对象</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Encryption">
+            <summary>
+            HLS加解密信息的集合
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.WatermarkId">
+            <summary>
+            水印id
+            <para>当transmux=true时不允许添加水印</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.Watermarks">
+            <summary>
+            多水印设置
+            <para>不可同时指定watermarkId和watermarks</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest.TransCfg">
+            <summary>
+            转码额外配置
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo">
+            <summary>
+            目标缩略图信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.TargetBucket">
+            <summary>
+            目标缩略图的BOS Bucket
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.KeyPrefix">
+            <summary>
+            目标缩略图的BOS Key的前缀
+            <para>mode=auto/idl/highlight 时目标文件名为 {keyPrefix}，mode=manual/split/shot 时目标文件名为 {keyPrefix}加截图时间点</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.Format">
+            <summary>
+            目标缩略图的格式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.SizingPolicy">
+            <summary>
+            目标缩略图的尺寸伸缩策略
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.WidthInPixel">
+            <summary>
+            目标缩略图的宽
+            <para>如果视频实际分辨率低于目标分辨率则按照实际分辨率输出</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.HeightInPixel">
+            <summary>
+            目标缩略图的高
+            <para>如果视频实际分辨率低于目标分辨率则按照实际分辨率输出</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.FrameRate">
+            <summary>
+            动图的帧率
+            <para>仅当format为mp4、gif、webp且mode为manual、split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.GifQuality">
+            <summary>
+            gif的质量
+            <para>仅当format为gif且mode为manual、split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.SpriteOutputCfg">
+            <summary>
+            雪碧图输出参数设置
+            <para>仅当抽取多图（即mode=manual/split）,且输出为非动图（即format=jpg/png）时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTargetInfo.Keys">
+            <summary>
+            目标缩略图的BOS的Key的集合
+            <para>响应参数中使用</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailVideoSource">
+            <summary>
+            输入视频信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailVideoSource.SourceBucket">
+            <summary>
+            输入视频文件的BOS Bucket
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailVideoSource.Key">
+            <summary>
+            输入视频文件的BOS Key，支持public bucket下的hls（即key为m3u8文件）
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest">
+            <summary>
+            创建缩略图任务请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.PipelineName">
+            <summary>
+            任务所属的pipelineName	
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.PresetName">
+            <summary>
+            任务的模板名称（模板和job中重复内容以job中为准）
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.Source">
+            <summary>
+            输入视频信息的集合
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.Target">
+            <summary>
+            目标缩略图信息的集合
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.Capture">
+            <summary>
+            生成缩略图的规则
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.DelogoArea">
+            <summary>
+            去水印参数，描述水印位置区域。
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.DelogoAreas">
+            <summary>
+            去水印参数，描述水印位置区域。
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest.Crop">
+            <summary>
+            黑边裁剪参数
+            <para>描述除去黑边后的有效区域（不可同时设置crop和shrinkToFit）</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobResponse">
+            <summary>
+            创建缩略图任务响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobResponse.JobId">
+            <summary>
+            系统生成的Thumbnail的唯一标示thumbnailId
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailHighlightOutputCfg">
+            <summary>
+            highlight 模式下输出控制参数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailHighlightOutputCfg.DurationInSecond">
+            <summary>
+            截取片段时长
+            <para>取值范围：0.1 ~ 7200.0，单位：秒</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailHighlightOutputCfg.PlaybackSpeed">
+            <summary>
+            回放速度
+            <para>值低于1.0时为减速视频，高于1.0时为加速视频</para>
+            <para>取值范围：0.05 ~ 20.0</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailHighlightOutputCfg.FrameRate">
+            <summary>
+            输出视频帧率
+            <para>取值范围：0.1 ~ 60.0，单位：fps</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailHighlightOutputCfg.ReverseConcat">
+            <summary>
+            正播反播合并效果
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture">
+            <summary>
+            生成缩略图的规则
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.Mode">
+            <summary>
+            生成缩略图的模式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.FrameNumber">
+            <summary>
+            生成缩略图的张数
+            <para>仅当mode=split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.StartTimeInSecond">
+            <summary>
+            生成缩略图的开始时间
+            <para>当mode=manual或split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.EndTimeInSecond">
+            <summary>
+            生成缩略图的结束时间
+            <para>当mode=manual或split时可选，且不得小于start time</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.IntervalInSecond">
+            <summary>
+            生成缩略图的间隔时间
+            <para>仅当mode=manual时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.MinIntervalInSecond">
+            <summary>
+            生成缩略图的最小间隔时间
+            <para>仅当mode=split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.SkipBlackFrame">
+            <summary>
+            是否跳过黑帧
+            <para>仅当mode=manual或split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailCapture.HighlightOutputCfg">
+            <summary>
+            highlight 模式下输出控制参数
+            <para>仅当mode=highlight时可选</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg">
+            <summary>
+            雪碧图输出参数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.Rows">
+            <summary>
+            雪碧图拼接行数
+            <para>取值范围：1 ~ 100</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.Columns">
+            <summary>
+            雪碧图拼接列数
+            <para>取值范围：1 ~ 100</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.Margin">
+            <summary>
+            外框宽度
+            <para>取值范围：1 ~ 1000，单位：px</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.Padding">
+            <summary>
+            内框宽度
+            <para>取值范围：1 ~ 1000，单位：px</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.KeepCellPic">
+            <summary>
+            是否保留子图原图
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailSpriteOutputCfg.SpriteKeyTag">
+            <summary>
+            上传BOS的雪碧图的key中用于标记为雪碧图的tag
+            <para>最终文件名为 {keyPrefix}+{spriteKeyTag}+{雪碧图序号%05d}，雪碧图中子图按照原视频中的顺序排列</para>
+            <para>字符串长度范围为1 ~ 100</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget">
+            <summary>
+            目标缩略图信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.Format">
+            <summary>
+            目标缩略图的格式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.SizingPolicy">
+            <summary>
+            目标缩略图的尺寸伸缩策略
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.WidthInPixel">
+            <summary>
+            目标缩略图的宽
+            <para>如果视频实际分辨率低于目标分辨率则按照实际分辨率输出</para>
+            <para>取值范围：10 ~ 2000</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.HeightInPixel">
+            <summary>
+            目标缩略图的高
+            <para>如果视频实际分辨率低于目标分辨率则按照实际分辨率输出</para>
+            <para>取值范围：10 ~ 2000</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.FrameRate">
+            <summary>
+            动图的帧率
+            <para>仅当format为mp4、gif、webp且mode为manual、split时可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.GifQuality">
+            <summary>
+            gif的质量
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailTarget.SpriteOutputCfg">
+            <summary>
+            雪碧图输出参数设置
+            <para>仅当抽取多图（即mode=manual/split）,且输出为非动图（即format=jpg/png）时可选</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest">
+            <summary>
+            创建缩略图模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest.PresetName">
+            <summary>
+            缩略图模板名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest.Description">
+            <summary>
+            缩略图模板描述
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest.Target">
+             <summary>
+            目标缩略图信息的集合
+             <para>非必需</para>
+             </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTimeline">
+            <summary>
+            有效显示起止时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTimeline.StartTimeInMillisecond">
+            <summary>
+            水印、图片、文本水印等的显示起始时间，单位：豪秒
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTimeline.DurationInMillisecond">
+            <summary>
+            水印、图片、文本水印等的显示持续时间，单位：豪秒
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertLayout">
+            <summary>
+            显示位置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertLayout.VerticalAlignment">
+            <summary>
+            垂直对齐方式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertLayout.HorizontalAlignment">
+            <summary>
+            水平对齐方式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertLayout.VerticalOffsetInPixel">
+            <summary>
+            垂直偏移
+            <para>该参数仅在verticalAlignment设置为top或bottom时有效，单位：像素</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertLayout.HorizontalOffsetInPixel">
+            <summary>
+            水平偏移
+            <para>该参数仅在horizontalAlignment设置为left或right时有效，单位：像素</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTextFont">
+            <summary>
+            文本字体
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTextFont.Family">
+            <summary>
+            字体系列
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertTextFont.SizeInPoint">
+            <summary>
+            字体大小
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert">
+            <summary>
+            待插入（叠加）的内容
+            <para>类型可以为图片、视频、音频、字幕、文本水印等</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Bucket">
+            <summary>
+            BOS存储上insert文件Bucket
+            <para>type 为 text 时不可设置，否则必须设置	</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Key">
+            <summary>
+            BOS存储上insert文件Key
+            <para>type 为 text 时不可设置，否则必须设置</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Type">
+            <summary>
+            insert类型
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Text">
+            <summary>
+            文本水印内容
+            <para>当且仅当 type 为 text 时设置</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Font">
+            <summary>
+            字体效果
+            <para>当且仅当 type 为 subtitle、 text 时设置</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsert.Timeline">
+            <summary>
+            有效显示起止时间
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop">
+            <summary>
+            黑边裁剪参数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop.X">
+            <summary>
+            去黑边后的有效区域相对左上角的x（横）坐标，左上角为0
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop.Y">
+            <summary>
+            去黑边后的有效区域相对左上角的y（纵）坐标，左上角为0	大
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop.Width">
+            <summary>
+            去黑边后的有效区域横向宽度
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop.Height">
+            <summary>
+            去黑边后的有效区域纵向高度
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCrop.HasNullProperty">
+            <summary>
+            是否有空属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea">
+            <summary>
+            去水印参数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea.X">
+            <summary>
+            水印区域相对左上角的x（横）坐标，左上角为0
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea.Y">
+            <summary>
+            水印区域相对左上角的y（纵）坐标，左上角为0
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea.Width">
+            <summary>
+            水印区域横向宽度
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea.Height">
+            <summary>
+            水印区域纵向高度
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoArea.HasNullProperty">
+            <summary>
+            是否有空属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo">
+            <summary>
+            输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.TargetBucket">
+            <summary>
+            目标文件的输出BOS bucket
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.TargetKey">
+            <summary>
+            目标文件的BOS key，即是相对于输出Bucket的文件的相对路径
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.PresetName">
+            <summary>
+            输出处理的模板的名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.AutoDelogo">
+            <summary>
+            自动去水印
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.DelogoMode">
+            <summary>
+            自动去水印模式
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.DelogoArea">
+            <summary>
+            去水印参数，描述水印位置区域
+            <para>使用delogo去水印功能时，不能指定transmux模式的模板</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.DelogoAreas">
+            <summary>
+            去多个水印参数，描述水印位置区域，至多指定5个
+            <para>使用delogo去水印功能时，不能指定transmux模式的模板，不可与delogoArea同时指定</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.AutoCrop">
+            <summary>
+            开启自动剪裁黑边
+            <para>和crop同时设置时，以crop为准</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.Crop">
+            <summary>
+            黑边裁剪参数，描述除去黑边后的有效区域
+            <para>使用crop去黑边功能时，不能指定transmux模式的模板</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.WatermarkIds">
+            <summary>
+            水印模板id集合，最大size 5
+            <para>当Job和Preset中同时指定watermarkId(s)时，优先使用Job中设置的watermarkId，以支持更灵活地设置水印</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTargetInfo.Inserts">
+            <summary>
+            待插入（叠加）的内容
+            <para>audio类型的inserts不能和其他类型inserts共存。不支持同时设置水印和inserts。多clips的任务不可设置inserts。数组最大长度为200</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.Bucket">
+            <summary>
+            原始文件的BOS Bucket
+            <para>用户必须有该bucket的读权限</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.SourceKey">
+            <summary>
+            原始文件的BOS Key
+            <para>相对于输入Bucket的文件的相对路径，支持输入为public bucket下的hls（即sourceKey为m3u8文件）</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.AsMasterClip">
+            <summary>
+            是否指定该片段作为主分片，即转码分辨率参考该片段
+            <para>。当clips中存在 asMasterClip为true时，对应模板Preset的 video.sizingPolicy 必须为shrinkToFit，此时输出分辨率保持主分片视频宽高比，其他分片参考该分辨率加黑边对齐。</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.EnableLogo">
+            <summary>
+            是否允许在该片段添加水印
+            <para>为空时，如有指定水印，默认该片段添加水印</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.EnableDelogo">
+            <summary>
+            是否允许在该片段进行去水印
+            <para>去水印位置参数为job.target.delogo</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.EnableCrop">
+            <summary>
+            是否允许在该片段添进行去黑边
+            <para>去黑边位置参数为job.target.crop</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.StartTimeInSecond">
+            <summary>
+            视频片段的起始时间
+            <para>大于等于0</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.DurationInSecond">
+            <summary>
+            视频片段的持续时间
+            <para>大于等于1</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.StartTimeInMillisecond">
+            <summary>
+            视频片段的起始时间
+            <para>单位毫秒，与startTimeInSecond同时指定时优先生效</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceClipInfo.DurationInMillisecond">
+            <summary>
+            视频片段的持续时间
+            <para>单位毫秒，与durationInSecond同时指定时优先生效</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceInfo">
+            <summary>
+            转码视频原始信息集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceInfo.SourceKey">
+            <summary>
+            原始文件的BOS Key，即是相对于输入Bucket的文件的相对路径
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaSourceInfo.Clips">
+             <summary>
+            待合并的原始视频信息
+             <para>与上面的sourceKey不可同时指定，数组长度[1,200]</para>
+             <para>非必需</para>
+             </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest">
+            <summary>
+            创建视频转码任务请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest.PipelineName">
+            <summary>
+            任务所属的队列名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest.Source">
+            <summary>
+            输入的原始信息的集合
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest.Target">
+            <summary>
+            输出信息的集合
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobResponse">
+            <summary>
+            创建视频转码任务响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobResponse.JobId">
+            <summary>
+            系统生成的Job的唯一标示jobId
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermarkTimeline">
+            <summary>
+            水印有效显示起止时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermarkTimeline.StartTimeInMillisecond">
+            <summary>
+            水印显示起始时间
+            <para>单位：豪秒</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaWatermarkTimeline.DurationInMillisecond">
+            <summary>
+            水印显示持续时间
+            <para>单位：豪秒</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest">
+            <summary>
+            创建水印请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.Bucket">
+            <summary>
+            BOS存储上水印文件Bucket
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.Key">
+            <summary>
+            BOS存储上水印文件Key
+            <para>支持JPG、PNG、APNG、BMP、PBM、TIF、GIF 、MOV等格式，其中MOV、GIF、APNG为动态水印</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.VerticalAlignment">
+            <summary>
+            垂直对齐方式
+            <para>默认：top</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.HorizontalAlignment">
+            <summary>
+            水平对齐方式
+            <para>默认：left</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.VerticalOffsetInPixel">
+            <summary>
+            垂直偏移
+            <para>仅在verticalAlignment设置为top或bottom时有效，单位：像素</para>
+            <para>取值范围：0 ~ 3072</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.HorizontalOffsetInPixel">
+            <summary>
+            水平偏移
+            <para>仅在horizontalAlignment设置为left或right时有效，单位：像素</para>
+            <para>取值范围：0 ~ 4096</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.Timeline">
+            <summary>
+            水印有效显示起止时间
+            <para>仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.Repeated">
+            <summary>
+            （动态）水印重复显示次数
+            <para>0表示无限循环（仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效）</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest.AllowScaling">
+            <summary>
+            是否允许自动进行缩放
+            <para>仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkResponse">
+            <summary>
+            创建水印响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkResponse.WatermarkId">
+            <summary>
+            水印的唯一标识
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteNotificationRequest">
+            <summary>
+            删除通知请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteNotificationRequest.Name">
+            <summary>
+            通知名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePipelineRequest">
+            <summary>
+            删除指定队列请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePipelineRequest.PipelineName">
+            <summary>
+            队列名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePresetRequest">
+            <summary>
+            删除指定模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePresetRequest.PresetName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteThumbnailPresetRequest">
+            <summary>
+            删除指定的缩略图模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteThumbnailPresetRequest.PresetName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteWatermarkRequest">
+            <summary>
+            删除水印请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteWatermarkRequest.WatermarkId">
+            <summary>
+            水印的唯一标识
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaEnum">
+            <summary>
+            音视频处理MCP枚举模型
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVersion">
+            <summary>
+            音视频处理MCP接口版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineType">
+            <summary>
+            队列类型
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineType.normal">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineType.acceleration">
+            <summary>
+            极速转码
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipilineState">
+            <summary>
+            队列状态
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType">
+            <summary>
+            insert类型
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType.video">
+            <summary>
+            视频
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType.image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType.audio">
+            <summary>
+            音频
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType.subtitle">
+            <summary>
+            字幕
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaInsertType.text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVerticalAlignment">
+            <summary>
+            垂直对齐方式
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVerticalAlignment.top">
+            <summary>
+            顶部对齐
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVerticalAlignment.center">
+            <summary>
+            中心对齐
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVerticalAlignment.bottom">
+            <summary>
+            底部对齐
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHorizontalAlignment">
+            <summary>
+            水平对齐方式
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHorizontalAlignment.left">
+            <summary>
+            左对齐
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHorizontalAlignment.center">
+            <summary>
+            中心对齐
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHorizontalAlignment.right">
+            <summary>
+            右对齐
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDelogoMode">
+            <summary>
+            自动去水印模式
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobStatus">
+            <summary>
+            任务的状态
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoCodec">
+            <summary>
+            视频编码类型
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoCodec.h265">
+            <summary>
+            只支持 main profile
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoCodecProfile">
+            <summary>
+            视频编码档次
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoSizingPolicy">
+            <summary>
+            尺寸伸缩策略
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoSizingPolicy.keep">
+            <summary>
+            保持原始视频宽高比
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoSizingPolicy.shrinkToFit">
+            <summary>
+            保持原始视频宽高比并加黑边
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoSizingPolicy.stretch">
+            <summary>
+            拉伸原始视频
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoSizingPolicy.shrinkToFitBlur">
+            <summary>
+            原始视频宽高比并加高斯模糊
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryptionStrategy">
+            <summary>
+            HLS视频加密策略
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryptionStrategy.Fixed">
+            <summary>
+            固定密钥加密
+            <para>使用用户指定的密钥对视频进行加密，此时需要aesKey</para>
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryptionStrategy.Open">
+            <summary>
+            开放密钥
+            <para>系统自动生成加密密钥，密钥公开，不设访问控制</para>
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaHLSEncryptionStrategy.PlayerBinding">
+            <summary>
+            绑定播放器
+            <para>系统自动生成加密密钥，密钥设有访问控制，安全性比较高，推荐使用</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaTransMode">
+            <summary>
+            转码模式
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPresetState">
+            <summary>
+            模板状态
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPresetType">
+            <summary>
+            模板类型
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPresetType.SYSTEM">
+            <summary>
+            系统预置模板
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPresetType.CUSTOM">
+            <summary>
+            用户自定义模板
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaNotificationType">
+            <summary>
+            通知类型
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaNotificationType.NONE">
+            <summary>
+            普通通知回调
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaNotificationType.SIGN">
+            <summary>
+            鉴权模式
+            <para>会在header中增加Notification-Auth-Expire、Notification-Auth-User和Notification-Auth-Token用于验证</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailFormat">
+            <summary>
+            缩略图格式
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaGifQuality">
+            <summary>
+            gif的质量
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode">
+            <summary>
+            生成缩略图的模式
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.auto">
+            <summary>
+            系统自动截取熵值较高的一帧作为缩略图
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.manual">
+            <summary>
+            根据指定的起止时间和间隔时间截取缩略图
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.split">
+            <summary>
+            根据指定的起止时间和张数截取缩略图
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.shot">
+            <summary>
+            根据场景切换自动截取画面(不支持输出视频格式)
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.idl">
+            <summary>
+            使用百度IDL（Institute of Deep Learning）智能缩略图算法截取缩略图（仅支持输出jpg、png格式）
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaThumbnailMode.highlight">
+            <summary>
+            自动生成一个0.5s的精彩片段（目前仅适用于竖屏小视频，只支持输出视频格式，默认为正播反播合并效果
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListNotificationsResponse">
+            <summary>
+            列举通知响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListNotificationsResponse.Notifications">
+            <summary>
+            通知列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListPipelinesResponse">
+            <summary>
+            列举用户所有队列响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListPipelinesResponse.Pipelines">
+             <summary>
+            用户队列的集合
+             </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListPresetsResponse">
+            <summary>
+            查询当前用户模板及所有系统模板响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListPresetsResponse.Presets">
+            <summary>
+            模板列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListWatermarksResponse">
+            <summary>
+            列举当前用户水印响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaListWatermarksResponse.Watermarks">
+            <summary>
+            水印的唯一标识
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoRequest">
+            <summary>
+            查询指定媒体信息请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoRequest.Bucket">
+            <summary>
+            音视频文件所在的BOS的Bucket
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoRequest.Key">
+            <summary>
+            音视频文件的BOS的Key
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioInfo">
+            <summary>
+            音频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioInfo.Codec">
+            <summary>
+            音频文件的编码规格
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioInfo.Channels">
+            <summary>
+            音频文件的声道信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioInfo.SampleRateInHz">
+            <summary>
+            音频文件的采样率
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaAudioInfo.BitRateInBps">
+            <summary>
+            音频文件的码率
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo">
+            <summary>
+            视频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.Codec">
+            <summary>
+            视频文件的编码规格
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.HeightInPixel">
+            <summary>
+            视频高度
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.WidthInPixel">
+            <summary>
+            视频宽度
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.BitRateInBps">
+            <summary>
+            视频媒体的码流
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.FrameRate">
+            <summary>
+            视频媒体的帧率
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.Rotate">
+            <summary>
+            旋转角度（部分视频包含该参数）
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaVideoInfo.Dar">
+            <summary>
+            视频显示宽高比
+            <para>如 "16:9" （部分视频包含该参数）</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse">
+            <summary>
+            查询指定媒体信息响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Bucket">
+            <summary>
+            音视频文件所在的BOS的Bucket
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Key">
+            <summary>
+            音视频文件的BOS的Key）
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.FileSizeInByte">
+            <summary>
+            音视频文件的大小
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.DurationInSecond">
+            <summary>
+            音视频媒体时长
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Container">
+            <summary>
+            音视频文件的容器类型
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Etag">
+            <summary>
+            文件的版本标识
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Type">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Video">
+            <summary>
+            视频信息集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoResponse.Audio">
+            <summary>
+            音频信息集合
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationRequest">
+            <summary>
+            查询通知请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationRequest.Name">
+            <summary>
+            通知名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationResponse">
+            <summary>
+            查询通知响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationResponse.Name">
+            <summary>
+            通知名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationResponse.Endpoint">
+            <summary>
+            通知消息接收地址
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineRequest">
+            <summary>
+            查询指定队列请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineRequest.PipelineName">
+            <summary>
+            队列名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus">
+            <summary>
+            队列任务状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus.Total">
+            <summary>
+            队列中的任务总数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus.Running">
+            <summary>
+            队列中运行中的任务总数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus.Pending">
+            <summary>
+            队列中排队中的任务总数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus.Success">
+            <summary>
+            队列中已执行成功的任务总数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineJobStatus.Failed">
+            <summary>
+            队列中执行失败的任务总数
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse">
+            <summary>
+            查询指定队列响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.PipelineName">
+            <summary>
+            队列名称
+            <para>允许小写字母、数字以及下划线且必须以字母开头，长度小于40个字符</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.Description">
+            <summary>
+            队列描述
+            <para>长度小于128个字符</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.SourceBucket">
+            <summary>
+            输入Bucket
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.TargetBucket">
+            <summary>
+            输出Bucket
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.Config">
+            <summary>
+            队列的配置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.State">
+             <summary>
+            队列状态
+             </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.CreateTime">
+            <summary>
+            创建时间，UTC格式
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineResponse.JobStatus">
+            <summary>
+            队列中任务的状态集合
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest">
+            <summary>
+            查询指定队列的缩略图任务信息请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.PipelineName">
+            <summary>
+            任务所属的队列名
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.JobStatus">
+            <summary>
+            所选任务的状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.Begin">
+            <summary>
+            任务创建时间的上限。所选任务开始时间要大于等于begin
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.End">
+            <summary>
+            任务创建时间的下限，所选任务开始时间要小于等于end
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.Marker">
+            <summary>
+            本次请求的marker，标记查询的起始位置，此处为jobId
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest.MaxSize">
+            <summary>
+            本次请求返回的任务列表的最大元素个数
+            <para>取值范围：1 ~ 1000</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse">
+            <summary>
+            查询指定队列的缩略图任务信息响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.Marker">
+            <summary>
+            本次请求的marker，标记查询的起始位置，此处为jobId
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.IsTruncated">
+            <summary>
+            指明返回数据是否被截断
+            <para>true表示本页后面还有数据，即数据未全部返回；false表示已是最后一页，即数据已全部返回</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.NextMarker">
+            <summary>
+            获取下一页所需要传递的marker值（此处为jobId）
+            <para>仅当isTruncated为true时（数据未全部返回）出现</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.JobId">
+            <summary>
+            缩略图的唯一标识
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.JobStatus">
+            <summary>
+            缩略图生成状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.CreateTime">
+            <summary>
+            任务开始时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.EndTime">
+            <summary>
+            任务完成时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.PipelineName">
+            <summary>
+            任务所属的pipelineName	
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.PresetName">
+            <summary>
+            任务的模板名称（模板和job中重复内容以job中为准）
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.Source">
+            <summary>
+            输入视频信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.Target">
+            <summary>
+            目标缩略图信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.Capture">
+            <summary>
+            生成缩略图的规则
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.DelogoAreas">
+            <summary>
+            去水印参数，描述水印位置区域。
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobResponse.Crop">
+            <summary>
+            黑边裁剪参数
+            <para>描述除去黑边后的有效区域（不可同时设置crop和shrinkToFit）</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest">
+            <summary>
+            查询指定队列的视频转码任务信息请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.PipelineName">
+            <summary>
+            任务所属的队列名
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.JobStatus">
+            <summary>
+            所选任务的状态
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.Begin">
+            <summary>
+            任务创建时间的上限
+            <para>所选任务开始时间要大于等于begin</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.End">
+            <summary>
+            任务创建时间的下限
+            <para>所选任务开始时间要小于等于end</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.Marker">
+            <summary>
+            本次请求的marker，标记查询的起始位置，此处为jobId
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest.MaxSize">
+            <summary>
+            本次请求返回的任务列表的最大元素个数
+            <para>1 ~ 1000</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobError.Code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobError.Message">
+            <summary>
+            错误原因
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob">
+            <summary>
+            转码任务信息
+            <para>与[创建视频转码任务/请求/请求参数]保持一致，不返回inserts、crop信息</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.JobId">
+            <summary>
+            任务的唯一标示
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.Source">
+            <summary>
+            输入的原始信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.Target">
+            <summary>
+            输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.JobStatus">
+            <summary>
+            任务状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.Error">
+            <summary>
+            job失败时的错误信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.CreateTime">
+            <summary>
+            任务创建的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.StartTime">
+            <summary>
+            任务开始处理的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.EndTime">
+            <summary>
+            任务完成处理的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaPipelineTranscodingJob.PipelineName">
+            <summary>
+            队列名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobResponse">
+            <summary>
+            查询指定队列的视频转码任务信息响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobResponse.Jobs">
+            <summary>
+            转码任务信息列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobResponse.Marker">
+            <summary>
+            本次请求的marker，标记查询的起始位置，此处为jobId
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobResponse.IsTruncated">
+            <summary>
+            指明返回数据是否被截断
+            <para>true表示本页后面还有数据，即数据未全部返回；false表示已是最后一页，即数据已全部返回</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobResponse.NextMarker">
+            <summary>
+            获取下一页所需要传递的marker值（此处为jobId）
+            <para>仅当isTruncated为true时（数据未全部返回）出现</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetRequest">
+            <summary>
+            查询指定模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetRequest.PresetId">
+            <summary>
+            模板ID
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse">
+            <summary>
+            查询指定模板响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.PresetName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Description">
+            <summary>
+            转码模板描述
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Container">
+            <summary>
+            音视频文件的容器
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Transmux">
+            <summary>
+            是否仅执行容器格式转换
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Clip">
+            <summary>
+            是否截取音视频片段
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Audio">
+            <summary>
+            音频输出信息的集合
+            <para>不设置audio相关参数则转码输出不包含音频流，如果保留音频流则必须设置此对象</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Video">
+            <summary>
+            视频输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Encryption">
+            <summary>
+            HLS加解密信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.WatermarkId">
+            <summary>
+            水印id
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.Watermarks">
+            <summary>
+            多水印设置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.TransCfg">
+            <summary>
+            转码额外配置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.State">
+            <summary>
+            模板状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.CreatedTime">
+            <summary>
+            模板创建的UTC格式的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetResponse.PresetType">
+            <summary>
+            模板类型
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobRequest">
+            <summary>
+            查询指定缩略图任务
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobRequest.JobId">
+            <summary>
+            任务ID
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse">
+            <summary>
+            查询指定缩略图任务响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.JobId">
+            <summary>
+            缩略图的唯一标识
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.JobStatus">
+            <summary>
+            缩略图生成状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.CreateTime">
+            <summary>
+            任务开始时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.EndTime">
+            <summary>
+            任务完成时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.PipelineName">
+            <summary>
+            任务所属的pipelineName	
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.PresetName">
+            <summary>
+            任务的模板名称（模板和job中重复内容以job中为准）
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.Source">
+            <summary>
+            输入视频信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.Target">
+            <summary>
+            目标缩略图信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.Capture">
+            <summary>
+            生成缩略图的规则
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.DelogoAreas">
+            <summary>
+            去水印参数，描述水印位置区域。
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobResponse.Crop">
+            <summary>
+            黑边裁剪参数
+            <para>描述除去黑边后的有效区域（不可同时设置crop和shrinkToFit）</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetRequest">
+            <summary>
+            查询指定缩略图模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetRequest.PresetName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse">
+            <summary>
+            查询指定缩略图模板响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse.PresetName">
+            <summary>
+            缩略图模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse.Description">
+            <summary>
+            缩略图模板描述
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse.Target">
+             <summary>
+            目标缩略图信息的集合
+             </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse.State">
+             <summary>
+            模板状态
+             </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetResponse.CreatedTime">
+             <summary>
+            模板创建的UTC格式的时间
+             </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobRequest">
+            <summary>
+            查询指定视频转码任务请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobRequest.JobId">
+            <summary>
+            任务的唯一标示
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse">
+            <summary>
+            查询指定视频转码任务响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.JobId">
+            <summary>
+            任务的唯一标示
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.Source">
+            <summary>
+            输入的原始信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.Target">
+            <summary>
+            输出信息的集合
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.JobStatus">
+            <summary>
+            任务状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.Error">
+            <summary>
+            job失败时的错误信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.CreateTime">
+            <summary>
+            任务创建的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.StartTime">
+            <summary>
+            任务开始处理的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.EndTime">
+            <summary>
+            任务完成处理的时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobResponse.PipelineName">
+            <summary>
+            队列名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkRequest">
+            <summary>
+            查询指定水印请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkRequest.WatermarkId">
+            <summary>
+            水印的唯一标识
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse">
+            <summary>
+            查询指定水印响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.WatermarkId">
+            <summary>
+            水印的唯一标识
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.CreateTime">
+            <summary>
+            水印创建时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.Bucket">
+            <summary>
+            BOS存储上水印文件Bucket
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.Key">
+            <summary>
+            BOS存储上水印文件Key
+            <para>支持JPG、PNG、APNG、BMP、PBM、TIF、GIF 、MOV等格式，其中MOV、GIF、APNG为动态水印</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.VerticalAlignment">
+            <summary>
+            垂直对齐方式
+            <para>默认：top</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.HorizontalAlignment">
+            <summary>
+            水平对齐方式
+            <para>默认：left</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.VerticalOffsetInPixel">
+            <summary>
+            垂直偏移
+            <para>仅在verticalAlignment设置为top或bottom时有效，单位：像素</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.HorizontalOffsetInPixel">
+            <summary>
+            水平偏移
+            <para>仅在horizontalAlignment设置为left或right时有效，单位：像素</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.Timeline">
+            <summary>
+            水印有效显示起止时间
+            <para>仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.Repeated">
+            <summary>
+            （动态）水印重复显示次数
+            <para>0表示无限循环（仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效）</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkResponse.AllowScaling">
+            <summary>
+            是否允许自动进行缩放
+            <para>仅当watermarkId被设置到Preset.watermarks.image多水印参数中时该字段可生效</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaResponse">
+            <summary>
+            音视频处理MCP通用响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePipelineRequest">
+            <summary>
+            更新指定队列请求类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest">
+            <summary>
+            更新指定模板请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.PresetName">
+            <summary>
+            模板名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Description">
+            <summary>
+            转码模板描述
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Container">
+            <summary>
+            音视频文件的容器
+            <para>取值范围：mp4, flv, hls, mp3, m4a, a-hls, pcm, dash, ts</para>
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Transmux">
+            <summary>
+            是否仅执行容器格式转换
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Clip">
+            <summary>
+            是否截取音视频片段
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Audio">
+            <summary>
+            音频输出信息的集合
+            <para>不设置audio相关参数则转码输出不包含音频流，如果保留音频流则必须设置此对象</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Video">
+            <summary>
+            视频输出信息的集合
+            <para>不设置vedio相关参数则转码输出不包含视频流，如果保留视频流则必须设置此对象</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Encryption">
+            <summary>
+            HLS加解密信息的集合
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.WatermarkId">
+            <summary>
+            水印id
+            <para>当transmux=true时不允许添加水印</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.Watermarks">
+            <summary>
+            多水印设置
+            <para>不可同时指定watermarkId和watermarks</para>
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest.TransCfg">
+            <summary>
+            转码额外配置
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest">
+            <summary>
+            更新指定缩略图模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest.PresetName">
+            <summary>
+            缩略图模板名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest.Description">
+            <summary>
+            缩略图模板描述
+            <para>非必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest.Target">
+             <summary>
+            目标缩略图信息的集合
+             <para>非必需</para>
+             </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.MEDIA.XGMediaClient">
+            <summary>
+            音视频处理MCP
+            <para>为了保证 MCP API能够被授权访问 BOS，CDN 等服务，用户需要在管理控制台至少创建一次任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hq5 </para>
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePipeline(System.String,System.String,System.String,System.String)">
+            <summary>
+            创建队列
+            <para>用户向服务请求创建任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <param name="sourceBucket">输入Bucket</param>
+            <param name="targetBucket">输出Bucket</param>
+            <param name="description">队列描述</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePipelineAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            创建队列
+            <para>用户向服务请求创建任务队列。</para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <param name="sourceBucket">输入Bucket</param>
+            <param name="targetBucket">输出Bucket</param>
+            <param name="description">队列描述</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePipeline(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest)">
+            <summary>
+            创建队列
+            <para>用户向服务请求创建任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="request">XGMediaCreatePipelineRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePipelineAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePipelineRequest)">
+            <summary>
+            创建队列
+            <para>用户向服务请求创建任务队列。</para>
+            </summary>
+            <param name="request">XGMediaCreatePipelineRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipeline(System.String)">
+            <summary>
+            查询指定队列
+            <para>用户通过指定name来查询该指定队列的信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="pipelineName">指定队列名称</param>
+            <returns>XGMediaQueryPipelineResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineAsync(System.String)">
+            <summary>
+            查询指定队列
+            <para>用户通过指定name来查询该指定队列的信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="pipelineName">指定队列名称</param>
+            <returns>异步任务XGMediaQueryPipelineResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipeline(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineRequest)">
+            <summary>
+            查询指定队列
+            <para>用户通过指定name来查询该指定队列的信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="request">XGMediaQueryPipelineRequest</param>
+            <returns>XGMediaQueryPipelineResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineRequest)">
+            <summary>
+            查询指定队列
+            <para>用户通过指定name来查询该指定队列的信息。</para>
+            </summary>
+            <param name="request">XGMediaQueryPipelineRequest</param>
+            <returns>异步任务XGMediaQueryPipelineResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListPipelines">
+            <summary>
+            列举用户所有队列
+            <para>帮助用户查询所拥有的所有队列的详细信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E6%89%80%E6%9C%89%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <returns>XGMediaListPipelinesResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListPipelinesAsync">
+            <summary>
+            列举用户所有队列
+            <para>帮助用户查询所拥有的所有队列的详细信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E6%89%80%E6%9C%89%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <returns>异步任务XGMediaListPipelinesResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePipeline(System.String)">
+            <summary>
+            删除指定队列
+            <para>用户向服务请求删除指定pipelineName的任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePipelineAsync(System.String)">
+            <summary>
+            删除指定队列
+            <para>用户向服务请求删除指定pipelineName的任务队列。</para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePipeline(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePipelineRequest)">
+            <summary>
+            删除指定队列
+            <para>用户向服务请求删除指定pipelineName的任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="request">XGMediaDeletePipelineRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePipelineAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePipelineRequest)">
+            <summary>
+            删除指定队列
+            <para>用户向服务请求删除指定pipelineName的任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="request">XGMediaDeletePipelineRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePipeline(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新指定队列
+            <para>用户向服务请求更新任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <param name="sourceBucket">输入Bucket</param>
+            <param name="targetBucket">输出Bucket</param>
+            <param name="description">队列描述</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePipelineAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新指定队列
+            <para>用户向服务请求更新任务队列。</para>
+            </summary>
+            <param name="pipelineName">队列名称</param>
+            <param name="sourceBucket">输入Bucket</param>
+            <param name="targetBucket">输出Bucket</param>
+            <param name="description">队列描述</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePipeline(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePipelineRequest)">
+            <summary>
+            更新指定队列
+            <para>用户向服务请求更新任务队列。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/djwvz5f9i#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97 </para>
+            </summary>
+            <param name="request">XGMediaUpdatePipelineRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePipelineAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePipelineRequest)">
+            <summary>
+            更新指定队列
+            <para>用户向服务请求更新任务队列。</para>
+            </summary>
+            <param name="request">XGMediaUpdatePipelineRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateTranscodingJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest)">
+            <summary>
+            创建视频转码任务
+            <para>通过该接口创建转码任务，支持多视频合并。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/4jwvz5ifb#%E5%88%9B%E5%BB%BA%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGMediaCreateTranscodingJobRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateTranscodingJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateTranscodingJobRequest)">
+            <summary>
+            创建视频转码任务
+            <para>通过该接口创建转码任务，支持多视频合并。</para>
+            </summary>
+            <param name="request">XGMediaCreateTranscodingJobRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineTranscodingJob(System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobStatus},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询指定队列的视频转码任务信息
+            <para>查询指定队列下满足一定条件的所有转码任务。</para>
+            <para> 接口文档：https://cloud.baidu.com/doc/MCT/s/4jwvz5ifb#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97%E7%9A%84%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="pipelineName">任务所属的队列名</param>
+            <param name="jobStatus">所选任务的状态</param>
+            <param name="begin">任务创建时间的上限。所选任务开始时间要大于等于begin</param>
+            <param name="end">任务创建时间的下限，所选任务开始时间要小于等于end</param>
+            <param name="marker">本次请求的marker，标记查询的起始位置，此处为jobId</param>
+            <param name="maxSize">本次请求返回的任务列表的最大元素个数</param>
+            <returns>XGMediaQueryPipelineTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineTranscodingJobAsync(System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobStatus},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询指定队列的视频转码任务信息
+            <para>查询指定队列下满足一定条件的所有转码任务。</para>
+            </summary>
+            <param name="pipelineName">任务所属的队列名</param>
+            <param name="jobStatus">所选任务的状态</param>
+            <param name="begin">任务创建时间的上限。所选任务开始时间要大于等于begin</param>
+            <param name="end">任务创建时间的下限，所选任务开始时间要小于等于end</param>
+            <param name="marker">本次请求的marker，标记查询的起始位置，此处为jobId</param>
+            <param name="maxSize">本次请求返回的任务列表的最大元素个数</param>
+            <returns>异步任务XGMediaQueryPipelineTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineTranscodingJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest)">
+            <summary>
+            查询指定队列的视频转码任务信息
+            <para>查询指定队列下满足一定条件的所有转码任务。</para>
+            <para> 接口文档：https://cloud.baidu.com/doc/MCT/s/4jwvz5ifb#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97%E7%9A%84%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="request">XGMediaQueryPipelineTranscodingJobRequest</param>
+            <returns>XGMediaQueryPipelineTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineTranscodingJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineTranscodingJobRequest)">
+            <summary>
+            查询指定队列的视频转码任务信息
+            <para>查询指定队列下满足一定条件的所有转码任务。</para>
+            </summary>
+            <param name="request">XGMediaQueryPipelineTranscodingJobRequest</param>
+            <returns>异步任务XGMediaQueryPipelineTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryTranscodingJob(System.String)">
+            <summary>
+            查询指定视频转码任务
+            <para>通过指定jobId查询该任务的信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/4jwvz5ifb#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="jobId">任务ID</param>
+            <returns>XGMediaQueryTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryTranscodingJobAsync(System.String)">
+            <summary>
+            查询指定视频转码任务
+            <para>通过指定jobId查询该任务的信息。</para>
+            </summary>
+            <param name="jobId">任务ID</param>
+            <returns>异步任务XGMediaQueryTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryTranscodingJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobRequest)">
+            <summary>
+            查询指定视频转码任务
+            <para>通过指定jobId查询该任务的信息。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/4jwvz5ifb#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGMediaQueryTranscodingJobRequest</param>
+            <returns>XGMediaQueryTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryTranscodingJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryTranscodingJobRequest)">
+            <summary>
+            查询指定视频转码任务
+            <para>通过指定jobId查询该任务的信息。</para>
+            </summary>
+            <param name="request">XGMediaQueryTranscodingJobRequest</param>
+            <returns>异步任务XGMediaQueryTranscodingJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest)">
+            <summary>
+            创建模板
+            <para>当系统预设的Preset无法满足需求时，用户可以通过此接口创建自定义的Preset</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E5%88%9B%E5%BB%BA%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaCreatePresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreatePresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreatePresetRequest)">
+            <summary>
+            创建模板
+            <para>当系统预设的Preset无法满足需求时，用户可以通过此接口创建自定义的Preset</para>
+            </summary>
+            <param name="request">XGMediaCreatePresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPreset(System.String)">
+            <summary>
+            查询指定模板
+            <para>通过模板名称查询指定的模板信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetId">模板名称</param>
+            <returns>XGMediaQueryPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPresetAsync(System.String)">
+            <summary>
+            查询指定模板
+            <para>通过模板名称查询指定的模板信息</para>
+            </summary>
+            <param name="presetId">模板名称</param>
+            <returns>异步任务XGMediaQueryPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetRequest)">
+            <summary>
+            查询指定模板
+            <para>通过模板名称查询指定的模板信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaQueryPresetRequest</param>
+            <returns>XGMediaQueryPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPresetRequest)">
+            <summary>
+            查询指定模板
+            <para>通过模板名称查询指定的模板信息</para>
+            </summary>
+            <param name="request">XGMediaQueryPresetRequest</param>
+            <returns>异步任务XGMediaQueryPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListPreset">
+            <summary>
+            查询当前用户模板及所有系统模板
+            <para>用户查询其名下及系统提供的所有的模板，具体有哪些系统模板可以参考系统内置模板</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E6%A8%A1%E6%9D%BF%E5%8F%8A%E6%89%80%E6%9C%89%E7%B3%BB%E7%BB%9F%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <returns>XGMediaListPresetsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListPresetAsync">
+            <summary>
+            查询当前用户模板及所有系统模板
+            <para>用户查询其名下及系统提供的所有的模板，具体有哪些系统模板可以参考系统内置模板</para>
+            </summary>
+            <returns>异步任务XGMediaListPresetsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePreset(System.String)">
+            <summary>
+            删除指定模板
+            <para>用于删除用户指定的用户模板</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetName">模板名称</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePresetAsync(System.String)">
+            <summary>
+            删除指定模板
+            <para>用于删除用户指定的用户模板</para>
+            </summary>
+            <param name="presetName">模板名称</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePresetRequest)">
+            <summary>
+            删除指定模板
+            <para>用于删除用户指定的用户模板</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaDeletePresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeletePresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeletePresetRequest)">
+            <summary>
+            删除指定模板
+            <para>用于删除用户指定的用户模板</para>
+            </summary>
+            <param name="request">XGMediaDeletePresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest)">
+            <summary>
+            更新指定模板
+            <para>用户可以通过此接口更新指定Preset</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaCreatePresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdatePresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdatePresetRequest)">
+            <summary>
+            更新指定模板
+            <para>用户可以通过此接口更新指定Preset</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5hey#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaCreatePresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryMediaInfo(System.String,System.String)">
+            <summary>
+            查询指定媒体信息
+            <para>用户通过Bucket+BOS Key的URL Encoded的结果获取指定音视频文件的媒体信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5g0p#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E5%AA%92%E4%BD%93%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="bucket">音视频文件所在的BOS的Bucket</param>
+            <param name="key">音视频文件的BOS的Key</param>
+            <returns>XGMediaQueryMediaInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryMediaInfoAsync(System.String,System.String)">
+            <summary>
+            查询指定媒体信息
+            <para>用户通过Bucket+BOS Key的URL Encoded的结果获取指定音视频文件的媒体信息</para>
+            </summary>
+            <param name="bucket">音视频文件所在的BOS的Bucket</param>
+            <param name="key">音视频文件的BOS的Key</param>
+            <returns>异步任务XGMediaQueryMediaInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryMediaInfo(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoRequest)">
+            <summary>
+            查询指定媒体信息
+            <para>用户通过Bucket+BOS Key的URL Encoded的结果获取指定音视频文件的媒体信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5g0p#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E5%AA%92%E4%BD%93%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="request">XGMediaQueryMediaInfoRequest</param>
+            <returns>XGMediaQueryMediaInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryMediaInfoAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryMediaInfoRequest)">
+            <summary>
+            查询指定媒体信息
+            <para>用户通过Bucket+BOS Key的URL Encoded的结果获取指定音视频文件的媒体信息</para>
+            </summary>
+            <param name="request">XGMediaQueryMediaInfoRequest</param>
+            <returns>异步任务XGMediaQueryMediaInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateWatermark(System.String,System.String)">
+            <summary>
+            创建水印
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5isl#%E5%88%9B%E5%BB%BA%E6%B0%B4%E5%8D%B0 </para>
+            </summary>
+            <param name="bucket">BOS存储上水印文件Bucket</param>
+            <param name="key">BOS存储上水印文件Key</param>
+            <returns>XGMediaCreateWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateWatermarkAsync(System.String,System.String)">
+            <summary>
+            创建水印
+            </summary>
+            <param name="bucket">BOS存储上水印文件Bucket</param>
+            <param name="key">BOS存储上水印文件Key</param>
+            <returns>异步任务XGMediaCreateWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateWatermark(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest)">
+            <summary>
+            创建水印
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5isl#%E5%88%9B%E5%BB%BA%E6%B0%B4%E5%8D%B0 </para>
+            </summary>
+            <param name="request">XGMediaCreateWatermarkRequest</param>
+            <returns>XGMediaCreateWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateWatermarkAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateWatermarkRequest)">
+            <summary>
+            创建水印
+            </summary>
+            <param name="request">XGMediaCreateWatermarkRequest</param>
+            <returns>异步任务XGMediaCreateWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryWatermark(System.String)">
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryWatermarkAsync(System.String)">
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryWatermark(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkRequest)">
+            <summary>
+            查询指定水印
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5isl#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E6%B0%B4%E5%8D%B0 </para>
+            </summary>
+            <param name="request">XGMediaQueryWatermarkRequest</param>
+            <returns>XGMediaQueryWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryWatermarkAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryWatermarkRequest)">
+            <summary>
+            查询指定水印
+            </summary>
+            <param name="request">XGMediaQueryWatermarkRequest</param>
+            <returns>异步任务XGMediaQueryWatermarkResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListWatermarks">
+            <summary>
+            列举当前用户水印
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5isl#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E6%B0%B4%E5%8D%B0 </para>
+            </summary>
+            <returns>XGMediaListWatermarksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListWatermarksAsync">
+            <summary>
+            列举当前用户水印
+            </summary>
+            <returns>异步任务XGMediaListWatermarksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteWatermark(System.String)">
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteWatermarkAsync(System.String)">
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteWatermark(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteWatermarkRequest)">
+            <summary>
+            删除水印
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Sjwvz5isl#%E5%88%A0%E9%99%A4%E6%B0%B4%E5%8D%B0 </para>
+            </summary>
+            <param name="request">XGMediaDeleteWatermarkRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteWatermarkAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteWatermarkRequest)">
+            <summary>
+            删除水印
+            </summary>
+            <param name="request">XGMediaDeleteWatermarkRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailPreset(System.String,System.String)">
+            <summary>
+            创建缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E5%88%9B%E5%BB%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <param name="description">缩略图模板描述</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailPresetAsync(System.String,System.String)">
+            <summary>
+            创建缩略图模板
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <param name="description">缩略图模板描述</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailPreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest)">
+            <summary>
+            创建缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E5%88%9B%E5%BB%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaCreateThumbnailPresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailPresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailPresetRequest)">
+            <summary>
+            创建缩略图模板
+            </summary>
+            <param name="request">XGMediaCreateThumbnailPresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailPreset(System.String)">
+            <summary>
+            查询指定模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <returns>XGMediaQueryThumbnailPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailPresetAsync(System.String)">
+            <summary>
+            查询指定模板
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <returns>异步任务XGMediaQueryThumbnailPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailPreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetRequest)">
+            <summary>
+            查询指定模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaQueryThumbnailPresetRequest</param>
+            <returns>XGMediaQueryThumbnailPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailPresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailPresetRequest)">
+            <summary>
+            查询指定模板
+            </summary>
+            <param name="request">XGMediaQueryThumbnailPresetRequest</param>
+            <returns>异步任务XGMediaQueryThumbnailPresetResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteThumbnailPreset(System.String)">
+            <summary>
+            删除指定缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%BC%A9%E7%95%A5%E5%9B%BE%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteThumbnailPresetAsync(System.String)">
+            <summary>
+            删除指定缩略图模板
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteThumbnailPreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteThumbnailPresetRequest)">
+            <summary>
+            删除指定缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%BC%A9%E7%95%A5%E5%9B%BE%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaDeleteThumbnailPresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteThumbnailPresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteThumbnailPresetRequest)">
+            <summary>
+            删除指定缩略图模板
+            </summary>
+            <param name="request">XGMediaDeleteThumbnailPresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdateThumbnailPreset(System.String,System.String)">
+            <summary>
+            更新缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <param name="description">缩略图模板描述</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdateThumbnailPresetAsync(System.String,System.String)">
+            <summary>
+            更新缩略图模板
+            </summary>
+            <param name="presetName">缩略图模板名称</param>
+            <param name="description">缩略图模板描述</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdateThumbnailPreset(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest)">
+            <summary>
+            更新缩略图模板
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/tkb8t1775#%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E6%A8%A1%E6%9D%BF </para>
+            </summary>
+            <param name="request">XGMediaUpdateThumbnailPresetRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.UpdateThumbnailPresetAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaUpdateThumbnailPresetRequest)">
+            <summary>
+            更新缩略图模板
+            </summary>
+            <param name="request">XGMediaUpdateThumbnailPresetRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest)">
+            <summary>
+            创建缩略图任务
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Ojwvz5fo4#%E5%88%9B%E5%BB%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGMediaCreateThumbnailJobRequest</param>
+            <returns>XGMediaCreateThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateThumbnailJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateThumbnailJobRequest)">
+            <summary>
+            创建缩略图任务
+            </summary>
+            <param name="request">XGMediaCreateThumbnailJobRequest</param>
+            <returns>异步任务XGMediaCreateThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailJob(System.String)">
+            <summary>
+            查询指定缩略图任务
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Ojwvz5fo4#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="jobId">任务ID</param>
+            <returns>XGMediaQueryThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailJobAsync(System.String)">
+            <summary>
+            查询指定缩略图任务
+            </summary>
+            <param name="jobId">任务ID</param>
+            <returns>异步任务XGMediaQueryThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobRequest)">
+            <summary>
+            查询指定缩略图任务
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Ojwvz5fo4#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGMediaQueryThumbnailJobRequest</param>
+            <returns>XGMediaQueryThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryThumbnailJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryThumbnailJobRequest)">
+            <summary>
+            查询指定缩略图任务
+            </summary>
+            <param name="request">XGMediaQueryThumbnailJobRequest</param>
+            <returns>异步任务XGMediaQueryThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineThumbnailJob(System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobStatus},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询指定队列的缩略图任务信息
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Ojwvz5fo4#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97%E7%9A%84%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="pipelineName">任务所属的队列名</param>
+            <param name="jobStatus">所选任务的状态</param>
+            <param name="begin">任务创建时间的上限。所选任务开始时间要大于等于begin</param>
+            <param name="end">任务创建时间的下限，所选任务开始时间要小于等于end</param>
+            <param name="marker">本次请求的marker，标记查询的起始位置，此处为jobId</param>
+            <param name="maxSize">本次请求返回的任务列表的最大元素个数</param>
+            <returns>XGMediaQueryPipelineThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineThumbnailJobAsync(System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaJobStatus},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询指定队列的缩略图任务信息
+            </summary>
+            <param name="pipelineName">任务所属的队列名</param>
+            <param name="jobStatus">所选任务的状态</param>
+            <param name="begin">任务创建时间的上限。所选任务开始时间要大于等于begin</param>
+            <param name="end">任务创建时间的下限，所选任务开始时间要小于等于end</param>
+            <param name="marker">本次请求的marker，标记查询的起始位置，此处为jobId</param>
+            <param name="maxSize">本次请求返回的任务列表的最大元素个数</param>
+            <returns>异步任务XGMediaQueryPipelineThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineThumbnailJob(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest)">
+            <summary>
+            查询指定队列的缩略图任务信息
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/Ojwvz5fo4#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E9%98%9F%E5%88%97%E7%9A%84%E7%BC%A9%E7%95%A5%E5%9B%BE%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="request">XGMediaQueryPipelineThumbnailJobRequest</param>
+            <returns>XGMediaQueryPipelineThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryPipelineThumbnailJobAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryPipelineThumbnailJobRequest)">
+            <summary>
+            查询指定队列的缩略图任务信息
+            </summary>
+            <param name="request">XGMediaQueryPipelineThumbnailJobRequest</param>
+            <returns>异步任务XGMediaQueryPipelineThumbnailJobResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateNotification(System.String,System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaNotificationType},System.String)">
+            <summary>
+            创建通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="name">通知名称</param>
+            <param name="endpoint">通知消息接收地址</param>
+            <param name="type">通知消息类型</param>
+            <param name="token">通知消息鉴权</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateNotificationAsync(System.String,System.String,System.Nullable{XGBceDotNetSDK.Services.MEDIA.Model.XGMediaNotificationType},System.String)">
+            <summary>
+            创建通知
+            </summary>
+            <param name="name">通知名称</param>
+            <param name="endpoint">通知消息接收地址</param>
+            <param name="type">通知消息类型</param>
+            <param name="token">通知消息鉴权</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateNotification(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest)">
+            <summary>
+            创建通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="request">XGMediaCreateNotificationRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.CreateNotificationAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaCreateNotificationRequest)">
+            <summary>
+            创建通知
+            </summary>
+            <param name="request">XGMediaCreateNotificationRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryNotification(System.String)">
+            <summary>
+            查询通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E6%9F%A5%E8%AF%A2%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="name">通知名称</param>
+            <returns>XGMediaQueryNotificationResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryNotificationAsync(System.String)">
+            <summary>
+            查询通知
+            </summary>
+            <param name="name">通知名称</param>
+            <returns>异步任务XGMediaQueryNotificationResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryNotification(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationRequest)">
+            <summary>
+            查询通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E6%9F%A5%E8%AF%A2%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="request">XGMediaQueryNotificationRequest</param>
+            <returns>XGMediaQueryNotificationResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.QueryNotificationAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaQueryNotificationRequest)">
+            <summary>
+            查询通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E6%9F%A5%E8%AF%A2%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="request">XGMediaQueryNotificationRequest</param>
+            <returns>异步任务XGMediaQueryNotificationResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteNotification(System.String)">
+            <summary>
+            删除通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E5%88%A0%E9%99%A4%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="name">通知名称</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteNotificationAsync(System.String)">
+            <summary>
+            删除通知
+            </summary>
+            <param name="name">通知名称</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteNotification(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteNotificationRequest)">
+            <summary>
+            删除通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E5%88%A0%E9%99%A4%E9%80%9A%E7%9F%A5 </para>
+            </summary>
+            <param name="request">XGMediaDeleteNotificationRequest</param>
+            <returns>XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.DeleteNotificationAsync(XGBceDotNetSDK.Services.MEDIA.Model.XGMediaDeleteNotificationRequest)">
+            <summary>
+            删除通知
+            </summary>
+            <param name="request">XGMediaDeleteNotificationRequest</param>
+            <returns>异步任务XGMediaResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListNotifications">
+            <summary>
+            列举通知
+            <para>接口文档：https://cloud.baidu.com/doc/MCT/s/7jwvz5gew#%E9%80%9A%E7%9F%A5%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <returns>XGMediaListNotificationsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.MEDIA.XGMediaClient.ListNotificationsAsync">
+            <summary>
+            列举通知
+            </summary>
+            <returns>异步任务XGMediaListNotificationsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
         <member name="T:XGBceDotNetSDK.Services.SMS.Model.XGSmsContentType">
             <summary>
             短信签名类型
