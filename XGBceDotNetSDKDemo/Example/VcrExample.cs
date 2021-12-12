@@ -13,7 +13,7 @@ namespace XGBceDotNetSDKDemo.Example
         {
             XGBceClientConfiguration vcrClientConfiguration = new XGBceClientConfiguration()
             {
-                Credentials = new DefaultBceCredentials(access_key_id, secret_access_key),
+                Credentials = new XGBceDefaultBceCredentials(access_key_id, secret_access_key),
                 Endpoint = "vcr.bj.baidubce.com"
             };
 

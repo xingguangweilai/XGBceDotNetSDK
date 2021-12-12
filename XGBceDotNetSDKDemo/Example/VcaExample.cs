@@ -15,7 +15,7 @@ namespace XGBceDotNetSDKDemo.Example
 
             XGBceClientConfiguration bceClientConfiguration = new XGBceClientConfiguration()
             {
-                Credentials = new DefaultBceCredentials(access_key_id, secret_access_key),
+                Credentials = new XGBceDefaultBceCredentials(access_key_id, secret_access_key),
                 Endpoint = "http://vca.bj.baidubce.com"
             };
 

@@ -15,7 +15,7 @@ namespace XGBceDotNetSDKDemo.Example
             Console.WriteLine("DocExample!");
             XGBceClientConfiguration bceClientConfiguration = new XGBceClientConfiguration()
             {
-                Credentials = new DefaultBceCredentials(access_key_id, secret_access_key),
+                Credentials = new XGBceDefaultBceCredentials(access_key_id, secret_access_key),
             };
 
             XGDocClient docClient = new XGDocClient(bceClientConfiguration);

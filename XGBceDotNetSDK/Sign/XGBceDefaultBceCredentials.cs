@@ -4,12 +4,12 @@ namespace XGBceDotNetSDK.Sign
     /// <summary>
     /// 默认凭证类
     /// </summary>
-    public class DefaultBceCredentials:XGBceCredentials
+    public class XGBceDefaultBceCredentials : XGBceCredentials
     {
         private readonly string accessKeyId;
         private readonly string secretKey;
 
-        public DefaultBceCredentials(string accesskeyid, string secretkey)
+        public XGBceDefaultBceCredentials(string accesskeyid, string secretkey)
         {
             if (string.IsNullOrEmpty(accesskeyid))
                 throw new ArgumentNullException("accesskeyid不能为空");

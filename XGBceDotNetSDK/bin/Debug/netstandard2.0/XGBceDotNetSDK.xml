@@ -11315,23 +11315,6 @@
             待签名请求头
             </summary>
         </member>
-        <member name="T:XGBceDotNetSDK.Sign.DefaultBceCredentials">
-            <summary>
-            默认凭证类
-            </summary>
-        </member>
-        <member name="P:XGBceDotNetSDK.Sign.DefaultBceCredentials.AccessKeyId">
-            <summary>
-            获取AccessKeyId
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:XGBceDotNetSDK.Sign.DefaultBceCredentials.SecretKey">
-            <summary>
-            获取SecretKey
-            </summary>
-            <returns></returns>
-        </member>
         <member name="P:XGBceDotNetSDK.Sign.XGBceCredentials.AccessKeyId">
             <summary>
             获取AccessKeyId
@@ -11339,6 +11322,23 @@
             <returns></returns>
         </member>
         <member name="P:XGBceDotNetSDK.Sign.XGBceCredentials.SecretKey">
+            <summary>
+            获取SecretKey
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XGBceDotNetSDK.Sign.XGBceDefaultBceCredentials">
+            <summary>
+            默认凭证类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Sign.XGBceDefaultBceCredentials.AccessKeyId">
+            <summary>
+            获取AccessKeyId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XGBceDotNetSDK.Sign.XGBceDefaultBceCredentials.SecretKey">
             <summary>
             获取SecretKey
             </summary>

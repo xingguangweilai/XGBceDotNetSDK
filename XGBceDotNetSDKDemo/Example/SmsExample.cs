@@ -14,7 +14,7 @@ namespace XGBceDotNetSDK.Services.SMS
         {
             XGSmsClientConfiguration smsClientConfiguration = new XGSmsClientConfiguration()
             {
-                Credentials = new DefaultBceCredentials(access_key_id, secret_access_key),
+                Credentials = new XGBceDefaultBceCredentials(access_key_id, secret_access_key),
                 Endpoint = "http://smsv3.bj.baidubce.com/"
             };
 

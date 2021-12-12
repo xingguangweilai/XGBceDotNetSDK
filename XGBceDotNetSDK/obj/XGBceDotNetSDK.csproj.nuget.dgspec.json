@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gyj97\\Downloads\\Documents\\XGBceDotNetSDK\\XGBceDotNetSDK\\XGBceDotNetSDK.csproj": {}
+    "/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/XGBceDotNetSDK.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gyj97\\Downloads\\Documents\\XGBceDotNetSDK\\XGBceDotNetSDK\\XGBceDotNetSDK.csproj": {
+    "/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/XGBceDotNetSDK.csproj": {
       "version": "1.2112.11",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gyj97\\Downloads\\Documents\\XGBceDotNetSDK\\XGBceDotNetSDK\\XGBceDotNetSDK.csproj",
+        "projectUniqueName": "/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/XGBceDotNetSDK.csproj",
         "projectName": "XG.XGBceDotNetSDK",
-        "projectPath": "C:\\Users\\gyj97\\Downloads\\Documents\\XGBceDotNetSDK\\XGBceDotNetSDK\\XGBceDotNetSDK.csproj",
-        "packagesPath": "C:\\Users\\gyj97\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gyj97\\Downloads\\Documents\\XGBceDotNetSDK\\XGBceDotNetSDK\\obj\\",
+        "projectPath": "/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/XGBceDotNetSDK.csproj",
+        "packagesPath": "/Users/v_guqi01/.nuget/packages/",
+        "outputPath": "/Users/v_guqi01/Documents/Project/C#/XGBceDotNetSDK/XGBceDotNetSDK/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gyj97\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/v_guqi01/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +59,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
         }
       }
     }
