@@ -2,19 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ReleaseVersion>0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.2112.11</ReleaseVersion>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
-    <FileVersion>1.2112.5</FileVersion>
-    <Version>1.2112.5</Version>
+    <FileVersion>1.2112.11</FileVersion>
+    <Version>1.2112.11</Version>
     <AssemblyName>XG.XGBceDotNetSDK</AssemblyName>
     <PackageId>XG.XGBceDotNetSDK</PackageId>
     <PackageIcon>favicon.png</PackageIcon>
     <NeutralLanguage>zh-CN</NeutralLanguage>
     <Authors>小桥流水人家</Authors>
     <Description>百度智能云第三方 DotNetSDK</Description>
-    <PackageReleaseNotes>新版本增加产品：媒体内容审核 VCR、媒体内容分析 MCA、物联网核心套件 IoTCore、文档服务 DOC</PackageReleaseNotes>
+    <PackageReleaseNotes>新版本增加产品：音视频处理MCP</PackageReleaseNotes>
     <PackageTags>xg;xg.xgbcedotnetsdk;xgbcedotnetsdk;bce;baiduyun</PackageTags>
+    <RepositoryUrl>https://github.com/xingguangweilai/XGBceDotNetSDK</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

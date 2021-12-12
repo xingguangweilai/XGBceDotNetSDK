@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e6e7b5fe-2bde-481b-923a-cb3df1ac4b92": {
+      "ProjectGuid": "e6e7b5fe-2bde-481b-923a-cb3df1ac4b92",
+      "DisplayName": "XGBceDotNetSDK",
+      "ColorIndex": 0
+    },
+    "0f063b49-be8f-4a0d-9ce0-3aec2d8e866e": {
+      "ProjectGuid": "0f063b49-be8f-4a0d-9ce0-3aec2d8e866e",
+      "DisplayName": "XGBceDotNetSDKDemo",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

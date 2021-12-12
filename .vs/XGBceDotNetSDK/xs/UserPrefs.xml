@@ -1,0 +1,40 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{0F063B49-BE8F-4A0D-9CE0-3AEC2D8E866E}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="XGBceDotNetSDK/Services/MEDIA/XGMediaClient.cs" Line="2322" Column="22" />
+      <File FileName="XGBceDotNetSDKDemo/Example/McpExample.cs" Line="6" Column="1" />
+      <File FileName="XGBceDotNetSDK/Services/MEDIA/Model/XGMediaCreateThumbnailJobRequest.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="XGBceDotNetSDK" expanded="True">
+            <Node name="XGBceDotNetSDK" expanded="True">
+              <Node name="Http" expanded="True">
+                <Node name="Handler" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="DOC" expanded="True" />
+                <Node name="MEDIA" expanded="True">
+                  <Node name="Model" expanded="True" />
+                  <Node name="XGMediaClient.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Utils" expanded="True" />
+            </Node>
+            <Node name="XGBceDotNetSDKDemo" expanded="True">
+              <Node name="Example" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.XGBceDotNetSDKDemo PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
