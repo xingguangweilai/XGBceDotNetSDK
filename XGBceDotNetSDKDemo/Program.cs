@@ -29,7 +29,9 @@ namespace XGBceDotNetSDKDemo
 
             //new DocExample();
             //new VcaExample();
-            new McpExample();
+            //new McpExample();
+            //new YuqingExample();
+            new LssExample();
         }
     }
 }

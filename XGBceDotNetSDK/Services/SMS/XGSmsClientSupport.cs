@@ -40,6 +40,7 @@ namespace XGBceDotNetSDK.Services.SMS
             options.HeadersToSign = headersToSign;
             string bce_date = XGDateUtils.FormatISO8601Date(DateTime.UtcNow);
             request.AddMoreHeader(XGBceHeaders.BCE_DATE, bce_date);
+            request.AddMoreHeader(XGBceHeaders.USER_AGENT, config.UserAgent);
             new XGBceSignerV1().Sign(request, request.Credentials, options);
             return request;
         }
@@ -59,6 +60,7 @@ namespace XGBceDotNetSDK.Services.SMS
             {
                 Credentials = bceRequest.Credentials
             };
+            request.AddMoreHeader(XGBceHeaders.USER_AGENT, config.UserAgent);
             BceSignOption options = BceSignOption.defaultBceSignOption;
             List<string> headersToSign = new List<string>()
             {
@@ -87,44 +89,77 @@ namespace XGBceDotNetSDK.Services.SMS
             return iternalRequest;
         }
 
-        protected static void AssertStringNotNullOrEmpty(string parameterValue, String errorMessage)
+        #region
+
+        protected static void AssertNotNullOrEmpty(object param, string nameofParam = null, string errorMessage = " 不能为空")
         {
-            if (string.IsNullOrEmpty(parameterValue)||string.IsNullOrWhiteSpace(parameterValue))
+            if (param == null)
             {
-                throw new ArgumentException(errorMessage);
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
             }
         }
 
-        protected static void AssertDicNotNullOrEmpty(IDictionary parameterValue, String errorMessage)
+        protected static void AssertStringNotNullOrEmpty(string param, string nameofParam = null, string errorMessage = " 不能为空")
         {
-            if (parameterValue == null || parameterValue.Count<1)
+
+            if (string.IsNullOrEmpty(param) || string.IsNullOrWhiteSpace(param))
             {
-                throw new ArgumentException(errorMessage);
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
             }
         }
 
-        protected static void AssertStringArrayNotNullOrEmpty(string[] parameterValue, String errorMessage)
+        protected static void AssertDicNotNullOrEmpty(IDictionary param, string nameofParam = null, string errorMessage = " 不能为空")
         {
-            if (parameterValue == null)
+            if (param == null || param.Count < 1)
             {
-                throw new ArgumentException(errorMessage);
-            }
-            else if (parameterValue.Length<1)
-            {
-                throw new ArgumentException(errorMessage);
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
             }
         }
 
-        protected static void AssertListNotNullOrEmpty(List<Type> parameterValue, String errorMessage)
+        protected static void AssertStringArrayNotNullOrEmpty(string[] param, string nameofParam = null, string errorMessage = " 不能为空")
         {
-            if (parameterValue == null)
+            if (!(param != null && param.Length > 0))
             {
-                throw new ArgumentException(errorMessage);
-            }
-            else if (parameterValue.Count<1)
-            {
-                throw new ArgumentException(errorMessage);
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
             }
         }
+
+        protected static void AssertStringListNotNullOrEmpty(List<string> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param != null && param.Count > 0)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                nameofParam = nameof(param);
+            errorMessage = nameofParam + errorMessage;
+            param.ForEach((s) => { if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException(nameof(param), errorMessage); });
+            throw new ArgumentNullException(nameof(param), errorMessage);
+        }
+
+        protected static void AssertIntListNotNullOrEmpty(List<int> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (!(param != null && param.Count > 0))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        #endregion
     }
 }

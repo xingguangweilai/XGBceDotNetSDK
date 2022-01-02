@@ -195,6 +195,7 @@ namespace XGBceDotNetSDK.Services.IoTCore
             {
                 Credentials = bceRequest.Credentials
             };
+            iternalRequest.AddMoreHeader(XGBceHeaders.USER_AGENT, config.UserAgent);
             if (httpMethod == BceHttpMethod.POST || httpMethod == BceHttpMethod.PUT)
                 FillRequestPayload(iternalRequest, bceRequest);
             return iternalRequest;

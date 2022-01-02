@@ -33,11 +33,10 @@ namespace XGBceDotNetSDK.Services.SMS
             //task.Wait();
             //return task.Result;
             #endregion
-            if (request == null)
-                throw new NullReferenceException("XGSendMessageV3Request 是必需的");
-            AssertStringNotNullOrEmpty(request.Mobile, "Mobile 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
-            AssertStringNotNullOrEmpty(request.Template, "Template 是必需的");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Mobile, nameof(request.Mobile));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
+            AssertStringNotNullOrEmpty(request.Template, nameof(request.Template));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("api/v3/sendsms", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -68,11 +67,10 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSendMessageV3Response> SendMessageAsync(XGSendMessageV3Request request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGSendMessageV3Request 是必需的");
-            AssertStringNotNullOrEmpty(request.Mobile, "Mobile 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
-            AssertStringNotNullOrEmpty(request.Template, "Template 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Mobile, nameof(request.Mobile));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
+            AssertStringNotNullOrEmpty(request.Template, nameof(request.Template));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("api/v3/sendsms", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -108,9 +106,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGCreateSignatureResponse CreateSignature(XGCreateSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGCreateSignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -127,9 +124,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGCreateSignatureResponse> CreateSignatureAsync(XGCreateSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGCreateSignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -147,10 +143,9 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGSmsResponse ModifySignature(XGModifySignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGModifySignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.PUT, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = InvokeHttpClient<XGSmsResponse>(iternalRequest);
@@ -165,10 +160,9 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSmsResponse> ModifySignatureAsync(XGModifySignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGModifySignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.PUT, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = await InvokeHttpClientAsync<XGSmsResponse>(iternalRequest);
@@ -184,9 +178,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGQuerySignatureResponse QuerySignature(XGQuerySignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGQuerySignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.GET, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGQuerySignatureResponse response = InvokeHttpClient<XGQuerySignatureResponse>(iternalRequest);
@@ -201,9 +194,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGQuerySignatureResponse> QuerySignatureAsync(XGQuerySignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGQuerySignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.GET, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGQuerySignatureResponse response = await InvokeHttpClientAsync<XGQuerySignatureResponse>(iternalRequest);
@@ -218,8 +210,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGListSignatureResponse ListSignature(XGListSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGListSignatureRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", new XGSmsRequest(), Utils.BceHttpMethod.GET, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.Content) && !string.IsNullOrWhiteSpace(request.Content))
                 iternalRequest.AddParameter("contentLike", request.Content);
@@ -249,8 +240,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGListSignatureResponse> ListSignatureAsync(XGListSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGListSignatureRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", new XGSmsRequest(), Utils.BceHttpMethod.GET, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.Content)&&!string.IsNullOrWhiteSpace(request.Content))
                 iternalRequest.AddParameter("contentLike", request.Content);
@@ -281,9 +271,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGSmsResponse DeleteSignature(XGDeleteSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGDeleteSignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.DELETE, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGSmsResponse response = InvokeHttpClient<XGSmsResponse>(iternalRequest);
@@ -298,9 +287,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSmsResponse> DeleteSignatureAsync(XGDeleteSignatureRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGDeleteSignatureRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.SignatureId, "SignatureId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.SignatureId, nameof(request.SignatureId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/signatureApply", request, Utils.BceHttpMethod.DELETE, new string[] { request.SignatureId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGSmsResponse response = await InvokeHttpClientAsync<XGSmsResponse>(iternalRequest);
@@ -320,9 +308,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGCreateTemplateResponse CreateTemplate(XGCreateTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("request 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -339,9 +326,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGCreateTemplateResponse> CreateTemplateAsync(XGCreateTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("request 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.POST, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.ClientToken) && !string.IsNullOrWhiteSpace(request.ClientToken))
                 iternalRequest.AddParameter("clientToken", request.ClientToken);
@@ -359,10 +345,9 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGSmsResponse ModifyTemplate(XGModifyTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGModifyTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.PUT, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = InvokeHttpClient<XGSmsResponse>(iternalRequest);
@@ -377,10 +362,9 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSmsResponse> ModifyTemplateAsync(XGModifyTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGModifyTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.Content, "Content 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.PUT, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = await InvokeHttpClientAsync<XGSmsResponse>(iternalRequest);
@@ -396,9 +380,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGQueryTemplateResponse QueryTemplate(XGQueryTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGQueryTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.GET, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGQueryTemplateResponse response = InvokeHttpClient<XGQueryTemplateResponse>(iternalRequest);
@@ -413,9 +396,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGQueryTemplateResponse> QueryTemplateAsync(XGQueryTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGQueryTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.GET, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGQueryTemplateResponse response = await InvokeHttpClientAsync<XGQueryTemplateResponse>(iternalRequest);
@@ -430,8 +412,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGListTemplateResponse ListTemplate(XGListTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGListTemplateRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", new XGSmsRequest(), Utils.BceHttpMethod.GET, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.Content) && !string.IsNullOrWhiteSpace(request.Content))
                 iternalRequest.AddParameter("contentLike", request.Content);
@@ -463,8 +444,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGListTemplateResponse> ListTemplateAsync(XGListTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGListTemplateRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", new XGSmsRequest(), Utils.BceHttpMethod.GET, Array.Empty<string>());
             if (!string.IsNullOrEmpty(request.Content) && !string.IsNullOrWhiteSpace(request.Content))
                 iternalRequest.AddParameter("contentLike", request.Content);
@@ -497,9 +477,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGSmsResponse DeleteTemplate(XGDeleteTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGDeleteTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.DELETE, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGSmsResponse response = InvokeHttpClient<XGSmsResponse>(iternalRequest);
@@ -514,9 +493,8 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSmsResponse> DeleteTemplateAsync(XGDeleteTemplateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGDeleteTemplateRequest 是必需的");
-            AssertStringNotNullOrEmpty(request.TemplateId, "TemplateId 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.DELETE, new string[] { request.TemplateId });
             iternalRequest = FillRequestPayload(iternalRequest, "");
             XGSmsResponse response = await InvokeHttpClientAsync<XGSmsResponse>(iternalRequest);
@@ -565,8 +543,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGSmsResponse ModifyQuotaRate(XGSmsModifyQuotaRateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGSmsModifyQuotaRateRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.PUT, Array.Empty<string>());
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = InvokeHttpClient<XGSmsResponse>(iternalRequest);
@@ -581,8 +558,7 @@ namespace XGBceDotNetSDK.Services.SMS
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGSmsResponse> ModifyQuotaRateAsync(XGSmsModifyQuotaRateRequest request)
         {
-            if (request == null)
-                throw new NullReferenceException("XGSmsModifyQuotaRateRequest 是必需的");
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateGeneralRequest("/sms/v3/template", request, Utils.BceHttpMethod.PUT, Array.Empty<string>());
             iternalRequest = FillRequestPayload(iternalRequest, JsonConvert.SerializeObject(request));
             XGSmsResponse response = await InvokeHttpClientAsync<XGSmsResponse>(iternalRequest);

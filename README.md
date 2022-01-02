@@ -1,7 +1,7 @@
 # XGBceDotNetSDK
 ## 百度智能云服务端API 第三方C#SDK 
 
-目前已集成简单消息服务SMS、媒体内容分析MCA、媒体内容审核VCR、物联网核心套件IoTCore的设备管理、音视频处理MCP，更多产品陆续完善中...
+目前已集成简单消息服务SMS、媒体内容分析MCA、媒体内容审核VCR、物联网核心套件IoTCore的设备管理、音视频处理MCP、音视频直播LSS，更多产品陆续完善中...
 
 ### 安装方法
 > 支持最低版本：.NET Standard 2.0、.NET 5.0、.NET Core 2.0、.NET Framework 4.6.1

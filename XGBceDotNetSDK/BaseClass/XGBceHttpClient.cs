@@ -25,6 +25,8 @@ namespace XGBceDotNetSDK.BaseClass
         protected IXGBceSigner clientSigner;
         private WebProxy webProxy = null;
 
+        private static Uri _redirectUri=null;  //处理重定向
+
         private static readonly IXGHttpResponseHandler[] RESPONSE_HANDLERS = { new XGBceMetadataResponseHandler(), new XGBceErrorResponseHandler(), new XGBceJsonResponseHandler() };
 
 
@@ -59,9 +61,9 @@ namespace XGBceDotNetSDK.BaseClass
         /// <param name="IternalRequest"></param>
         /// <param name="responseHandlers"></param>
         /// <returns></returns>
-        public async Task<T> SendAsyny<T>(XGBceIternalRequest IternalRequest) where T : XGAbstractBceResponse,new ()
+        public async Task<T> SendAsyny<T>(XGBceIternalRequest iternalRequest, IXGHttpResponseHandler[] httpResponseHandlers = null) where T : XGAbstractBceResponse,new ()
         {
-            XGBceCredentials credentials = IternalRequest.Credentials ?? clientConfig.Credentials;
+            XGBceCredentials credentials = iternalRequest.Credentials ?? clientConfig.Credentials;
             HttpClient httpClient = XGHttpClientHandler.GetHttpClient(webProxy);
 
             long delayForNextRetry = 0;
@@ -74,19 +76,32 @@ namespace XGBceDotNetSDK.BaseClass
                     using (var cts = new CancellationTokenSource(clientConfig.ConnectionTimeout*1000))
                     {
                         if (credentials != null)
-                            clientSigner.Sign(IternalRequest, credentials);
+                            clientSigner.Sign(iternalRequest, credentials);
 
-                        httpRequest = CreateHttpRequest(IternalRequest);
+                        httpRequest = CreateHttpRequest(iternalRequest);
+
+                        if (_redirectUri != null && _redirectUri.Host.Equals(iternalRequest.Host))
+                        {
+                            httpRequest.RequestUri = _redirectUri;
+                        }
 
                         logger.Debug(TAG, "发送请求：" + httpRequest);
 
-                        httpresponse = await httpClient.SendAsync(httpRequest,cts.Token);
+                        httpresponse = await httpClient.SendAsync(httpRequest, cts.Token);
+
+                        //处理重定向
+                        if (httpresponse.StatusCode == HttpStatusCode.Moved)
+                        {
+                            _redirectUri = httpresponse.Headers.Location;
+                            logger.Debug(TAG, "重定向至：" + _redirectUri);
+                            continue;
+                        }
 
                         XGBceHttpResponse bceHttpResponse = new XGBceHttpResponse(httpresponse);
 
                         var response = new T();
 
-                        IXGHttpResponseHandler[] httpResponseHandlers = RESPONSE_HANDLERS;
+                        httpResponseHandlers =(httpResponseHandlers!=null)?httpResponseHandlers: RESPONSE_HANDLERS;
 
                         foreach (IXGHttpResponseHandler handler in httpResponseHandlers)
                         {
@@ -153,7 +168,7 @@ namespace XGBceDotNetSDK.BaseClass
         /// <param name="IternalRequest"></param>
         /// <param name="responseHandlers"></param>
         /// <returns></returns>
-        public T Send<T>(XGBceIternalRequest iternalRequest) where T : XGAbstractBceResponse, new ()
+        public T Send<T>(XGBceIternalRequest iternalRequest, IXGHttpResponseHandler[] httpResponseHandlers = null) where T : XGAbstractBceResponse, new ()
         {
             XGBceCredentials credentials = iternalRequest.Credentials ?? clientConfig.Credentials;
             HttpClient httpClient = XGHttpClientHandler.GetHttpClient(webProxy);
@@ -163,6 +178,7 @@ namespace XGBceDotNetSDK.BaseClass
             {
                 HttpResponseMessage httpresponse = null;
                 HttpRequestMessage httpRequest = null;
+
                 try
                 {
                     using (var cts = new CancellationTokenSource(clientConfig.ConnectionTimeout * 1000))
@@ -172,15 +188,28 @@ namespace XGBceDotNetSDK.BaseClass
 
                         httpRequest = CreateHttpRequest(iternalRequest);
 
+                        if (_redirectUri != null&& _redirectUri.Host.Equals(iternalRequest.Host))
+                        {
+                            httpRequest.RequestUri = _redirectUri;
+                        }
+
                         logger.Debug(TAG, "发送请求：" + httpRequest);
 
                         httpresponse = httpClient.SendAsync(httpRequest, cts.Token).Result;
+
+                        //处理重定向
+                        if (httpresponse.StatusCode == HttpStatusCode.Moved)
+                        {
+                            _redirectUri = httpresponse.Headers.Location;
+                            logger.Debug(TAG, "重定向至：" + _redirectUri);
+                            continue;
+                        }
 
                         XGBceHttpResponse bceHttpResponse = new XGBceHttpResponse(httpresponse);
 
                         var response = new T();
 
-                        IXGHttpResponseHandler[] httpResponseHandlers = RESPONSE_HANDLERS;
+                        httpResponseHandlers = (httpResponseHandlers != null) ? httpResponseHandlers : RESPONSE_HANDLERS;
 
                         foreach (IXGHttpResponseHandler handler in httpResponseHandlers)
                         {

@@ -15,13 +15,20 @@ namespace XGBceDotNetSDK.Http
             string p = string.IsNullOrEmpty(proStr) ? "" : proStr;
             if (p == "")
             {
-                client = new HttpClient();
+                //client = new HttpClient();
+                var httpClientHandler = new HttpClientHandler
+                {
+                    AllowAutoRedirect = false
+                };
+
+                client = new HttpClient(handler: httpClientHandler, disposeHandler: true);
             }
             else
             {
                 var httpClientHandler = new HttpClientHandler
                 {
-                    Proxy = webProxy
+                    Proxy = webProxy,
+                    AllowAutoRedirect=false
                 };
 
                 client = new HttpClient(handler: httpClientHandler, disposeHandler: true);

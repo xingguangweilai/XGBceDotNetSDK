@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ReleaseVersion>1.2112.11</ReleaseVersion>
+    <ReleaseVersion>0.0.1</ReleaseVersion>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
     <FileVersion>1.2112.11</FileVersion>
@@ -31,6 +31,10 @@
     <None Remove="Services\DOC\Model\" />
     <None Remove="Services\MCP\" />
     <None Remove="Services\MEDIA\Model\" />
+    <None Remove="Services\YUQING\" />
+    <None Remove="Services\YUQING\Model\" />
+    <None Remove="Services\LSS\" />
+    <None Remove="Services\LSS\Mo%27de%27l\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -43,6 +47,10 @@
     <Folder Include="Services\DOC\Model\" />
     <Folder Include="Services\MEDIA\" />
     <Folder Include="Services\MEDIA\Model\" />
+    <Folder Include="Services\YUQING\" />
+    <Folder Include="Services\YUQING\Model\" />
+    <Folder Include="Services\LSS\" />
+    <Folder Include="Services\LSS\Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="favicon.png">

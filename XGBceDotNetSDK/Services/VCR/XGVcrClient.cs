@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -45,10 +46,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutMedia(string source, string auth=null, string description=null, string preset=null, string notification=null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source,nameof(source));
             XGVcrPutMediaRequest request = new XGVcrPutMediaRequest()
             {
                 Source = source,
@@ -72,10 +70,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutMediaAsync(string source, string auth = null, string description = null, string preset = null, string notification = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source,nameof(source));
             XGVcrPutMediaRequest request = new XGVcrPutMediaRequest()
             {
                 Source = source,
@@ -96,12 +91,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutMedia(XGVcrPutMediaRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Source,nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), MEDIA);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -115,12 +106,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutMediaAsync(XGVcrPutMediaRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), MEDIA);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -135,10 +122,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryMediaResultResponse QueryMediaResult(string source)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source,nameof(source));
             XGVcrQueryMediaResultRequest request = new XGVcrQueryMediaResultRequest()
             {
                 Source = source
@@ -154,10 +138,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryMediaResultResponse> QueryMediaResultAsync(string source)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryMediaResultRequest request = new XGVcrQueryMediaResultRequest() {
                 Source=source
             };
@@ -173,12 +154,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryMediaResultResponse QueryMediaResult(XGVcrQueryMediaResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Source,nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), MEDIA);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryMediaResultResponse response = InvokeHttpClient<XGVcrQueryMediaResultResponse>(iternalRequest);
@@ -193,12 +170,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryMediaResultResponse> QueryMediaResultAsync(XGVcrQueryMediaResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), MEDIA);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryMediaResultResponse response = await InvokeHttpClientAsync<XGVcrQueryMediaResultResponse>(iternalRequest);
@@ -224,10 +197,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutAudio(string source, string auth = null, string description = null, string preset = null, string notification = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutAudioRequest request = new XGVcrPutAudioRequest()
             {
                 Source = source,
@@ -253,10 +223,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutAudioAsync(string source, string auth = null, string description = null, string preset = null, string notification = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutAudioRequest request = new XGVcrPutAudioRequest() {
                 Source=source,
                 Auth=auth,
@@ -278,12 +245,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutAudio(XGVcrPutAudioRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), AUDIO);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -299,12 +262,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutAudioAsync(XGVcrPutAudioRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), AUDIO);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -319,10 +278,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryAudioResultResponse QueryAudioResult(string source)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryAudioResultRequest request = new XGVcrQueryAudioResultRequest();
             request.Source = source;
             return QueryAudioResult(request);
@@ -336,10 +292,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryAudioResultResponse> QueryAudioResultAsync(string source)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryAudioResultRequest request = new XGVcrQueryAudioResultRequest();
             request.Source = source;
             return await QueryAudioResultAsync(request);
@@ -354,12 +307,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryAudioResultResponse QueryAudioResult(XGVcrQueryAudioResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), AUDIO);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryAudioResultResponse response = InvokeHttpClient<XGVcrQueryAudioResultResponse>(iternalRequest);
@@ -374,12 +323,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryAudioResultResponse> QueryAudioResultAsync(XGVcrQueryAudioResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), AUDIO);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryAudioResultResponse response = await InvokeHttpClientAsync<XGVcrQueryAudioResultResponse>(iternalRequest);
@@ -401,10 +346,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrPutImageResponse PutImage(string source, string preset = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutImageRequest request = new XGVcrPutImageRequest()
             {
                 Source = source,
@@ -423,10 +365,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrPutImageResponse> PutImageAsync(string source, string preset = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutImageRequest request = new XGVcrPutImageRequest()
             {
                 Source = source,
@@ -445,12 +384,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrPutImageResponse PutImage(XGVcrPutImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE);
             XGVcrPutImageResponse response = InvokeHttpClient<XGVcrPutImageResponse>(iternalRequest);
             return response;
@@ -465,12 +400,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrPutImageResponse> PutImageAsync(XGVcrPutImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE);
             XGVcrPutImageResponse response = await InvokeHttpClientAsync<XGVcrPutImageResponse>(iternalRequest);
             return response;
@@ -488,10 +419,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutImage(string source, string preset = null, string notification = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutImageAsyncRequest request = new XGVcrPutImageAsyncRequest()
             {
                 Source = source,
@@ -512,10 +440,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutImageAsync(string source, string preset = null, string notification = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrPutImageAsyncRequest request = new XGVcrPutImageAsyncRequest()
             {
                 Source = source,
@@ -535,12 +460,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutImage(XGVcrPutImageAsyncRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -555,12 +476,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutImageAsync(XGVcrPutImageAsyncRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -577,10 +494,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryImageResultResponse QueryImageResult(string source, string preset = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryImageResultRequest request = new XGVcrQueryImageResultRequest()
             {
                 Source = source,
@@ -599,10 +513,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryImageResultResponse> QueryImageResultAsync(string source, string preset = null)
         {
-            if (string.IsNullOrEmpty(source))
-            {
-                throw new ArgumentNullException("source 不能为空");
-            }
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryImageResultRequest request = new XGVcrQueryImageResultRequest()
             {
                 Source = source,
@@ -621,12 +532,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryImageResultResponse QueryImageResult(XGVcrQueryImageResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), IMAGE);
             iternalRequest.AddParameter("source", request.Source);
             if (!string.IsNullOrEmpty(request.Preset) && !string.IsNullOrWhiteSpace(request.Preset))
@@ -644,12 +551,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryImageResultResponse> QueryImageResultAsync(XGVcrQueryImageResultRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), IMAGE);
             iternalRequest.AddParameter("source", request.Source);
             if (!string.IsNullOrEmpty(request.Preset) && !string.IsNullOrWhiteSpace(request.Preset))
@@ -674,10 +577,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrPutTextResponse PutText(string text, string preset = null)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                throw new ArgumentNullException("text 不能为空");
-            }
+            AssertStringNotNullOrEmpty(text);
             XGVcrPutTextRequest request = new XGVcrPutTextRequest()
             {
                 Text = text,
@@ -697,10 +597,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrPutTextResponse> PutTextAsync(string text, string preset = null)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                throw new ArgumentNullException("text 不能为空");
-            }
+            AssertStringNotNullOrEmpty(text);
             XGVcrPutTextRequest request = new XGVcrPutTextRequest()
             {
                 Text = text,
@@ -720,12 +617,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrPutTextResponse PutText(XGVcrPutTextRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Text) || string.IsNullOrWhiteSpace(request.Text))
-                throw new ArgumentNullException("text 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Text);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT);
             XGVcrPutTextResponse response = InvokeHttpClient<XGVcrPutTextResponse>(iternalRequest);
             return response;
@@ -741,12 +634,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrPutTextResponse> PutTextAsync(XGVcrPutTextRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Text) || string.IsNullOrWhiteSpace(request.Text))
-                throw new ArgumentNullException("text 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Text);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT);
             XGVcrPutTextResponse response = await InvokeHttpClientAsync<XGVcrPutTextResponse>(iternalRequest);
             return response;
@@ -774,10 +663,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutStream(string source, string notification, string preset = null, string description = null, XGVcrNotifyLevel? notifyLevel = null,float? thumbnailInterval = null, int? audioInterval = null)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
+            AssertStringNotNullOrEmpty(notification);
             XGVcrPutStreamRequest request = new XGVcrPutStreamRequest()
             {
                 Source = source,
@@ -808,10 +695,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutStreamAsync(string source, string notification, string preset = null, string description = null, XGVcrNotifyLevel? notifyLevel = null, float? thumbnailInterval = null, int? audioInterval = null)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
+            AssertStringNotNullOrEmpty(notification);
             XGVcrPutStreamRequest request = new XGVcrPutStreamRequest()
             {
                 Source = source,
@@ -837,14 +722,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse PutStream(XGVcrPutStreamRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
-            if(string.IsNullOrEmpty(request.Notification) || string.IsNullOrWhiteSpace(request.Notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Notification);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), STREAM);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -861,14 +741,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> PutStreamAsync(XGVcrPutStreamRequest request)
         {
-            if(request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(request.Notification) || string.IsNullOrWhiteSpace(request.Notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Notification);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), STREAM);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -884,8 +759,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryStreamStatusResponse QueryStreamStatus(string source)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryStreamStatusRequest request = new XGVcrQueryStreamStatusRequest()
             {
                 Source = source
@@ -902,8 +776,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryStreamStatusResponse> QueryStreamStatusAsync(string source)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
             XGVcrQueryStreamStatusRequest request = new XGVcrQueryStreamStatusRequest()
             {
                 Source = source
@@ -921,12 +794,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryStreamStatusResponse QueryStreamStatus(XGVcrQueryStreamStatusRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), STREAM);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryStreamStatusResponse response = InvokeHttpClient<XGVcrQueryStreamStatusResponse>(iternalRequest);
@@ -942,12 +811,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryStreamStatusResponse> QueryStreamStatusAsync(XGVcrQueryStreamStatusRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), STREAM);
             iternalRequest.AddParameter("source", request.Source);
             XGVcrQueryStreamStatusResponse response = await InvokeHttpClientAsync<XGVcrQueryStreamStatusResponse>(iternalRequest);
@@ -1005,10 +870,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListStreamStatusResponse ListStreamStatus(XGVcrListStreamStatusRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), STREAM);
             if(request.MaxKeys!=null)
                 iternalRequest.AddParameter("maxKeys", request.MaxKeys.Value.ToString());
@@ -1029,10 +891,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListStreamStatusResponse> ListStreamStatusAsync(XGVcrListStreamStatusRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(request, nameof(request));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), STREAM);
             if (request.MaxKeys != null)
                 iternalRequest.AddParameter("maxKeys", request.MaxKeys.Value.ToString());
@@ -1054,10 +913,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CancelStreamAsync(string source, string notification)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(notification) || string.IsNullOrWhiteSpace(notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
+            AssertStringNotNullOrEmpty(notification);
             XGVcrCancelStreamRequest request = new XGVcrCancelStreamRequest()
             {
                 Source = source,
@@ -1077,10 +934,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CancelStream(string source, string notification)
         {
-            if (string.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(notification) || string.IsNullOrWhiteSpace(notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertStringNotNullOrEmpty(source, nameof(source));
+            AssertStringNotNullOrEmpty(notification);
             XGVcrCancelStreamRequest request = new XGVcrCancelStreamRequest()
             {
                 Source=source,
@@ -1098,14 +953,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CancelStreamAsync(XGVcrCancelStreamRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(request.Notification) || string.IsNullOrWhiteSpace(request.Notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Notification);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), STREAM);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -1121,14 +971,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CancelStream(XGVcrCancelStreamRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Source) || string.IsNullOrWhiteSpace(request.Source))
-                throw new ArgumentNullException("source 不能为空");
-            if (string.IsNullOrEmpty(request.Notification) || string.IsNullOrWhiteSpace(request.Notification))
-                throw new ArgumentNullException("notification 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Notification);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), STREAM);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -1146,34 +991,27 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomLib(XGAbstractVcrCreateCustomLibRequest abstractRequest)
         {
-            if (abstractRequest == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(abstractRequest, nameof(abstractRequest));
 
             if (abstractRequest is XGVcrCreateCustomFaceLibRequest)
             {
                 var request = abstractRequest as XGVcrCreateCustomFaceLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if( abstractRequest as XGVcrCreateCustomLogoLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomLogoLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if(abstractRequest as XGVcrCreateCustomTextLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomTextLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             else if(abstractRequest as XGVcrCreateCustomImageLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomImageLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             XGBceIternalRequest iternalRequest = CreateRequest(abstractRequest, BceHttpMethod.POST, abstractRequest.VcrVersion.ToString(), abstractRequest.LibType,"lib");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -1188,34 +1026,27 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomLibAsync(XGAbstractVcrCreateCustomLibRequest abstractRequest)
         {
-            if (abstractRequest == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(abstractRequest, nameof(abstractRequest));
 
             if (abstractRequest is XGVcrCreateCustomFaceLibRequest)
             {
                 var request = abstractRequest as XGVcrCreateCustomFaceLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if (abstractRequest as XGVcrCreateCustomLogoLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomLogoLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if (abstractRequest as XGVcrCreateCustomTextLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomTextLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             else if (abstractRequest as XGVcrCreateCustomImageLibRequest != null)
             {
                 var request = abstractRequest as XGVcrCreateCustomImageLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             XGBceIternalRequest iternalRequest = CreateRequest(abstractRequest, BceHttpMethod.POST, abstractRequest.VcrVersion.ToString(), abstractRequest.LibType, "lib");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -1230,28 +1061,22 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteCustomLib(XGAbstractVcrDeleteCustomLibRequest abstractRequest)
         {
-            if (abstractRequest == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(abstractRequest, nameof(abstractRequest));
 
             if (abstractRequest is XGVcrDeleteCustomFaceLibRequest)
             {
                 var request = abstractRequest as XGVcrDeleteCustomFaceLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if (abstractRequest as XGVcrDeleteCustomTextLibRequest != null)
             {
                 var request = abstractRequest as XGVcrDeleteCustomTextLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             else if (abstractRequest as XGVcrDeleteCustomImageLibRequest != null)
             {
                 var request = abstractRequest as XGVcrDeleteCustomImageLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
 
             XGBceIternalRequest iternalRequest = CreateRequest(abstractRequest, BceHttpMethod.DELETE, abstractRequest.VcrVersion.ToString(), abstractRequest.LibType, "lib",abstractRequest.Libname);
@@ -1267,28 +1092,22 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteCustomLibAsync(XGAbstractVcrDeleteCustomLibRequest abstractRequest)
         {
-            if (abstractRequest == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
+            AssertNotNullOrEmpty(abstractRequest, nameof(abstractRequest));
 
             if (abstractRequest is XGVcrDeleteCustomFaceLibRequest)
             {
                 var request = abstractRequest as XGVcrDeleteCustomFaceLibRequest;
-                if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                    throw new ArgumentNullException("Lib 不能为空");
+                AssertStringNotNullOrEmpty(request.Lib);
             }
             else if (abstractRequest as XGVcrDeleteCustomTextLibRequest != null)
             {
                 var request = abstractRequest as XGVcrDeleteCustomTextLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
             else if (abstractRequest as XGVcrDeleteCustomImageLibRequest != null)
             {
                 var request = abstractRequest as XGVcrDeleteCustomImageLibRequest;
-                if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentNullException("Name 不能为空");
+                AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             }
 
             XGBceIternalRequest iternalRequest = CreateRequest(abstractRequest, BceHttpMethod.DELETE, abstractRequest.VcrVersion.ToString(), abstractRequest.LibType, "lib", abstractRequest.Libname);
@@ -1310,8 +1129,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomFaceLib(string lib,string description=null)
         {
-            if (string.IsNullOrEmpty(lib) || string.IsNullOrWhiteSpace(lib))
-                throw new ArgumentNullException("lib 不能为空");
+            AssertStringNotNullOrEmpty(lib);
             XGVcrCreateCustomFaceLibRequest request = new XGVcrCreateCustomFaceLibRequest()
             {
                 Lib=lib,
@@ -1329,8 +1147,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomFaceLibAsync(string lib, string description = null)
         {
-            if (string.IsNullOrEmpty(lib) || string.IsNullOrWhiteSpace(lib))
-                throw new ArgumentNullException("lib 不能为空");
+            AssertStringNotNullOrEmpty(lib);
             XGVcrCreateCustomFaceLibRequest request = new XGVcrCreateCustomFaceLibRequest()
             {
                 Lib = lib,
@@ -1348,13 +1165,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomFaceLib(XGVcrCreateCustomFaceLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                throw new ArgumentNullException("Lib 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Lib);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -1368,13 +1180,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomFaceLibAsync(XGVcrCreateCustomFaceLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                throw new ArgumentNullException("Lib 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Lib);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -1390,10 +1197,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteCustomFaceLib(string lib_name)
         {
-            if (string.IsNullOrEmpty(lib_name)||string.IsNullOrWhiteSpace(lib_name))
-            {
-                throw new ArgumentNullException("lib_name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(lib_name, nameof(lib_name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), FACE, "lib",lib_name);
@@ -1410,10 +1214,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteCustomFaceLibAsync(string lib_name)
         {
-            if (string.IsNullOrEmpty(lib_name) || string.IsNullOrWhiteSpace(lib_name))
-            {
-                throw new ArgumentNullException("lib_name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(lib_name, nameof(lib_name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), FACE, "lib", lib_name);
@@ -1463,12 +1264,9 @@ namespace XGBceDotNetSDK.Services.VCR
         public XGVcrResponse AddFaceLibBriefImage(string libName, string image, string brief)
         {
 
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrAddFaceLibBriefImageRequest request = new XGVcrAddFaceLibBriefImageRequest()
             {
                 LibName=libName,
@@ -1490,12 +1288,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddFaceLibBriefImageAsync(string libName, string image, string brief)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrAddFaceLibBriefImageRequest request = new XGVcrAddFaceLibBriefImageRequest()
             {
                 LibName = libName,
@@ -1516,15 +1311,12 @@ namespace XGBceDotNetSDK.Services.VCR
         {
             if (request == null)
             {
-                throw new ArgumentNullException("request 不能为空");
+                throw new ArgumentNullException(nameof(request),"request 不能为空");
             }
 
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib",request.LibName);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -1540,15 +1332,12 @@ namespace XGBceDotNetSDK.Services.VCR
         {
             if (request == null)
             {
-                throw new ArgumentNullException("request 不能为空");
+                throw new ArgumentNullException(nameof(request),"request 不能为空");
             }
 
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -1565,12 +1354,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteFaceLibBriefImage(string libName,string image,string brief)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteFaceLibBriefImageRequest request = new XGVcrDeleteFaceLibBriefImageRequest()
             {
                 LibName = libName,
@@ -1591,12 +1377,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteFaceLibBriefImageAsync(string libName, string image, string brief)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteFaceLibBriefImageRequest request = new XGVcrDeleteFaceLibBriefImageRequest()
             {
                 LibName = libName,
@@ -1617,15 +1400,12 @@ namespace XGBceDotNetSDK.Services.VCR
         {
             if (request == null)
             {
-                throw new ArgumentNullException("request 不能为空");
+                throw new ArgumentNullException(nameof(request),"request 不能为空");
             }
 
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             iternalRequest.AddParameter("image", request.Image);
@@ -1643,15 +1423,12 @@ namespace XGBceDotNetSDK.Services.VCR
         {
             if (request == null)
             {
-                throw new ArgumentNullException("request 不能为空");
+                throw new ArgumentNullException(nameof(request),"request 不能为空");
             }
 
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             iternalRequest.AddParameter("image", request.Image);
@@ -1669,10 +1446,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListFaceLibBriefImagesResponse ListFaceLibBriefImage(string libName,string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListFaceLibBriefImagesRequest request = new XGVcrListFaceLibBriefImagesRequest()
             {
                 LibName=libName,
@@ -1690,10 +1465,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListFaceLibBriefImagesResponse> ListFaceLibBriefImageAsync(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListFaceLibBriefImagesRequest request = new XGVcrListFaceLibBriefImagesRequest()
             {
                 LibName = libName,
@@ -1711,15 +1484,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListFaceLibBriefImagesResponse ListFaceLibBriefImage(XGVcrListFaceLibBriefImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrListFaceLibBriefImagesResponse response = InvokeHttpClient<XGVcrListFaceLibBriefImagesResponse>(iternalRequest);
@@ -1734,15 +1501,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListFaceLibBriefImagesResponse> ListFaceLibBriefImageAsync(XGVcrListFaceLibBriefImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrListFaceLibBriefImagesResponse response = await InvokeHttpClientAsync<XGVcrListFaceLibBriefImagesResponse>(iternalRequest);
@@ -1760,10 +1521,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteFaceLibBrief(string libName,string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteFaceLibBriefRequest request = new XGVcrDeleteFaceLibBriefRequest()
             {
                 Brief=brief,
@@ -1782,10 +1541,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteFaceLibBriefAsync(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteFaceLibBriefRequest request = new XGVcrDeleteFaceLibBriefRequest()
             {
                 Brief = brief,
@@ -1803,15 +1560,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteFaceLibBrief(XGVcrDeleteFaceLibBriefRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -1826,15 +1577,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteFaceLibBriefAsync(XGVcrDeleteFaceLibBriefRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -1850,8 +1595,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListFaceLibBriefsResponse ListFaceLibBriefs(string libName)
         {
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListFaceLibBriefsRequest request = new XGVcrListFaceLibBriefsRequest()
             {
                 LibName=libName
@@ -1867,8 +1611,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListFaceLibBriefsResponse> ListFaceLibBriefsAsync(string libName)
         {
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListFaceLibBriefsRequest request = new XGVcrListFaceLibBriefsRequest()
             {
                 LibName = libName
@@ -1885,13 +1628,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListFaceLibBriefsResponse ListFaceLibBriefs(XGVcrListFaceLibBriefsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             XGVcrListFaceLibBriefsResponse response = InvokeHttpClient<XGVcrListFaceLibBriefsResponse>(iternalRequest);
             return response;
@@ -1905,13 +1643,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListFaceLibBriefsResponse> ListFaceLibBriefsAsync(XGVcrListFaceLibBriefsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             XGVcrListFaceLibBriefsResponse response = await InvokeHttpClientAsync<XGVcrListFaceLibBriefsResponse>(iternalRequest);
             return response;
@@ -1932,8 +1665,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomLogoLib(string lib,string description=null)
         {
-            if (string.IsNullOrEmpty(lib) || string.IsNullOrWhiteSpace(lib))
-                throw new ArgumentNullException("lib 不能为空");
+            AssertStringNotNullOrEmpty(lib);
             XGVcrCreateCustomLogoLibRequest request = new XGVcrCreateCustomLogoLibRequest()
             {
                 Lib=lib,
@@ -1951,8 +1683,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomLogoLibAsync(string lib, string description = null)
         {
-            if (string.IsNullOrEmpty(lib) || string.IsNullOrWhiteSpace(lib))
-                throw new ArgumentNullException("lib 不能为空");
+            AssertStringNotNullOrEmpty(lib);
             XGVcrCreateCustomLogoLibRequest request = new XGVcrCreateCustomLogoLibRequest()
             {
                 Lib = lib,
@@ -1970,13 +1701,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomLogoLib(XGVcrCreateCustomLogoLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                throw new ArgumentNullException("Lib 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Lib);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -1990,13 +1716,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomLogoLibAsync(XGVcrCreateCustomLogoLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Lib) || string.IsNullOrWhiteSpace(request.Lib))
-                throw new ArgumentNullException("Lib 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Lib);
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -2043,12 +1764,9 @@ namespace XGBceDotNetSDK.Services.VCR
         public XGVcrResponse AddLogoLibBriefImage(string libName, string image, string brief)
         {
 
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrAddLogoLibBriefImageRequest request = new XGVcrAddLogoLibBriefImageRequest()
             {
                 LibName = libName,
@@ -2070,12 +1788,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddLogoLibBriefImageAsync(string libName, string image, string brief)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrAddLogoLibBriefImageRequest request = new XGVcrAddLogoLibBriefImageRequest()
             {
                 LibName = libName,
@@ -2094,17 +1809,10 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse AddLogoLibBriefImage(XGVcrAddLogoLibBriefImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -2118,17 +1826,10 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddLogoLibBriefImageAsync(XGVcrAddLogoLibBriefImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -2145,12 +1846,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteLogoLibBriefImage(string libName, string image, string imageId)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(imageId) || string.IsNullOrWhiteSpace(imageId))
-                throw new ArgumentNullException("imageId 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(imageId, nameof(imageId));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteLogoLibBriefImageRequest request = new XGVcrDeleteLogoLibBriefImageRequest()
             {
                 LibName=libName,
@@ -2170,12 +1868,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteLogoLibBriefImageAsync(string libName, string image, string imageId)
         {
-            if (string.IsNullOrEmpty(image) || string.IsNullOrWhiteSpace(image))
-                throw new ArgumentNullException("image 不能为空");
-            if (string.IsNullOrEmpty(imageId) || string.IsNullOrWhiteSpace(imageId))
-                throw new ArgumentNullException("imageId 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(image, nameof(image));
+            AssertStringNotNullOrEmpty(imageId, nameof(imageId));
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrDeleteLogoLibBriefImageRequest request = new XGVcrDeleteLogoLibBriefImageRequest()
             {
                 LibName = libName,
@@ -2194,17 +1889,10 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteLogoLibBriefImage(XGVcrDeleteLogoLibBriefImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.ImageId) || string.IsNullOrWhiteSpace(request.ImageId))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.ImageId, nameof(request.ImageId));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             iternalRequest.AddParameter("image", request.Image);
             iternalRequest.AddParameter("imageId", request.ImageId);
@@ -2220,17 +1908,10 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteLogoLibBriefImageAsync(XGVcrDeleteLogoLibBriefImageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Image) || string.IsNullOrWhiteSpace(request.Image))
-                throw new ArgumentNullException("Image 不能为空");
-            if (string.IsNullOrEmpty(request.ImageId) || string.IsNullOrWhiteSpace(request.ImageId))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Image, nameof(request.Image));
+            AssertStringNotNullOrEmpty(request.ImageId, nameof(request.ImageId));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), request.LibType, "lib", request.LibName);
             iternalRequest.AddParameter("image", request.Image);
             iternalRequest.AddParameter("imageId", request.ImageId);
@@ -2248,10 +1929,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListLogoLibBriefImagesResponse ListLogoLibBriefImage(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
             XGVcrListLogoLibBriefImagesRequest request = new XGVcrListLogoLibBriefImagesRequest()
             {
                 LibName = libName,
@@ -2269,10 +1948,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListLogoLibBriefImagesResponse> ListLogoLibBriefImageAsync(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
             XGVcrListLogoLibBriefImagesRequest request = new XGVcrListLogoLibBriefImagesRequest()
             {
                 LibName = libName,
@@ -2290,15 +1967,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListLogoLibBriefImagesResponse ListLogoLibBriefImage(XGVcrListLogoLibBriefImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrListLogoLibBriefImagesResponse response = InvokeHttpClient<XGVcrListLogoLibBriefImagesResponse>(iternalRequest);
@@ -2313,15 +1984,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListLogoLibBriefImagesResponse> ListLogoLibBriefImageAsync(XGVcrListLogoLibBriefImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), FACE, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrListLogoLibBriefImagesResponse response = await InvokeHttpClientAsync<XGVcrListLogoLibBriefImagesResponse>(iternalRequest);
@@ -2338,10 +2003,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteLogoLibBrief(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
             XGVcrDeleteLogoLibBriefRequest request = new XGVcrDeleteLogoLibBriefRequest()
             {
                 Brief = brief,
@@ -2359,10 +2022,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteLogoLibBriefAsync(string libName, string brief)
         {
-            if (string.IsNullOrEmpty(brief) || string.IsNullOrWhiteSpace(brief))
-                throw new ArgumentNullException("brief 不能为空");
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
+            AssertStringNotNullOrEmpty(brief, nameof(brief));
             XGVcrDeleteLogoLibBriefRequest request = new XGVcrDeleteLogoLibBriefRequest()
             {
                 Brief = brief,
@@ -2380,15 +2041,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteLogoLibBrief(XGVcrDeleteLogoLibBriefRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), LOGO, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -2403,15 +2058,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteLogoLibBriefAsync(XGVcrDeleteLogoLibBriefRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Brief) || string.IsNullOrWhiteSpace(request.Brief))
-                throw new ArgumentNullException("Brief 不能为空");
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Brief, nameof(request.Brief));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), LOGO, "lib", request.LibName);
             iternalRequest.AddParameter("brief", request.Brief);
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -2427,8 +2076,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListLogoLibBriefsResponse ListLogoLibBriefs(string libName)
         {
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListLogoLibBriefsRequest request = new XGVcrListLogoLibBriefsRequest()
             {
                 LibName = libName
@@ -2444,8 +2092,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListLogoLibBriefsResponse> ListLogoLibBriefsAsync(string libName)
         {
-            if (string.IsNullOrEmpty(libName) || string.IsNullOrWhiteSpace(libName))
-                throw new ArgumentNullException("libName 不能为空");
+            AssertStringNotNullOrEmpty(libName, nameof(libName));
             XGVcrListLogoLibBriefsRequest request = new XGVcrListLogoLibBriefsRequest()
             {
                 LibName = libName
@@ -2462,13 +2109,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrListLogoLibBriefsResponse ListLogoLibBriefs(XGVcrListLogoLibBriefsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), LOGO, "lib", request.LibName);
             XGVcrListLogoLibBriefsResponse response = InvokeHttpClient<XGVcrListLogoLibBriefsResponse>(iternalRequest);
             return response;
@@ -2482,13 +2124,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrListLogoLibBriefsResponse> ListLogoLibBriefsAsync(XGVcrListLogoLibBriefsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.LibName) || string.IsNullOrWhiteSpace(request.LibName))
-                throw new ArgumentNullException("LibName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.LibName, nameof(request.LibName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), LOGO, "lib", request.LibName);
             XGVcrListLogoLibBriefsResponse response = await InvokeHttpClientAsync<XGVcrListLogoLibBriefsResponse>(iternalRequest);
             return response;
@@ -2508,8 +2145,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomTextLib(string name, string description=null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrCreateCustomTextLibRequest request = new XGVcrCreateCustomTextLibRequest()
             {
                 Name = name,
@@ -2527,8 +2163,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomTextLibAsync(string name, string description = null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrCreateCustomTextLibRequest request = new XGVcrCreateCustomTextLibRequest()
             {
                 Name = name,
@@ -2546,13 +2181,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomTextLib(XGVcrCreateCustomTextLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -2566,13 +2196,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomTextLibAsync(XGVcrCreateCustomTextLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -2587,10 +2212,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteCustomTextLib(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), TEXT, "lib", name);
@@ -2606,10 +2228,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteCustomTextLibAsync(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), TEXT, "lib", name);
@@ -2654,10 +2273,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse AddTextLibTexts(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length<1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrTextLibTextsRequest request = new XGVcrTextLibTextsRequest()
             {
                 Name = name,
@@ -2675,10 +2292,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddTextLibTextsAsync(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrTextLibTextsRequest request = new XGVcrTextLibTextsRequest()
             {
                 Name = name,
@@ -2696,15 +2311,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse AddTextLibTexts(XGVcrTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items==null || request.Items.Count<1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT, "lib",request.Name);
             iternalRequest.AddParameter("add");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -2719,15 +2328,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddTextLibTextsAsync(XGVcrTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT, "lib", request.Name);
             iternalRequest.AddParameter("add");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -2744,10 +2347,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteTextLibTexts(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrTextLibTextsRequest request = new XGVcrTextLibTextsRequest()
             {
                 Name = name,
@@ -2765,10 +2366,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteTextLibTextsAsync(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrTextLibTextsRequest request = new XGVcrTextLibTextsRequest()
             {
                 Name = name,
@@ -2786,15 +2385,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteTextLibTexts(XGVcrTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT, "lib", request.Name);
             iternalRequest.AddParameter("delete");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -2809,15 +2402,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteTextLibTextsAsync(XGVcrTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), TEXT, "lib", request.Name);
             iternalRequest.AddParameter("delete");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -2836,8 +2423,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryTextLibTextsResponse QueryTextLibTexts(string name, int pageNo=1, int pageSize=20)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrQueryTextLibTextsRequest request = new XGVcrQueryTextLibTextsRequest()
             {
                 Name=name,
@@ -2859,8 +2445,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryTextLibTextsResponse> QueryTextLibTextsAsync(string name, int pageNo = 1, int pageSize = 20)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrQueryTextLibTextsRequest request = new XGVcrQueryTextLibTextsRequest()
             {
                 Name = name,
@@ -2879,13 +2464,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryTextLibTextsResponse QueryTextLibTexts(XGVcrQueryTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), TEXT, "lib", request.Name);
             iternalRequest.AddParameter("pageNo",request.PageNo.ToString());
             iternalRequest.AddParameter("pageSize", request.PageSize.ToString());
@@ -2901,13 +2481,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryTextLibTextsResponse> QueryTextLibTextsAsync(XGVcrQueryTextLibTextsRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), TEXT, "lib", request.Name);
             iternalRequest.AddParameter("pageNo", request.PageNo.ToString());
             iternalRequest.AddParameter("pageSize", request.PageSize.ToString());
@@ -2929,8 +2504,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomImageLib(string name, string description=null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrCreateCustomImageLibRequest request = new XGVcrCreateCustomImageLibRequest()
             {
                 Name=name,
@@ -2948,8 +2522,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomImageLibAsync(string name, string description = null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrCreateCustomImageLibRequest request = new XGVcrCreateCustomImageLibRequest()
             {
                 Name = name,
@@ -2967,13 +2540,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse CreateCustomImageLib(XGVcrCreateCustomImageLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
             return response;
@@ -2987,13 +2555,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> CreateCustomImageLibAsync(XGVcrCreateCustomImageLibRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.VcrVersion.ToString(), request.LibType, "lib");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
             return response;
@@ -3009,10 +2572,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteCustomImageLib(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), IMAGE, "lib", name);
@@ -3029,10 +2589,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteCustomImageLibAsync(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException("name 不能为空");
-            }
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGVcrBaseRequest request = new XGVcrBaseRequest();
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.VcrVersion.ToString(), IMAGE, "lib", name);
@@ -3078,10 +2635,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse AddImageLibImages(string name,params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length<1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrImageLibImagesRequest request = new XGVcrImageLibImagesRequest()
             {
                 Name = name,
@@ -3100,10 +2655,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddImageLibImagesAsync(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrImageLibImagesRequest request = new XGVcrImageLibImagesRequest()
             {
                 Name = name,
@@ -3122,15 +2675,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse AddImageLibImages(XGVcrImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items==null || request.Items.Count<1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE, "lib",request.Name);
             iternalRequest.AddParameter("add");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -3146,15 +2693,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> AddImageLibImagesAsync(XGVcrImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE, "lib", request.Name);
             iternalRequest.AddParameter("add");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -3172,10 +2713,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteImageLibImages(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrImageLibImagesRequest request = new XGVcrImageLibImagesRequest()
             {
                 Name = name,
@@ -3194,10 +2733,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteImageLibImagesAsync(string name, params string[] items)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (items == null || items.Length < 1)
-                throw new ArgumentNullException("items 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringArrayNotNullOrEmpty(items, nameof(items));
             XGVcrImageLibImagesRequest request = new XGVcrImageLibImagesRequest()
             {
                 Name = name,
@@ -3216,15 +2753,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrResponse DeleteImageLibImages(XGVcrImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE, "lib", request.Name);
             iternalRequest.AddParameter("delete");
             XGVcrResponse response = InvokeHttpClient<XGVcrResponse>(iternalRequest);
@@ -3240,15 +2771,9 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrResponse> DeleteImageLibImagesAsync(XGVcrImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (request.Items == null || request.Items.Count < 1)
-                throw new ArgumentNullException("Items 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringListNotNullOrEmpty(request.Items, nameof(request.Items));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.VcrVersion.ToString(), IMAGE, "lib", request.Name);
             iternalRequest.AddParameter("delete");
             XGVcrResponse response = await InvokeHttpClientAsync<XGVcrResponse>(iternalRequest);
@@ -3267,8 +2792,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryImageLibImagesResponse QueryImageLibImages(string name,int pageNo=1,int pageSize=20)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrQueryImageLibImagesRequest request = new XGVcrQueryImageLibImagesRequest()
             {
                 Name=name,
@@ -3289,8 +2813,7 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryImageLibImagesResponse> QueryImageLibImagesAsync(string name, int pageNo = 1, int pageSize = 20)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
             XGVcrQueryImageLibImagesRequest request = new XGVcrQueryImageLibImagesRequest()
             {
                 Name = name,
@@ -3310,13 +2833,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGVcrQueryImageLibImagesResponse QueryImageLibImages(XGVcrQueryImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), IMAGE, "lib", request.Name);
             iternalRequest.AddParameter("pageNo",request.PageNo.ToString());
             iternalRequest.AddParameter("pageSize", request.PageSize.ToString());
@@ -3333,13 +2851,8 @@ namespace XGBceDotNetSDK.Services.VCR
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGVcrQueryImageLibImagesResponse> QueryImageLibImagesAsync(XGVcrQueryImageLibImagesRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.VcrVersion.ToString(), IMAGE, "lib", request.Name);
             iternalRequest.AddParameter("pageNo", request.PageNo.ToString());
             iternalRequest.AddParameter("pageSize", request.PageSize.ToString());
@@ -3359,6 +2872,7 @@ namespace XGBceDotNetSDK.Services.VCR
             {
                 Credentials = bceRequest.Credentials
             };
+            iternalRequest.AddMoreHeader(XGBceHeaders.USER_AGENT, config.UserAgent);
             if (httpMethod == BceHttpMethod.POST || httpMethod == BceHttpMethod.PUT)
                 FillRequestPayload(iternalRequest, bceRequest);
             return iternalRequest;
@@ -3382,6 +2896,79 @@ namespace XGBceDotNetSDK.Services.VCR
             iternalRequest.AddMoreHeader(XGBceHeaders.BCE_DATE, HttpUtil.FormatUTCTime(DateTime.Now));
             return iternalRequest;
         }
+
+        #region
+
+        private static void AssertNotNullOrEmpty(object param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param == null)
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        private static void AssertStringNotNullOrEmpty(string param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+
+            if (string.IsNullOrEmpty(param) || string.IsNullOrWhiteSpace(param))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        private static void AssertDicNotNullOrEmpty(IDictionary param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param == null || param.Count < 1)
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        private static void AssertStringArrayNotNullOrEmpty(string[] param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (!(param != null && param.Length > 0))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        private static void AssertStringListNotNullOrEmpty(List<string> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param != null && param.Count > 0)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                nameofParam = nameof(param);
+            errorMessage = nameofParam + errorMessage;
+            param.ForEach((s) => { if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException(nameof(param), errorMessage); });
+            throw new ArgumentNullException(nameof(param), errorMessage);
+        }
+
+        private static void AssertIntListNotNullOrEmpty(List<int> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (!(param != null && param.Count > 0))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        #endregion
 
     }
 }

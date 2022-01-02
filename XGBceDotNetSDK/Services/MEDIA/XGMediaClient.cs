@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -46,12 +47,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreatePipeline(string pipelineName, string sourceBucket, string targetBucket, string description=null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
-            if (string.IsNullOrEmpty(sourceBucket) || string.IsNullOrWhiteSpace(sourceBucket))
-                throw new ArgumentNullException("sourceBucket 不能为空");
-            if (string.IsNullOrEmpty(targetBucket) || string.IsNullOrWhiteSpace(targetBucket))
-                throw new ArgumentNullException("targetBucket 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName,nameof(pipelineName));
+            AssertStringNotNullOrEmpty(sourceBucket,nameof(sourceBucket));
+            AssertStringNotNullOrEmpty(targetBucket,nameof(targetBucket));
             XGMediaCreatePipelineRequest request = new XGMediaCreatePipelineRequest()
             {
                 PipelineName=pipelineName,
@@ -74,12 +72,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreatePipelineAsync(string pipelineName, string sourceBucket, string targetBucket, string description = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
-            if (string.IsNullOrEmpty(sourceBucket) || string.IsNullOrWhiteSpace(sourceBucket))
-                throw new ArgumentNullException("sourceBucket 不能为空");
-            if (string.IsNullOrEmpty(targetBucket) || string.IsNullOrWhiteSpace(targetBucket))
-                throw new ArgumentNullException("targetBucket 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
+            AssertStringNotNullOrEmpty(sourceBucket, nameof(sourceBucket));
+            AssertStringNotNullOrEmpty(targetBucket, nameof(targetBucket));
             XGMediaCreatePipelineRequest request = new XGMediaCreatePipelineRequest()
             {
                 PipelineName = pipelineName,
@@ -100,16 +95,10 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreatePipeline(XGMediaCreatePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (string.IsNullOrEmpty(request.SourceBucket) || string.IsNullOrWhiteSpace(request.SourceBucket))
-                throw new ArgumentNullException("SourceBucket 不能为空");
-            if (string.IsNullOrEmpty(request.TargetBucket) || string.IsNullOrWhiteSpace(request.TargetBucket))
-                throw new ArgumentNullException("TargetBucket 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertStringNotNullOrEmpty(request.SourceBucket, nameof(request.SourceBucket));
+            AssertStringNotNullOrEmpty(request.TargetBucket, nameof(request.TargetBucket));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString() , PIPELINE);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
             return response;
@@ -124,16 +113,10 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreatePipelineAsync(XGMediaCreatePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (string.IsNullOrEmpty(request.SourceBucket) || string.IsNullOrWhiteSpace(request.SourceBucket))
-                throw new ArgumentNullException("SourceBucket 不能为空");
-            if (string.IsNullOrEmpty(request.TargetBucket) || string.IsNullOrWhiteSpace(request.TargetBucket))
-                throw new ArgumentNullException("TargetBucket 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertStringNotNullOrEmpty(request.SourceBucket, nameof(request.SourceBucket));
+            AssertStringNotNullOrEmpty(request.TargetBucket, nameof(request.TargetBucket));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), PIPELINE);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
             return response;
@@ -149,8 +132,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPipelineResponse QueryPipeline(string pipelineName)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
             XGMediaQueryPipelineRequest request = new XGMediaQueryPipelineRequest()
             {
                 PipelineName=pipelineName
@@ -168,8 +150,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPipelineResponse> QueryPipelineAsync(string pipelineName)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
             XGMediaQueryPipelineRequest request = new XGMediaQueryPipelineRequest()
             {
                 PipelineName = pipelineName
@@ -187,12 +168,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPipelineResponse QueryPipeline(XGMediaQueryPipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PIPELINE,request.PipelineName.Trim());
             XGMediaQueryPipelineResponse response = InvokeHttpClient<XGMediaQueryPipelineResponse>(iternalRequest);
             return response;
@@ -207,12 +184,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPipelineResponse> QueryPipelineAsync(XGMediaQueryPipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PIPELINE, request.PipelineName.Trim());
             XGMediaQueryPipelineResponse response = await InvokeHttpClientAsync<XGMediaQueryPipelineResponse>(iternalRequest);
             return response;
@@ -258,8 +231,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeletePipeline(string pipelineName)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName,nameof(pipelineName));
             XGMediaDeletePipelineRequest request = new XGMediaDeletePipelineRequest()
             {
                 PipelineName=pipelineName
@@ -276,8 +248,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeletePipelineAsync(string pipelineName)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
             XGMediaDeletePipelineRequest request = new XGMediaDeletePipelineRequest()
             {
                 PipelineName = pipelineName
@@ -295,12 +266,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeletePipeline(XGMediaDeletePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PIPELINE, request.PipelineName.Trim());
             XGMediaQueryPipelineResponse response = InvokeHttpClient<XGMediaQueryPipelineResponse>(iternalRequest);
             return response;
@@ -316,12 +283,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeletePipelineAsync(XGMediaDeletePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PIPELINE, request.PipelineName.Trim());
             XGMediaQueryPipelineResponse response = await InvokeHttpClientAsync<XGMediaQueryPipelineResponse>(iternalRequest);
             return response;
@@ -340,12 +303,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse UpdatePipeline(string pipelineName, string sourceBucket, string targetBucket, string description = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
-            if (string.IsNullOrEmpty(sourceBucket) || string.IsNullOrWhiteSpace(sourceBucket))
-                throw new ArgumentNullException("sourceBucket 不能为空");
-            if (string.IsNullOrEmpty(targetBucket) || string.IsNullOrWhiteSpace(targetBucket))
-                throw new ArgumentNullException("targetBucket 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
+            AssertStringNotNullOrEmpty(sourceBucket, nameof(sourceBucket));
+            AssertStringNotNullOrEmpty(targetBucket, nameof(targetBucket));
             XGMediaUpdatePipelineRequest request = new XGMediaUpdatePipelineRequest()
             {
                 PipelineName = pipelineName,
@@ -368,12 +328,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> UpdatePipelineAsync(string pipelineName, string sourceBucket, string targetBucket, string description = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
-            if (string.IsNullOrEmpty(sourceBucket) || string.IsNullOrWhiteSpace(sourceBucket))
-                throw new ArgumentNullException("sourceBucket 不能为空");
-            if (string.IsNullOrEmpty(targetBucket) || string.IsNullOrWhiteSpace(targetBucket))
-                throw new ArgumentNullException("targetBucket 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
+            AssertStringNotNullOrEmpty(sourceBucket, nameof(sourceBucket));
+            AssertStringNotNullOrEmpty(targetBucket, nameof(targetBucket));
             XGMediaUpdatePipelineRequest request = new XGMediaUpdatePipelineRequest()
             {
                 PipelineName = pipelineName,
@@ -394,16 +351,10 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse UpdatePipeline(XGMediaUpdatePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (string.IsNullOrEmpty(request.SourceBucket) || string.IsNullOrWhiteSpace(request.SourceBucket))
-                throw new ArgumentNullException("SourceBucket 不能为空");
-            if (string.IsNullOrEmpty(request.TargetBucket) || string.IsNullOrWhiteSpace(request.TargetBucket))
-                throw new ArgumentNullException("TargetBucket 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertStringNotNullOrEmpty(request.SourceBucket, nameof(request.SourceBucket));
+            AssertStringNotNullOrEmpty(request.TargetBucket, nameof(request.TargetBucket));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PIPELINE,request.PipelineName.Trim());
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
             return response;
@@ -418,16 +369,10 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> UpdatePipelineAsync(XGMediaUpdatePipelineRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (string.IsNullOrEmpty(request.SourceBucket) || string.IsNullOrWhiteSpace(request.SourceBucket))
-                throw new ArgumentNullException("SourceBucket 不能为空");
-            if (string.IsNullOrEmpty(request.TargetBucket) || string.IsNullOrWhiteSpace(request.TargetBucket))
-                throw new ArgumentNullException("TargetBucket 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertStringNotNullOrEmpty(request.SourceBucket, nameof(request.SourceBucket));
+            AssertStringNotNullOrEmpty(request.TargetBucket, nameof(request.TargetBucket));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PIPELINE,request.PipelineName.Trim());
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
             return response;
@@ -447,35 +392,26 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreateTranscodingJob(XGMediaCreateTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (request.Source==null)
-                throw new ArgumentNullException("Source 不能为空");
-            if (string.IsNullOrEmpty(request.Source.SourceKey) || string.IsNullOrWhiteSpace(request.Source.SourceKey))
-                throw new ArgumentNullException("Source.SourceKey 不能为空");
-            if (request.Target == null)
-                throw new ArgumentNullException("Target 不能为空");
-            if (string.IsNullOrEmpty(request.Target.TargetKey) || string.IsNullOrWhiteSpace(request.Target.TargetKey))
-                throw new ArgumentNullException("Target.TargetKey 不能为空");
-            if (string.IsNullOrEmpty(request.Target.PresetName) || string.IsNullOrWhiteSpace(request.Target.PresetName))
-                throw new ArgumentNullException("Target.PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Source.SourceKey,nameof(request.Source.SourceKey));
+            AssertNotNullOrEmpty(request.Target,nameof(request.Target));
+            AssertStringNotNullOrEmpty(request.Target.TargetBucket, nameof(request.Target.TargetBucket));
+            AssertStringNotNullOrEmpty(request.Target.PresetName, nameof(request.Target.PresetName));
             if (request.Target.DelogoArea != null)
             {
                 if (request.Target.DelogoArea.HasNullProperty())
-                    throw new ArgumentNullException("DelogoArea的属性不能为空");
+                    throw new ArgumentNullException(nameof(request.Target.DelogoArea), "request.Target.DelogoArea的属性不能为空");
             }
             else
                 if (request.Target.DelogoAreas != null && request.Target.DelogoAreas.Count > 0)
-                request.Target.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException("DelogoArea的属性不能为空"); });
+                request.Target.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException(nameof(request.Target.DelogoAreas), "request.Target.DelogoAreas的属性不能为空"); });
             if(request.Target.Crop!=null)
                 if (request.Target.Crop.HasNullProperty())
-                    throw new ArgumentNullException("Crop的属性不能为空");
+                    throw new ArgumentNullException(nameof(request.Target.Crop), "request.Target.Crop的属性不能为空");
             if (request.Target.Inserts != null && request.Target.Inserts.Count > 0)
-                request.Target.Inserts.ForEach((x)=> { if(x.Type==null) throw new ArgumentNullException("insert属性type 不能为空"); });
+                request.Target.Inserts.ForEach((x)=> { if(x.Type==null) throw new ArgumentNullException(nameof(request.Target.Inserts), "request.Target.Inserts属性type 不能为空"); });
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), JOB,TRANSCODING);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -491,35 +427,26 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreateTranscodingJobAsync(XGMediaCreateTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
-            if (request.Source == null)
-                throw new ArgumentNullException("Source 不能为空");
-            if (string.IsNullOrEmpty(request.Source.SourceKey) || string.IsNullOrWhiteSpace(request.Source.SourceKey))
-                throw new ArgumentNullException("Source.SourceKey 不能为空");
-            if (request.Target == null)
-                throw new ArgumentNullException("Target 不能为空");
-            if (string.IsNullOrEmpty(request.Target.TargetKey) || string.IsNullOrWhiteSpace(request.Target.TargetKey))
-                throw new ArgumentNullException("Target.TargetKey 不能为空");
-            if (string.IsNullOrEmpty(request.Target.PresetName) || string.IsNullOrWhiteSpace(request.Target.PresetName))
-                throw new ArgumentNullException("Target.PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
+            AssertNotNullOrEmpty(request.Source, nameof(request.Source));
+            AssertStringNotNullOrEmpty(request.Source.SourceKey, nameof(request.Source.SourceKey));
+            AssertNotNullOrEmpty(request.Target, nameof(request.Target));
+            AssertStringNotNullOrEmpty(request.Target.TargetBucket, nameof(request.Target.TargetBucket));
+            AssertStringNotNullOrEmpty(request.Target.PresetName, nameof(request.Target.PresetName));
             if (request.Target.DelogoArea != null)
             {
                 if (request.Target.DelogoArea.HasNullProperty())
-                    throw new ArgumentNullException("DelogoArea的属性不能为空");
+                    throw new ArgumentNullException(nameof(request.Target.DelogoArea), "request.Target.DelogoArea的属性不能为空");
             }
             else
                 if (request.Target.DelogoAreas != null && request.Target.DelogoAreas.Count > 0)
-                request.Target.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException("DelogoArea的属性不能为空"); });
+                request.Target.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException(nameof(request.Target.DelogoAreas), "request.Target.DelogoAreas的属性不能为空"); });
             if (request.Target.Crop != null)
                 if (request.Target.Crop.HasNullProperty())
-                    throw new ArgumentNullException("Crop的属性不能为空");
+                    throw new ArgumentNullException(nameof(request.Target.Crop), "request.Target.Crop的属性不能为空");
             if (request.Target.Inserts != null && request.Target.Inserts.Count > 0)
-                request.Target.Inserts.ForEach((x) => { if (x.Type == null) throw new ArgumentNullException("insert属性type 不能为空"); });
+                request.Target.Inserts.ForEach((x) => { if (x.Type == null) throw new ArgumentNullException(nameof(request.Target.Inserts), "request.Target.Inserts属性type 不能为空"); });
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), JOB, TRANSCODING);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -542,8 +469,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         public XGMediaQueryPipelineTranscodingJobResponse QueryPipelineTranscodingJob(string pipelineName, XGMediaJobStatus? jobStatus = null,
             DateTime? begin = null, DateTime? end = null, string marker = null, int? maxSize = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName,nameof(pipelineName));
 
             XGMediaQueryPipelineTranscodingJobRequest request = new XGMediaQueryPipelineTranscodingJobRequest()
             {
@@ -572,8 +498,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         public async Task<XGMediaQueryPipelineTranscodingJobResponse> QueryPipelineTranscodingJobAsync(string pipelineName, XGMediaJobStatus? jobStatus = null,
             DateTime? begin = null, DateTime? end = null, string marker = null, int? maxSize = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
 
             XGMediaQueryPipelineTranscodingJobRequest request = new XGMediaQueryPipelineTranscodingJobRequest()
             {
@@ -597,12 +522,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPipelineTranscodingJobResponse QueryPipelineTranscodingJob(XGMediaQueryPipelineTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, TRANSCODING);
             iternalRequest.AddParameter("pipelineName", request.PipelineName);
@@ -630,12 +551,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPipelineTranscodingJobResponse> QueryPipelineTranscodingJobAsync(XGMediaQueryPipelineTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, TRANSCODING);
             iternalRequest.AddParameter("pipelineName", request.PipelineName);
@@ -664,8 +581,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryTranscodingJobResponse QueryTranscodingJob(string jobId)
         {
-            if (string.IsNullOrEmpty(jobId) || string.IsNullOrWhiteSpace(jobId))
-                throw new ArgumentNullException("jobId 不能为空");
+            AssertStringNotNullOrEmpty(jobId,nameof(jobId));
 
             XGMediaQueryTranscodingJobRequest request = new XGMediaQueryTranscodingJobRequest()
             {
@@ -683,8 +599,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryTranscodingJobResponse> QueryTranscodingJobAsync(string jobId)
         {
-            if (string.IsNullOrEmpty(jobId) || string.IsNullOrWhiteSpace(jobId))
-                throw new ArgumentNullException("jobId 不能为空");
+            AssertStringNotNullOrEmpty(jobId, nameof(jobId));
 
             XGMediaQueryTranscodingJobRequest request = new XGMediaQueryTranscodingJobRequest()
             {
@@ -703,12 +618,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryTranscodingJobResponse QueryTranscodingJob(XGMediaQueryTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.JobId) || string.IsNullOrWhiteSpace(request.JobId))
-                throw new ArgumentNullException("JobId 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.JobId, nameof(request.JobId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, TRANSCODING,request.JobId.Trim());
 
@@ -725,12 +636,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryTranscodingJobResponse> QueryTranscodingJobAsync(XGMediaQueryTranscodingJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.JobId) || string.IsNullOrWhiteSpace(request.JobId))
-                throw new ArgumentNullException("JobId 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.JobId, nameof(request.JobId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, TRANSCODING, request.JobId.Trim());
 
@@ -752,43 +659,37 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreatePreset(XGMediaCreatePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
-            if (string.IsNullOrEmpty(request.Container) || string.IsNullOrWhiteSpace(request.Container))
-                throw new ArgumentNullException("Container 不能为空");
-            if(request.Video!=null)
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName,nameof(request.PresetName));
+            AssertStringNotNullOrEmpty(request.Container, nameof(request.Container));
+            if (request.Video!=null)
             {
                 if (request.Video.BitRateInBps==null)
-                    throw new ArgumentNullException("Video.BitRateInBps 不能为空");
+                    throw new ArgumentNullException(nameof(request.Video.BitRateInBps),"request.Video.BitRateInBps 不能为空");
             }
             if(request.Encryption!=null)
             {
                 if (request.Encryption.Strategy == null)
-                    throw new ArgumentNullException("Encryption.Strategy 不能为空");
-                if (string.IsNullOrEmpty(request.Encryption.AesKey) || string.IsNullOrWhiteSpace(request.Encryption.AesKey))
-                    throw new ArgumentNullException("Encryption.AesKey 不能为空");
+                    throw new ArgumentNullException(nameof(request.Encryption.Strategy), "request.Encryption.Strategy 不能为空");
+                AssertStringNotNullOrEmpty(request.Encryption.AesKey,nameof(request.Encryption.AesKey));
             }
             bool hasWatermarkId = false;
             if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
             {
                 if(request.Transmux!=null&&request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加WatermarkId");
+                    throw new ArgumentException("当transmux=true时不允许添加WatermarkId");
             }
             if (request.Watermarks != null)
             {
                 if(hasWatermarkId)
-                    throw new ArgumentNullException("不可同时指定watermarkId和watermarks");
+                    throw new ArgumentException("不可同时指定watermarkId和watermarks");
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加Watermarks");
+                    throw new ArgumentException("当transmux=true时不允许添加Watermarks");
                 if(!request.Watermarks.IsValid())
-                    throw new ArgumentNullException("Watermarks.Image 不能为空");
+                    throw new ArgumentNullException(nameof(request.Watermarks),"request.Watermarks的Image 不能为空");
             }
             if(request.TransCfg!=null&&request.TransCfg.TransMode==null)
-                throw new ArgumentNullException("TransCfg.TransMode 不能为空");
+                throw new ArgumentNullException(nameof(request.TransCfg.TransMode),"request.TransCfg.TransMode 不能为空");
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(),PRESET);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -804,43 +705,37 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreatePresetAsync(XGMediaCreatePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
-            if (string.IsNullOrEmpty(request.Container) || string.IsNullOrWhiteSpace(request.Container))
-                throw new ArgumentNullException("Container 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
+            AssertStringNotNullOrEmpty(request.Container, nameof(request.Container));
             if (request.Video != null)
             {
                 if (request.Video.BitRateInBps == null)
-                    throw new ArgumentNullException("Video.BitRateInBps 不能为空");
+                    throw new ArgumentNullException(nameof(request.Video.BitRateInBps), "request.Video.BitRateInBps 不能为空");
             }
             if (request.Encryption != null)
             {
                 if (request.Encryption.Strategy == null)
-                    throw new ArgumentNullException("Encryption.Strategy 不能为空");
-                if (string.IsNullOrEmpty(request.Encryption.AesKey) || string.IsNullOrWhiteSpace(request.Encryption.AesKey))
-                    throw new ArgumentNullException("Encryption.AesKey 不能为空");
+                    throw new ArgumentNullException(nameof(request.Encryption.Strategy), "request.Encryption.Strategy 不能为空");
+                AssertStringNotNullOrEmpty(request.Encryption.AesKey, nameof(request.Encryption.AesKey));
             }
             bool hasWatermarkId = false;
             if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
             {
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加WatermarkId");
+                    throw new ArgumentException("当transmux=true时不允许添加WatermarkId");
             }
             if (request.Watermarks != null)
             {
                 if (hasWatermarkId)
-                    throw new ArgumentNullException("不可同时指定watermarkId和watermarks");
+                    throw new ArgumentException("不可同时指定watermarkId和watermarks");
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加Watermarks");
+                    throw new ArgumentException("当transmux=true时不允许添加Watermarks");
                 if (!request.Watermarks.IsValid())
-                    throw new ArgumentNullException("Watermarks.Image 不能为空");
+                    throw new ArgumentNullException(nameof(request.Watermarks), "request.Watermarks的Image 不能为空");
             }
             if (request.TransCfg != null && request.TransCfg.TransMode == null)
-                throw new ArgumentNullException("TransCfg.TransMode 不能为空");
+                throw new ArgumentNullException(nameof(request.TransCfg.TransMode), "request.TransCfg.TransMode 不能为空");
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), PRESET);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -857,8 +752,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPresetResponse QueryPreset(string presetId)
         {
-            if (string.IsNullOrEmpty(presetId) || string.IsNullOrWhiteSpace(presetId))
-                throw new ArgumentNullException("presetId 不能为空");
+            AssertStringNotNullOrEmpty(presetId,nameof(presetId));
 
             XGMediaQueryPresetRequest request = new XGMediaQueryPresetRequest()
             {
@@ -876,8 +770,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPresetResponse> QueryPresetAsync(string presetId)
         {
-            if (string.IsNullOrEmpty(presetId) || string.IsNullOrWhiteSpace(presetId))
-                throw new ArgumentNullException("presetId 不能为空");
+            AssertStringNotNullOrEmpty(presetId, nameof(presetId));
 
             XGMediaQueryPresetRequest request = new XGMediaQueryPresetRequest()
             {
@@ -896,12 +789,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPresetResponse QueryPreset(XGMediaQueryPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetId) || string.IsNullOrWhiteSpace(request.PresetId))
-                throw new ArgumentNullException("PresetId 不能为空");
+            AssertNotNullOrEmpty(request);
+            AssertStringNotNullOrEmpty(request.PresetId, nameof(request.PresetId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PRESET,request.PresetId.Trim());
             XGMediaQueryPresetResponse response = InvokeHttpClient<XGMediaQueryPresetResponse>(iternalRequest);
@@ -917,12 +806,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPresetResponse> QueryPresetAsync(XGMediaQueryPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetId) || string.IsNullOrWhiteSpace(request.PresetId))
-                throw new ArgumentNullException("PresetId 不能为空");
+            AssertNotNullOrEmpty(request);
+            AssertStringNotNullOrEmpty(request.PresetId, nameof(request.PresetId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PRESET, request.PresetId.Trim());
             XGMediaQueryPresetResponse response = await InvokeHttpClientAsync<XGMediaQueryPresetResponse>(iternalRequest);
@@ -970,8 +855,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeletePreset(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName,nameof(presetName));
 
             XGMediaDeletePresetRequest request = new XGMediaDeletePresetRequest()
             {
@@ -989,8 +873,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeletePresetAsync(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaDeletePresetRequest request = new XGMediaDeletePresetRequest()
             {
@@ -1009,12 +892,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeletePreset(XGMediaDeletePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PRESET, request.PresetName.Trim());
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -1030,12 +909,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeletePresetAsync(XGMediaDeletePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PRESET, request.PresetName.Trim());
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -1052,43 +927,37 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse UpdatePreset(XGMediaUpdatePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
-            if (string.IsNullOrEmpty(request.Container) || string.IsNullOrWhiteSpace(request.Container))
-                throw new ArgumentNullException("Container 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
+            AssertStringNotNullOrEmpty(request.Container, nameof(request.Container));
             if (request.Video != null)
             {
                 if (request.Video.BitRateInBps == null)
-                    throw new ArgumentNullException("Video.BitRateInBps 不能为空");
+                    throw new ArgumentNullException(nameof(request.Video.BitRateInBps),"request.Video.BitRateInBps 不能为空");
             }
             if (request.Encryption != null)
             {
                 if (request.Encryption.Strategy == null)
-                    throw new ArgumentNullException("Encryption.Strategy 不能为空");
-                if (string.IsNullOrEmpty(request.Encryption.AesKey) || string.IsNullOrWhiteSpace(request.Encryption.AesKey))
-                    throw new ArgumentNullException("Encryption.AesKey 不能为空");
+                    throw new ArgumentNullException(nameof(request.Encryption.Strategy), "request.Encryption.Strategy 不能为空");
+                AssertStringNotNullOrEmpty(request.Encryption.AesKey, nameof(request.Encryption.AesKey));
             }
             bool hasWatermarkId = false;
             if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
             {
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加WatermarkId");
+                    throw new ArgumentException("当transmux=true时不允许添加WatermarkId");
             }
             if (request.Watermarks != null)
             {
                 if (hasWatermarkId)
-                    throw new ArgumentNullException("不可同时指定watermarkId和watermarks");
+                    throw new ArgumentException("不可同时指定watermarkId和watermarks");
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加Watermarks");
+                    throw new ArgumentException("当transmux=true时不允许添加Watermarks");
                 if (!request.Watermarks.IsValid())
-                    throw new ArgumentNullException("Watermarks.Image 不能为空");
+                    throw new ArgumentNullException(nameof(request.Watermarks), "request.Watermarks的Image 不能为空");
             }
             if (request.TransCfg != null && request.TransCfg.TransMode == null)
-                throw new ArgumentNullException("TransCfg.TransMode 不能为空");
+                throw new ArgumentNullException(nameof(request.TransCfg.TransMode),"request.TransCfg.TransMode 不能为空");
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PRESET,request.PresetName);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -1105,43 +974,37 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> UpdatePresetAsync(XGMediaUpdatePresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
-            if (string.IsNullOrEmpty(request.Container) || string.IsNullOrWhiteSpace(request.Container))
-                throw new ArgumentNullException("Container 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
+            AssertStringNotNullOrEmpty(request.Container, nameof(request.Container));
             if (request.Video != null)
             {
                 if (request.Video.BitRateInBps == null)
-                    throw new ArgumentNullException("Video.BitRateInBps 不能为空");
+                    throw new ArgumentNullException(nameof(request.Video.BitRateInBps), "request.Video.BitRateInBps 不能为空");
             }
             if (request.Encryption != null)
             {
                 if (request.Encryption.Strategy == null)
-                    throw new ArgumentNullException("Encryption.Strategy 不能为空");
-                if (string.IsNullOrEmpty(request.Encryption.AesKey) || string.IsNullOrWhiteSpace(request.Encryption.AesKey))
-                    throw new ArgumentNullException("Encryption.AesKey 不能为空");
+                    throw new ArgumentNullException(nameof(request.Encryption.Strategy), "request.Encryption.Strategy 不能为空");
+                AssertStringNotNullOrEmpty(request.Encryption.AesKey, nameof(request.Encryption.AesKey));
             }
             bool hasWatermarkId = false;
             if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
             {
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加WatermarkId");
+                    throw new ArgumentException("当transmux=true时不允许添加WatermarkId");
             }
             if (request.Watermarks != null)
             {
                 if (hasWatermarkId)
-                    throw new ArgumentNullException("不可同时指定watermarkId和watermarks");
+                    throw new ArgumentException("不可同时指定watermarkId和watermarks");
                 if (request.Transmux != null && request.Transmux.Value)
-                    throw new ArgumentNullException("当transmux=true时不允许添加Watermarks");
+                    throw new ArgumentException("当transmux=true时不允许添加Watermarks");
                 if (!request.Watermarks.IsValid())
-                    throw new ArgumentNullException("Watermarks.Image 不能为空");
+                    throw new ArgumentNullException(nameof(request.Watermarks), "request.Watermarks的Image 不能为空");
             }
             if (request.TransCfg != null && request.TransCfg.TransMode == null)
-                throw new ArgumentNullException("TransCfg.TransMode 不能为空");
+                throw new ArgumentNullException(nameof(request.TransCfg.TransMode), "request.TransCfg.TransMode 不能为空");
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PRESET, request.PresetName);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -1163,10 +1026,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryMediaInfoResponse QueryMediaInfo(string bucket, string key)
         {
-            if (string.IsNullOrEmpty(bucket) || string.IsNullOrWhiteSpace(bucket))
-                throw new ArgumentNullException("bucket 不能为空");
-            if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException("key 不能为空");
+            AssertStringNotNullOrEmpty(bucket,nameof(bucket));
+            AssertStringNotNullOrEmpty(key,nameof(key));
 
             XGMediaQueryMediaInfoRequest request = new XGMediaQueryMediaInfoRequest()
             {
@@ -1186,10 +1047,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryMediaInfoResponse> QueryMediaInfoAsync(string bucket, string key)
         {
-            if (string.IsNullOrEmpty(bucket) || string.IsNullOrWhiteSpace(bucket))
-                throw new ArgumentNullException("bucket 不能为空");
-            if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException("key 不能为空");
+            AssertStringNotNullOrEmpty(bucket, nameof(bucket));
+            AssertStringNotNullOrEmpty(key, nameof(key));
 
             XGMediaQueryMediaInfoRequest request = new XGMediaQueryMediaInfoRequest()
             {
@@ -1209,14 +1068,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryMediaInfoResponse QueryMediaInfo(XGMediaQueryMediaInfoRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Bucket) || string.IsNullOrWhiteSpace(request.Bucket))
-                throw new ArgumentNullException("Bucket 不能为空");
-            if (string.IsNullOrEmpty(request.Key) || string.IsNullOrWhiteSpace(request.Key))
-                throw new ArgumentNullException("Key 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Bucket, nameof(request.Bucket));
+            AssertStringNotNullOrEmpty(request.Key, nameof(request.Key));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), MEDIAINFO);
             iternalRequest.AddParameter("bucket",request.Bucket);
@@ -1234,14 +1088,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryMediaInfoResponse> QueryMediaInfoAsync(XGMediaQueryMediaInfoRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Bucket) || string.IsNullOrWhiteSpace(request.Bucket))
-                throw new ArgumentNullException("Bucket 不能为空");
-            if (string.IsNullOrEmpty(request.Key) || string.IsNullOrWhiteSpace(request.Key))
-                throw new ArgumentNullException("Key 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Bucket, nameof(request.Bucket));
+            AssertStringNotNullOrEmpty(request.Key, nameof(request.Key));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), MEDIAINFO);
             iternalRequest.AddParameter("bucket", request.Bucket);
@@ -1264,10 +1113,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaCreateWatermarkResponse CreateWatermark(string bucket, string key)
         {
-            if (string.IsNullOrEmpty(bucket) || string.IsNullOrWhiteSpace(bucket))
-                throw new ArgumentNullException("bucket 不能为空");
-            if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException("key 不能为空");
+            AssertStringNotNullOrEmpty(bucket, nameof(bucket));
+            AssertStringNotNullOrEmpty(key, nameof(key));
 
             XGMediaCreateWatermarkRequest request = new XGMediaCreateWatermarkRequest()
             {
@@ -1286,10 +1133,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaCreateWatermarkResponse> CreateWatermarkAsync(string bucket, string key)
         {
-            if (string.IsNullOrEmpty(bucket) || string.IsNullOrWhiteSpace(bucket))
-                throw new ArgumentNullException("bucket 不能为空");
-            if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
-                throw new ArgumentNullException("key 不能为空");
+            AssertStringNotNullOrEmpty(bucket, nameof(bucket));
+            AssertStringNotNullOrEmpty(key, nameof(key));
 
             XGMediaCreateWatermarkRequest request = new XGMediaCreateWatermarkRequest()
             {
@@ -1308,14 +1153,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaCreateWatermarkResponse CreateWatermark(XGMediaCreateWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Bucket) || string.IsNullOrWhiteSpace(request.Bucket))
-                throw new ArgumentNullException("Bucket 不能为空");
-            if (string.IsNullOrEmpty(request.Key) || string.IsNullOrWhiteSpace(request.Key))
-                throw new ArgumentNullException("Key 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Bucket, nameof(request.Bucket));
+            AssertStringNotNullOrEmpty(request.Key, nameof(request.Key));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), WATERMARK);
             XGMediaCreateWatermarkResponse response = InvokeHttpClient<XGMediaCreateWatermarkResponse>(iternalRequest);
@@ -1330,14 +1170,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaCreateWatermarkResponse> CreateWatermarkAsync(XGMediaCreateWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Bucket) || string.IsNullOrWhiteSpace(request.Bucket))
-                throw new ArgumentNullException("Bucket 不能为空");
-            if (string.IsNullOrEmpty(request.Key) || string.IsNullOrWhiteSpace(request.Key))
-                throw new ArgumentNullException("Key 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Bucket, nameof(request.Bucket));
+            AssertStringNotNullOrEmpty(request.Key, nameof(request.Key));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), WATERMARK);
             XGMediaCreateWatermarkResponse response = await InvokeHttpClientAsync<XGMediaCreateWatermarkResponse>(iternalRequest);
@@ -1353,8 +1188,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryWatermarkResponse QueryWatermark(string watermarkId)
         {
-            if (string.IsNullOrEmpty(watermarkId) || string.IsNullOrWhiteSpace(watermarkId))
-                throw new ArgumentNullException("watermarkId 不能为空");
+            AssertStringNotNullOrEmpty(watermarkId,nameof(watermarkId));
 
             XGMediaQueryWatermarkRequest request = new XGMediaQueryWatermarkRequest()
             {
@@ -1371,8 +1205,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryWatermarkResponse> QueryWatermarkAsync(string watermarkId)
         {
-            if (string.IsNullOrEmpty(watermarkId) || string.IsNullOrWhiteSpace(watermarkId))
-                throw new ArgumentNullException("watermarkId 不能为空");
+            AssertStringNotNullOrEmpty(watermarkId, nameof(watermarkId));
 
             XGMediaQueryWatermarkRequest request = new XGMediaQueryWatermarkRequest()
             {
@@ -1390,12 +1223,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryWatermarkResponse QueryWatermark(XGMediaQueryWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
-                throw new ArgumentNullException("WatermarkId 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.WatermarkId, nameof(request.WatermarkId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), WATERMARK,request.WatermarkId.Trim());
             XGMediaQueryWatermarkResponse response = InvokeHttpClient<XGMediaQueryWatermarkResponse>(iternalRequest);
@@ -1410,12 +1239,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryWatermarkResponse> QueryWatermarkAsync(XGMediaQueryWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
-                throw new ArgumentNullException("WatermarkId 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.WatermarkId, nameof(request.WatermarkId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), WATERMARK, request.WatermarkId.Trim());
             XGMediaQueryWatermarkResponse response = await InvokeHttpClientAsync<XGMediaQueryWatermarkResponse>(iternalRequest);
@@ -1460,8 +1285,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteWatermark(string watermarkId)
         {
-            if (string.IsNullOrEmpty(watermarkId) || string.IsNullOrWhiteSpace(watermarkId))
-                throw new ArgumentNullException("watermarkId 不能为空");
+            AssertStringNotNullOrEmpty(watermarkId, nameof(watermarkId));
 
             XGMediaDeleteWatermarkRequest request = new XGMediaDeleteWatermarkRequest()
             {
@@ -1478,8 +1302,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteWatermarkAsync(string watermarkId)
         {
-            if (string.IsNullOrEmpty(watermarkId) || string.IsNullOrWhiteSpace(watermarkId))
-                throw new ArgumentNullException("watermarkId 不能为空");
+            AssertStringNotNullOrEmpty(watermarkId, nameof(watermarkId));
 
             XGMediaDeleteWatermarkRequest request = new XGMediaDeleteWatermarkRequest()
             {
@@ -1497,12 +1320,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteWatermark(XGMediaDeleteWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
-                throw new ArgumentNullException("WatermarkId 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.WatermarkId, nameof(request.WatermarkId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), WATERMARK, request.WatermarkId.Trim());
             XGMediaQueryWatermarkResponse response = InvokeHttpClient<XGMediaQueryWatermarkResponse>(iternalRequest);
@@ -1517,12 +1336,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteWatermarkAsync(XGMediaDeleteWatermarkRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.WatermarkId) || string.IsNullOrWhiteSpace(request.WatermarkId))
-                throw new ArgumentNullException("WatermarkId 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.WatermarkId, nameof(request.WatermarkId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), WATERMARK, request.WatermarkId.Trim());
             XGMediaQueryWatermarkResponse response = await InvokeHttpClientAsync<XGMediaQueryWatermarkResponse>(iternalRequest);
@@ -1543,8 +1358,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreateThumbnailPreset(string presetName, string description=null)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaCreateThumbnailPresetRequest request = new XGMediaCreateThumbnailPresetRequest()
             {
@@ -1563,8 +1377,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreateThumbnailPresetAsync(string presetName, string description = null)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaCreateThumbnailPresetRequest request = new XGMediaCreateThumbnailPresetRequest()
             {
@@ -1583,12 +1396,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreateThumbnailPreset(XGMediaCreateThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), PRESET,THUMBNAIL);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -1603,12 +1412,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreateThumbnailPresetAsync(XGMediaCreateThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), PRESET, THUMBNAIL);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -1624,8 +1429,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryThumbnailPresetResponse QueryThumbnailPreset(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaQueryThumbnailPresetRequest request = new XGMediaQueryThumbnailPresetRequest()
             {
@@ -1642,8 +1446,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryThumbnailPresetResponse> QueryThumbnailPresetAsync(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaQueryThumbnailPresetRequest request = new XGMediaQueryThumbnailPresetRequest()
             {
@@ -1661,12 +1464,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryThumbnailPresetResponse QueryThumbnailPreset(XGMediaQueryThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PRESET, THUMBNAIL,request.PresetName.Trim());
             XGMediaQueryThumbnailPresetResponse response = InvokeHttpClient<XGMediaQueryThumbnailPresetResponse>(iternalRequest);
@@ -1681,12 +1480,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryThumbnailPresetResponse> QueryThumbnailPresetAsync(XGMediaQueryThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), PRESET, THUMBNAIL, request.PresetName.Trim());
             XGMediaQueryThumbnailPresetResponse response = await InvokeHttpClientAsync<XGMediaQueryThumbnailPresetResponse>(iternalRequest);
@@ -1702,8 +1497,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteThumbnailPreset(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaDeleteThumbnailPresetRequest request = new XGMediaDeleteThumbnailPresetRequest()
             {
@@ -1720,8 +1514,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteThumbnailPresetAsync(string presetName)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaDeleteThumbnailPresetRequest request = new XGMediaDeleteThumbnailPresetRequest()
             {
@@ -1739,12 +1532,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteThumbnailPreset(XGMediaDeleteThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PRESET, THUMBNAIL, request.PresetName.Trim());
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -1759,12 +1548,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteThumbnailPresetAsync(XGMediaDeleteThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), PRESET, THUMBNAIL, request.PresetName.Trim());
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -1781,8 +1566,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse UpdateThumbnailPreset(string presetName, string description=null)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaUpdateThumbnailPresetRequest request = new XGMediaUpdateThumbnailPresetRequest()
             {
@@ -1801,8 +1585,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> UpdateThumbnailPresetAsync(string presetName, string description = null)
         {
-            if (string.IsNullOrEmpty(presetName) || string.IsNullOrWhiteSpace(presetName))
-                throw new ArgumentNullException("presetName 不能为空");
+            AssertStringNotNullOrEmpty(presetName, nameof(presetName));
 
             XGMediaUpdateThumbnailPresetRequest request = new XGMediaUpdateThumbnailPresetRequest()
             {
@@ -1821,12 +1604,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse UpdateThumbnailPreset(XGMediaUpdateThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PRESET, THUMBNAIL,request.PresetName.Trim());
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -1841,12 +1620,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> UpdateThumbnailPresetAsync(XGMediaUpdateThumbnailPresetRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PresetName) || string.IsNullOrWhiteSpace(request.PresetName))
-                throw new ArgumentNullException("PresetName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PresetName, nameof(request.PresetName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.PUT, request.MediaVersion.ToString(), PRESET, THUMBNAIL, request.PresetName.Trim());
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -1866,30 +1641,25 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaCreateThumbnailJobResponse CreateThumbnailJob(XGMediaCreateThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             if (request.Source == null)
             {
-                throw new ArgumentNullException("Source 不能为空");
+                throw new ArgumentNullException(nameof(request.Source), "request.Source 不能为空");
             }
             else
             {
-                if (string.IsNullOrEmpty(request.Source.Key) || string.IsNullOrWhiteSpace(request.Source.Key))
-                    throw new ArgumentNullException("Source.Key 不能为空");
+                AssertStringNotNullOrEmpty(request.Source.Key,nameof(request.Source.Key));
             }
             if (request.DelogoArea != null)
             {
                 if(request.DelogoArea.HasNullProperty())
-                    throw new ArgumentNullException("DelogoArea属性 不能为空");
+                    throw new ArgumentNullException(nameof(request.DelogoArea),"request.DelogoArea的属性 不能为空");
                 if(request.DelogoAreas!=null&&request.DelogoAreas.Count>0)
-                    throw new ArgumentNullException("DelogoArea和DelogoAreas不能同时指定");
+                    throw new ArgumentException("DelogoArea和DelogoAreas不能同时指定");
             }
             if (request.DelogoAreas != null && request.DelogoAreas.Count > 0)
-                request.DelogoAreas.ForEach((x)=> { if(x.HasNullProperty()) throw new ArgumentNullException("DelogoArea属性 不能为空"); });
+                request.DelogoAreas.ForEach((x)=> { if(x.HasNullProperty()) throw new ArgumentNullException(nameof(request.DelogoAreas),"request.DelogoAreas的属性 不能为空"); });
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), JOB, THUMBNAIL);
             XGMediaCreateThumbnailJobResponse response = InvokeHttpClient<XGMediaCreateThumbnailJobResponse>(iternalRequest);
@@ -1904,30 +1674,25 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaCreateThumbnailJobResponse> CreateThumbnailJobAsync(XGMediaCreateThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
             if (request.Source == null)
             {
-                throw new ArgumentNullException("Source 不能为空");
+                throw new ArgumentNullException(nameof(request.Source), "request.Source 不能为空");
             }
             else
             {
-                if (string.IsNullOrEmpty(request.Source.Key) || string.IsNullOrWhiteSpace(request.Source.Key))
-                    throw new ArgumentNullException("Source.Key 不能为空");
+                AssertStringNotNullOrEmpty(request.Source.Key, nameof(request.Source.Key));
             }
             if (request.DelogoArea != null)
             {
                 if (request.DelogoArea.HasNullProperty())
-                    throw new ArgumentNullException("DelogoArea属性 不能为空");
+                    throw new ArgumentNullException(nameof(request.DelogoArea), "request.DelogoArea的属性 不能为空");
                 if (request.DelogoAreas != null && request.DelogoAreas.Count > 0)
-                    throw new ArgumentNullException("DelogoArea和DelogoAreas不能同时指定");
+                    throw new ArgumentException("DelogoArea和DelogoAreas不能同时指定");
             }
             if (request.DelogoAreas != null && request.DelogoAreas.Count > 0)
-                request.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException("DelogoArea属性 不能为空"); });
+                request.DelogoAreas.ForEach((x) => { if (x.HasNullProperty()) throw new ArgumentNullException(nameof(request.DelogoAreas), "request.DelogoAreas的属性 不能为空"); });
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), JOB, THUMBNAIL);
             XGMediaCreateThumbnailJobResponse response = await InvokeHttpClientAsync<XGMediaCreateThumbnailJobResponse>(iternalRequest);
@@ -1943,8 +1708,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryThumbnailJobResponse QueryThumbnailJob(string jobId)
         {
-            if (string.IsNullOrEmpty(jobId) || string.IsNullOrWhiteSpace(jobId))
-                throw new ArgumentNullException("jobId 不能为空");
+            AssertStringNotNullOrEmpty(jobId,nameof(jobId));
 
             XGMediaQueryThumbnailJobRequest request = new XGMediaQueryThumbnailJobRequest()
             {
@@ -1961,8 +1725,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryThumbnailJobResponse> QueryThumbnailJobAsync(string jobId)
         {
-            if (string.IsNullOrEmpty(jobId) || string.IsNullOrWhiteSpace(jobId))
-                throw new ArgumentNullException("jobId 不能为空");
+            AssertStringNotNullOrEmpty(jobId, nameof(jobId));
 
             XGMediaQueryThumbnailJobRequest request = new XGMediaQueryThumbnailJobRequest()
             {
@@ -1980,12 +1743,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryThumbnailJobResponse QueryThumbnailJob(XGMediaQueryThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.JobId) || string.IsNullOrWhiteSpace(request.JobId))
-                throw new ArgumentNullException("JobId 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.JobId, nameof(request.JobId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, THUMBNAIL,request.JobId.Trim());
             XGMediaQueryThumbnailJobResponse response = InvokeHttpClient<XGMediaQueryThumbnailJobResponse>(iternalRequest);
@@ -2000,12 +1759,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryThumbnailJobResponse> QueryThumbnailJobAsync(XGMediaQueryThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.JobId) || string.IsNullOrWhiteSpace(request.JobId))
-                throw new ArgumentNullException("JobId 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.JobId, nameof(request.JobId));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, THUMBNAIL, request.JobId.Trim());
             XGMediaQueryThumbnailJobResponse response = await InvokeHttpClientAsync<XGMediaQueryThumbnailJobResponse>(iternalRequest);
@@ -2027,8 +1782,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         public XGMediaQueryPipelineThumbnailJobResponse QueryPipelineThumbnailJob(string pipelineName, XGMediaJobStatus? jobStatus=null,
             DateTime? begin=null, DateTime? end=null, string marker=null, int? maxSize=null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName,nameof(pipelineName));
 
             XGMediaQueryPipelineThumbnailJobRequest request = new XGMediaQueryPipelineThumbnailJobRequest()
             {
@@ -2056,8 +1810,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         public async Task<XGMediaQueryPipelineThumbnailJobResponse> QueryPipelineThumbnailJobAsync(string pipelineName, XGMediaJobStatus? jobStatus = null,
             DateTime? begin = null, DateTime? end = null, string marker = null, int? maxSize = null)
         {
-            if (string.IsNullOrEmpty(pipelineName) || string.IsNullOrWhiteSpace(pipelineName))
-                throw new ArgumentNullException("pipelineName 不能为空");
+            AssertStringNotNullOrEmpty(pipelineName, nameof(pipelineName));
 
             XGMediaQueryPipelineThumbnailJobRequest request = new XGMediaQueryPipelineThumbnailJobRequest()
             {
@@ -2080,12 +1833,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryPipelineThumbnailJobResponse QueryPipelineThumbnailJob(XGMediaQueryPipelineThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, THUMBNAIL);
             iternalRequest.AddParameter("pipelineName", request.PipelineName);
@@ -2111,12 +1860,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryPipelineThumbnailJobResponse> QueryPipelineThumbnailJobAsync(XGMediaQueryPipelineThumbnailJobRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.PipelineName) || string.IsNullOrWhiteSpace(request.PipelineName))
-                throw new ArgumentNullException("PipelineName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PipelineName, nameof(request.PipelineName));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), JOB, THUMBNAIL);
             iternalRequest.AddParameter("pipelineName", request.PipelineName);
@@ -2158,10 +1903,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreateNotification(string name, string endpoint, XGMediaNotificationType? type=null, string token=null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (string.IsNullOrEmpty(endpoint) || string.IsNullOrWhiteSpace(endpoint))
-                throw new ArgumentNullException("endpoint 不能为空");
+            AssertStringNotNullOrEmpty(name,nameof(name));
+            AssertStringNotNullOrEmpty(endpoint,nameof(endpoint));
 
             XGMediaCreateNotificationRequest request = new XGMediaCreateNotificationRequest()
             {
@@ -2182,10 +1925,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreateNotificationAsync(string name, string endpoint, XGMediaNotificationType? type = null, string token = null)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
-            if (string.IsNullOrEmpty(endpoint) || string.IsNullOrWhiteSpace(endpoint))
-                throw new ArgumentNullException("endpoint 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringNotNullOrEmpty(endpoint, nameof(endpoint));
 
             XGMediaCreateNotificationRequest request = new XGMediaCreateNotificationRequest()
             {
@@ -2204,14 +1945,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse CreateNotification(XGMediaCreateNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (string.IsNullOrEmpty(request.Endpoint) || string.IsNullOrWhiteSpace(request.Endpoint))
-                throw new ArgumentNullException("Endpoint 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Endpoint, nameof(request.Endpoint));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), NOTIFICATION);
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -2226,14 +1962,9 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> CreateNotificationAsync(XGMediaCreateNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (string.IsNullOrEmpty(request.Endpoint) || string.IsNullOrWhiteSpace(request.Endpoint))
-                throw new ArgumentNullException("Endpoint 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Endpoint, nameof(request.Endpoint));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.MediaVersion.ToString(), NOTIFICATION);
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -2249,8 +1980,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryNotificationResponse QueryNotification(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name,nameof(name));
 
             XGMediaQueryNotificationRequest request = new XGMediaQueryNotificationRequest()
             {
@@ -2267,8 +1997,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryNotificationResponse> QueryNotificationAsync(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGMediaQueryNotificationRequest request = new XGMediaQueryNotificationRequest()
             {
@@ -2286,12 +2015,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaQueryNotificationResponse QueryNotification(XGMediaQueryNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), NOTIFICATION,request.Name.Trim());
             XGMediaQueryNotificationResponse response = InvokeHttpClient<XGMediaQueryNotificationResponse>(iternalRequest);
@@ -2307,12 +2032,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaQueryNotificationResponse> QueryNotificationAsync(XGMediaQueryNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.MediaVersion.ToString(), NOTIFICATION,request.Name.Trim());
             XGMediaQueryNotificationResponse response = await InvokeHttpClientAsync<XGMediaQueryNotificationResponse>(iternalRequest);
@@ -2328,8 +2049,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteNotification(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGMediaDeleteNotificationRequest request = new XGMediaDeleteNotificationRequest()
             {
@@ -2346,8 +2066,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteNotificationAsync(string name)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name 不能为空");
+            AssertStringNotNullOrEmpty(name, nameof(name));
 
             XGMediaDeleteNotificationRequest request = new XGMediaDeleteNotificationRequest()
             {
@@ -2365,12 +2084,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGMediaResponse DeleteNotification(XGMediaDeleteNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), NOTIFICATION, request.Name.Trim());
             XGMediaResponse response = InvokeHttpClient<XGMediaResponse>(iternalRequest);
@@ -2385,12 +2100,8 @@ namespace XGBceDotNetSDK.Services.MEDIA
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGMediaResponse> DeleteNotificationAsync(XGMediaDeleteNotificationRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
 
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.MediaVersion.ToString(), NOTIFICATION, request.Name.Trim());
             XGMediaResponse response = await InvokeHttpClientAsync<XGMediaResponse>(iternalRequest);
@@ -2439,6 +2150,7 @@ namespace XGBceDotNetSDK.Services.MEDIA
             {
                 Credentials = bceRequest.Credentials
             };
+            iternalRequest.AddMoreHeader(XGBceHeaders.USER_AGENT, config.UserAgent);
             if (httpMethod == BceHttpMethod.POST || httpMethod == BceHttpMethod.PUT)
                 FillRequestPayload(iternalRequest, bceRequest);
             return iternalRequest;
@@ -2462,6 +2174,79 @@ namespace XGBceDotNetSDK.Services.MEDIA
             iternalRequest.AddMoreHeader(XGBceHeaders.BCE_DATE, HttpUtil.FormatUTCTime(DateTime.Now));
             return iternalRequest;
         }
+        #endregion
+
+        #region
+
+        private static void AssertNotNullOrEmpty(object param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param == null)
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        private static void AssertStringNotNullOrEmpty(string param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+
+            if (string.IsNullOrEmpty(param) || string.IsNullOrWhiteSpace(param))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        private static void AssertDicNotNullOrEmpty(IDictionary param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param == null || param.Count < 1)
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        private static void AssertStringArrayNotNullOrEmpty(string[] param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (!(param != null && param.Length > 0))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
+        private static void AssertStringListNotNullOrEmpty(List<string> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param != null && param.Count > 0)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                nameofParam = nameof(param);
+            errorMessage = nameofParam + errorMessage;
+            param.ForEach((s) => { if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException(nameof(param), errorMessage); });
+            throw new ArgumentNullException(nameof(param), errorMessage);
+        }
+
+        private static void AssertIntListNotNullOrEmpty(List<int> param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (!(param != null && param.Count > 0))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameof(param), errorMessage);
+            }
+        }
+
         #endregion
     }
 }

@@ -46,7 +46,7 @@ namespace XGBceDotNetSDK.BaseClass
             client = new XGBceHttpClient(configuration, new XGBceSignerV1());
         }
 
-        protected async Task<T> InvokeHttpClientAsync<T>(XGBceIternalRequest request) where T : XGAbstractBceResponse, new()
+        protected async Task<T> InvokeHttpClientAsync<T>(XGBceIternalRequest request, IXGHttpResponseHandler[] httpResponseHandlers=null) where T : XGAbstractBceResponse, new()
         {
             if (request.Content != null)
             {
@@ -58,10 +58,10 @@ namespace XGBceDotNetSDK.BaseClass
                     };
                 }
             }
-            return await client.SendAsyny<T>(request);
+            return await client.SendAsyny<T>(request, httpResponseHandlers);
         }
 
-        protected T InvokeHttpClient<T>(XGBceIternalRequest request)where T:XGAbstractBceResponse,new ()
+        protected T InvokeHttpClient<T>(XGBceIternalRequest request, IXGHttpResponseHandler[] httpResponseHandlers = null) where T:XGAbstractBceResponse,new ()
         {
             if (request.Content != null)
             {
@@ -73,7 +73,7 @@ namespace XGBceDotNetSDK.BaseClass
                     };
                 }
             }
-            return client.Send<T>(request);
+            return client.Send<T>(request, httpResponseHandlers);
         }
 
         public string ComputeServiceId()

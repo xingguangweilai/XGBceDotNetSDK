@@ -9,7 +9,7 @@ namespace XGBceDotNetSDK.Services.VCA.Model
     public class XGQuerySubTaskRequest: XGAbstractVcaRequest
     {
         private string source;
-        private XGVcaSubTaskType subTaskType;
+        private XGVcaSubTaskType? subTaskType;
         private string version;
 
         public XGQuerySubTaskRequest()
@@ -27,7 +27,7 @@ namespace XGBceDotNetSDK.Services.VCA.Model
         /// 必需
         /// </summary>
         [JsonIgnore]
-        public XGVcaSubTaskType SubTaskType { get => subTaskType; set => subTaskType = value; }
+        public XGVcaSubTaskType? SubTaskType { get => subTaskType; set => subTaskType = value; }
         /// <summary>
         /// 中间任务版本，不填时基于默认版本查询
         /// 非必需

@@ -29,9 +29,9 @@ namespace XGBceDotNetSDK.BaseClass
         private XGBceCredentials credentials=null;
         private bool redirectsEnabled = true;
 
-        private static readonly string DEFAULT_USER_AGENT= @"XGBceDotNet_" + SDKVERSION + "; " + Environment.OSVersion.ToString() + "; " + RuntimeInformation.OSArchitecture.ToString();
-
         private static readonly string SDKVERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+        private static readonly string DEFAULT_USER_AGENT= @"XGBceDotNet_" + SDKVERSION + "; " + Environment.OSVersion.ToString() + "; " + RuntimeInformation.OSArchitecture.ToString()+"; "+ RuntimeInformation.FrameworkDescription;
 
 
         /// <summary>

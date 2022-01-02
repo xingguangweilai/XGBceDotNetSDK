@@ -150,7 +150,7 @@
             XGBceHttpClient
             </summary>
         </member>
-        <member name="M:XGBceDotNetSDK.BaseClass.XGBceHttpClient.SendAsyny``1(XGBceDotNetSDK.BaseClass.XGBceIternalRequest)">
+        <member name="M:XGBceDotNetSDK.BaseClass.XGBceHttpClient.SendAsyny``1(XGBceDotNetSDK.BaseClass.XGBceIternalRequest,XGBceDotNetSDK.Http.Handler.IXGHttpResponseHandler[])">
             <summary>
             发送异步请求
             </summary>
@@ -159,7 +159,7 @@
             <param name="responseHandlers"></param>
             <returns></returns>
         </member>
-        <member name="M:XGBceDotNetSDK.BaseClass.XGBceHttpClient.Send``1(XGBceDotNetSDK.BaseClass.XGBceIternalRequest)">
+        <member name="M:XGBceDotNetSDK.BaseClass.XGBceHttpClient.Send``1(XGBceDotNetSDK.BaseClass.XGBceIternalRequest,XGBceDotNetSDK.Http.Handler.IXGHttpResponseHandler[])">
             <summary>
             发送同步请求
             </summary>
@@ -437,9 +437,37 @@
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
+        <member name="T:XGBceDotNetSDK.Http.Handler.XGBceLssListResponseHandler">
+            <summary>
+            处理音视频直播LSS响应的JSON数组
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Http.Handler.XGBceLssListResponseHandler.Handler``1(XGBceDotNetSDK.Http.XGBceHttpResponse,``0@)">
+            <summary>
+            处理响应结果
+            </summary>
+            <param name="bceHttpResponse"></param>
+            <param name="bceResponse"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="M:XGBceDotNetSDK.Http.Handler.XGBceMetadataResponseHandler.Handler``1(XGBceDotNetSDK.Http.XGBceHttpResponse,``0@)">
             <summary>
             转换
+            </summary>
+            <param name="bceHttpResponse"></param>
+            <param name="bceResponse"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:XGBceDotNetSDK.Http.Handler.XGBceYuqingResponseHandler">
+            <summary>
+            处理舆情服务API的奇葩应答包
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Http.Handler.XGBceYuqingResponseHandler.Handler``1(XGBceDotNetSDK.Http.XGBceHttpResponse,``0@)">
+            <summary>
+            处理响应结果
             </summary>
             <param name="bceHttpResponse"></param>
             <param name="bceResponse"></param>
@@ -1754,6 +1782,1603 @@
             </summary>
             <param name="request">XGIoTCoreDeleteDeviceRequest</param>
             <returns>异步任务XGIoTCoreResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGAbstractLssRequest">
+            <summary>
+            音视频直播抽象请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGAbstractLssRequest.LssVersion">
+            <summary>
+            音视频直播API版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssAddStreamMetaDataRequest">
+            <summary>
+            添加metadata信息请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssAddStreamMetaDataRequest.Metadata">
+            <summary>
+            活跃流的信息
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssBaseRequest">
+            <summary>
+            音视频直播基础请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.SessionId">
+            <summary>
+            流的唯一ID
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.SourceIP">
+            <summary>
+            返回将直播流推向媒体中心CDN的对应IP
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.PublishIP">
+            <summary>
+            推流端IP地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.Score">
+            <summary>
+            推流拉流质量评分
+            <para>[0,100]，100表示质量最好，0 表示质量最差</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.CaptureTime">
+            <summary>
+            直播源信息采时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.InputBitRateInBps">
+            <summary>
+            实时输入总码率,包括视频/音频/数据
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.Video">
+            <summary>
+            视频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.Audio">
+            <summary>
+            音频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.PlayDomain">
+            <summary>
+            播放域名
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.App">
+            <summary>
+            app名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainStreamSourceInfo.Stream">
+            <summary>
+            stream名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainListStreamsSourceInfoResponse">
+            <summary>
+            查询域名下实时直播源信息响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssDomainListStreamsSourceInfoResponse.SourceInfoList">
+            <summary>
+            直播源信息列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum">
+            <summary>
+            音视频直播枚举
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssVersion">
+            <summary>
+            音视频直播API版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus">
+            <summary>
+            直播状态
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus.READY">
+            <summary>
+            已就绪
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus.ONGOING">
+            <summary>
+            直播中
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus.PAUSED">
+            <summary>
+            已暂停
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamingStatus">
+            <summary>
+            直播流状态
+            <para>streaming，no_resource为ongoing的子状态，会因为网络等因素导致直播不稳定而切换状态</para>
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamingStatus.STREAMING">
+            <summary>
+            有输入流
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamingStatus.NO_SOURCE">
+            <summary>
+            无输入流
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamingStatus.FAILED">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsRequest">
+            <summary>
+            查询所有App请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsRequest.PlayDomain">
+            <summary>
+            直播域名
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsResponse">
+            <summary>
+            查询所有App响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsResponse.AppList">
+            <summary>
+            App列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsRequest">
+            <summary>
+            查询活跃的Stream请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsRequest.PlayDomain">
+            <summary>
+            直播域名
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamingInfo.SessionId">
+            <summary>
+            直播流对应的会话ID
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamingInfo.App">
+            <summary>
+            app信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamingInfo.PlayDomain">
+            <summary>
+            直播播放域名
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamingInfo.Stream">
+            <summary>
+            推流stream
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamingInfo.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsResponse">
+            <summary>
+            查询活跃的Stream响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsResponse.Streams">
+            <summary>
+            活跃流的信息
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest">
+            <summary>
+            查询所有Stream请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest.PlayDomain">
+            <summary>
+            直播域名
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest.Status">
+            <summary>
+            Stream状态
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest.Marker">
+            <summary>
+            本次请求的marker
+            <para>标记查询的起始位置</para>
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest.MaxSize">
+            <summary>
+            本次请求的Stream数目
+            <para>不超过200。默认值：200</para>
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamError">
+            <summary>
+            直播流错误信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamError.Code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamError.Message">
+            <summary>
+            错误详情
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo">
+            <summary>
+            直播源信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.Region">
+            <summary>
+            流所属区域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.PushStream">
+            <summary>
+            推流Stream
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.PushUrl">
+            <summary>
+            推流url，仅对推流有效
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.PullUrl">
+            <summary>
+            拉流url，仅对拉流有效
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.Image">
+            <summary>
+            图片水印模版名称列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPublishInfo.Timestamp">
+            <summary>
+            时间戳水印模版名称
+            <para>单模版支持创建一个时间戳水印</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo">
+            <summary>
+            直播流详情
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.SessionId">
+            <summary>
+            直播流对应的会话ID
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.App">
+            <summary>
+            app信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.PlayDomain">
+            <summary>
+            直播播放域名
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.Description">
+            <summary>
+            流描述
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.Publish">
+            <summary>
+            直播源信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.Status">
+            <summary>
+            直播状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.StreamingStatus">
+            <summary>
+            直播流状态
+            <para>仅当status=ONGOING时存在</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.CreateTime">
+            <summary>
+            流创建时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.SecurityPolicy">
+            <summary>
+            安全策略
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamInfo.Audit">
+            <summary>
+            内容审核名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsResponse">
+            <summary>
+            查询所有Stream响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsResponse.Marker">
+            <summary>
+            本次请求的marker
+            <para>标记查询的起始位置</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsResponse.IsTruncated">
+            <summary>
+            数据是否截断
+            <para>True表示后面还有数据，False表示已经是最后一页</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsResponse.NextMarker">
+            <summary>
+            获取下一页所需要传递的marker值
+            <para>仅当"isTruncated": true时有效</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsResponse.Streams">
+            <summary>
+            流列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryPushUrlParamsResponse">
+            <summary>
+            查看实时流推流url参数响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryPushUrlParamsResponse.LssParams">
+            <summary>
+            推流参数列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls">
+            <summary>
+            多码率下flv直播播放地址列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls.L0">
+            <summary>
+            L0模式flv直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls.L1">
+            <summary>
+            L1模式flv直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls.L2">
+            <summary>
+            L2模式flv直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls.L3">
+            <summary>
+            L3模式flv直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayFlvUrls.L4">
+            <summary>
+            L4模式flv直播播放地址
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls">
+            <summary>
+            多码率下hls直播播放地址列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls.L0">
+            <summary>
+            L0模式rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls.L1">
+            <summary>
+            L1模式rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls.L2">
+            <summary>
+            L2模式rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls.L3">
+            <summary>
+            L3模式rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayRtmpUrls.L4">
+            <summary>
+            L4模式rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls">
+            <summary>
+            多码率下hls直播播放地址列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls.L0">
+            <summary>
+            L0模式hls直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls.L1">
+            <summary>
+            L1模式hls直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls.L2">
+            <summary>
+            L2模式hls直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls.L3">
+            <summary>
+            L3模式hls直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayHlsUrls.L4">
+            <summary>
+            L4模式hls直播播放地址
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo">
+            <summary>
+            直播播放信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.HlsUrl">
+            <summary>
+            hls直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.RtmpUrl">
+            <summary>
+            rtmp直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.FlvUrl">
+            <summary>
+            flv直播播放地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.HlsUrls">
+            <summary>
+            多码率下hls直播播放地址列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.RtmpUrls">
+            <summary>
+            多码率下rtmp直播播放地址列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamPlayInfo.FlvUrls">
+            <summary>
+            多码率下flv直播播放地址列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets">
+            <summary>
+            多码率下转码模板列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets.L0">
+            <summary>
+            L0模式下使用的转码模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets.L1">
+            <summary>
+            L1模式下使用的转码模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets.L2">
+            <summary>
+            L2模式下使用的转码模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets.L3">
+            <summary>
+            L3模式下使用的转码模板名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssTranscodingPresets.L4">
+            <summary>
+            L4模式下使用的转码模板名称
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermark">
+            <summary>
+            水印模版
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermark.Image">
+            <summary>
+            图片水印模版名称列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermark.Timestamp">
+            <summary>
+            时间戳水印模版名称，单模版支持创建一个时间戳水印
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamStatistics">
+            <summary>
+            即时流统计信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamStatistics.BandwidthInBps">
+            <summary>
+            当前流的占用带宽(bps)
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamStatistics.PlayCount">
+            <summary>
+            当前流的播放人数
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse">
+            <summary>
+            查询特定Stream请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.SessionId">
+            <summary>
+            直播流对应的会话ID
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.App">
+            <summary>
+            app信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.PlayDomain">
+            <summary>
+            直播播放域名
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Description">
+            <summary>
+            流描述
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Publish">
+            <summary>
+            直播源信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Status">
+            <summary>
+            直播状态
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.StreamingStatus">
+            <summary>
+            直播流状态
+            <para>仅当status=ONGOING时存在</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.CreateTime">
+            <summary>
+            流创建时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.SecurityPolicy">
+            <summary>
+            安全策略
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Preset">
+            <summary>
+            转码模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Presets">
+            <summary>
+            多码率下转码模板列表
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Recording">
+            <summary>
+            录制模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Thumbnail">
+            <summary>
+            缩略图模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Watermarks">
+            <summary>
+            水印模版
+            <para>包括图片水印模版和时间戳水印模版，每个流不能超过五个水印模版</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Notification">
+            <summary>
+            通知
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Audit">
+            <summary>
+            内容审核名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Scene">
+            <summary>
+            直播场景名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Statistics">
+            <summary>
+            即时流统计信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamResponse.Play">
+            <summary>
+            直播播放信息
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo">
+            <summary>
+            音频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo.Codec">
+            <summary>
+            音频codec，NA表示无音频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo.Profile">
+            <summary>
+            音频profile， NA表示无音频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo.SampleRateInHz">
+            <summary>
+            音频采样率，0表示无音频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo.Channels">
+            <summary>
+            音频声道数，0表示无音频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamAudioInfo.BitRateInBps">
+            <summary>
+            音频实时码率
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo">
+            <summary>
+            视频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.Codec">
+            <summary>
+            视频codec，NA表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.Profile">
+            <summary>
+            视频profile，NA表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.Level">
+            <summary>
+            视频level，NA表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.WidthInPixel">
+            <summary>
+            视频宽度，0表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.HeightInPixel">
+            <summary>
+            视频高度，0表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.FrameRate">
+            <summary>
+            视频标称帧率，0表示无视频或未识别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.BitRateInBps">
+            <summary>
+            视频实时码率
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamVideoInfo.RealFPS">
+            <summary>
+            视频实时帧率
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse">
+            <summary>
+            查询实时直播源信息响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.SessionId">
+            <summary>
+            流的唯一ID
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.SourceIP">
+            <summary>
+            返回将直播流推向媒体中心CDN的对应IP
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.PublishIP">
+            <summary>
+            推流端IP地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.Score">
+            <summary>
+            推流拉流质量评分
+            <para>[0,100]，100表示质量最好，0 表示质量最差</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.CaptureTime">
+            <summary>
+            直播源信息采时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.InputBitRateInBps">
+            <summary>
+            实时输入总码率,包括视频/音频/数据
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.Video">
+            <summary>
+            视频信息
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssQueryStreamSourceInfoResponse.Audio">
+            <summary>
+            音频信息
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssResponse">
+            <summary>
+            音视频直播响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest">
+            <summary>
+            通用Stream请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest.PlayDomain">
+            <summary>
+            播放域名
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest.App">
+            <summary>
+            App
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest.Stream">
+            <summary>
+            流名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamDestinationPushUrlRequest">
+            <summary>
+            更新stream目标推流地址
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamDestinationPushUrlRequest.DestinationPushUrl">
+            <summary>
+            目标推流地址
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamRecordingRequest">
+            <summary>
+            更新Stream录制模版请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamRecordingRequest.Recording">
+            <summary>
+            更新录制模板
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamTranscodingPresets">
+            <summary>
+            更新转码模板
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamTranscodingPresets.L1">
+            <summary>
+            L1线路下使用的转码模板名称
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamTranscodingPresets.L2">
+            <summary>
+            L2线路下使用的转码模板名称
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamTranscodingPresets.L3">
+            <summary>
+            L3线路下使用的转码模板名称
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamTranscodingPresets.L4">
+            <summary>
+            L4线路下使用的转码模板名称
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamTranscodingRequest">
+            <summary>
+            更新stream转码模版请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamTranscodingRequest.Presets">
+            <summary>
+            L4线路下使用的转码模板名称
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermarks">
+            <summary>
+            水印模版配置
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermarks.Image">
+            <summary>
+            图片水印模版名称列表
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamWatermarks.Timestamp">
+            <summary>
+            时间戳水印模版名称列表
+            <para>可选</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamUpdateWatermarksRequest">
+            <summary>
+            更新Stream水印模版请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.LSS.Model.XGLssStreamUpdateWatermarksRequest.Watermarks">
+            <summary>
+            更新的水印模版配置
+            <para>必需</para>
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.LSS.XGLssClient">
+            <summary>
+            音视频直播LSS 客户端类
+            <para>LSS 的服务域名是 lss.bj.baidubce.com</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/9jwvyyxfh </para>
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.LSS.XGLssClient.LSS_HANDLERS">
+            <summary>
+            为适配奇葩应答包体而生
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreams(System.String,System.Nullable{XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询所有Stream
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89stream </para>
+            </summary>
+            <param name="playDomain">直播域名</param>
+            <param name="status">Stream状态</param>
+            <param name="marker">本次请求的marker</param>
+            <param name="maxSize">本次请求的Stream数目</param>
+            <returns>XGLssListStreamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamsAsync(System.String,System.Nullable{XGBceDotNetSDK.Services.LSS.Model.XGLssEnum.XGLssStreamStatus},System.String,System.Nullable{System.Int32})">
+            <summary>
+            查询所有Stream
+            </summary>
+            <param name="playDomain">直播域名</param>
+            <param name="status">Stream状态</param>
+            <param name="marker">本次请求的marker</param>
+            <param name="maxSize">本次请求的Stream数目</param>
+            <returns>异步任务XGLssListStreamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreams(XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest)">
+            <summary>
+            查询所有Stream
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89stream </para>
+            </summary>
+            <param name="request">XGLssListStreamsRequest</param>
+            <returns>XGLssListStreamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamsAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamsRequest)">
+            <summary>
+            查询所有Stream
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89stream </para>
+            </summary>
+            <param name="request">XGLssListStreamsRequest</param>
+            <returns>异步任务XGLssListStreamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListApps(System.String)">
+            <summary>
+            查询所有App
+            <para>查询特定Domain下所有App（不包括默认App）</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89app </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <returns>XGLssListAppsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListAppsAsync(System.String)">
+            <summary>
+            查询所有App
+            <para>查询特定Domain下所有App（不包括默认App）</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <returns>异步任务XGLssListAppsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListApps(XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsRequest)">
+            <summary>
+            查询所有App
+            <para>查询特定Domain下所有App（不包括默认App）</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89app </para>
+            </summary>
+            <param name="request">XGLssListAppsRequest</param>
+            <returns>XGLssListAppsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListAppsAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssListAppsRequest)">
+            <summary>
+            查询所有App
+            <para>查询特定Domain下所有App（不包括默认App）</para>
+            </summary>
+            <param name="request">XGLssListAppsRequest</param>
+            <returns>异步任务XGLssListAppsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStream(System.String,System.String,System.String)">
+            <summary>
+            查询特定Stream
+            <para>查询特定Domain下的特定Stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流ID</param>
+            <returns>XGLssQueryStreamResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamAsync(System.String,System.String,System.String)">
+            <summary>
+            查询特定Stream
+            <para>查询特定Domain下的特定Stream</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流ID</param>
+            <returns>异步任务XGLssQueryStreamResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStream(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查询特定Stream
+            <para>查询特定Domain下的特定Stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="request">XGLssQueryStreamRequest</param>
+            <returns>XGLssQueryStreamResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查询特定Stream
+            <para>查询特定Domain下的特定Stream</para>
+            </summary>
+            <param name="request">XGLssQueryStreamRequest</param>
+            <returns>异步任务XGLssQueryStreamResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamings(System.String)">
+            <summary>
+            查询活跃的Stream
+            <para>查询指定的播放domain下所有推流中的Stream（活跃Stream）</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%B4%BB%E8%B7%83%E7%9A%84stream </para>
+            </summary>
+            <param name="playDomain">查询的域名</param>
+            <returns>XGLssListStreamingsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamingsAsync(System.String)">
+            <summary>
+            查询活跃的Stream
+            <para>查询指定的播放domain下所有推流中的Stream（活跃Stream）</para>
+            </summary>
+            <param name="playDomain">查询的域名</param>
+            <returns>异步任务XGLssListStreamingsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamings(XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsRequest)">
+            <summary>
+            查询活跃的Stream
+            <para>查询指定的播放domain下所有推流中的Stream（活跃Stream）</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E8%AF%A2%E6%B4%BB%E8%B7%83%E7%9A%84stream </para>
+            </summary>
+            <param name="request">XGLssListStreamingsRequest</param>
+            <returns>XGLssListStreamingsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamingsAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssListStreamingsRequest)">
+            <summary>
+            查询活跃的Stream
+            <para>查询指定的播放domain下所有推流中的Stream（活跃Stream）</para>
+            </summary>
+            <param name="request">XGLssListStreamingsRequest</param>
+            <returns>异步任务XGLssListStreamingsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.PauseStream(System.String,System.String,System.String)">
+            <summary>
+            封禁特定Stream
+            <para>封禁播放domain下特定播放stream时，将直接封禁该条直播流，无法推流和播放</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%B0%81%E7%A6%81%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.PauseStreamAsync(System.String,System.String,System.String)">
+            <summary>
+            封禁特定Stream
+            <para>封禁播放domain下特定播放stream时，将直接封禁该条直播流，无法推流和播放</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.PauseStream(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            封禁特定Stream
+            <para>封禁播放domain下特定播放stream时，将直接封禁该条直播流，无法推流和播放</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%B0%81%E7%A6%81%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.PauseStreamAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            封禁特定Stream
+            <para>封禁播放domain下特定播放stream时，将直接封禁该条直播流，无法推流和播放</para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResumeStream(System.String,System.String,System.String)">
+            <summary>
+            解禁特定Stream
+            <para>解禁特定Domain下的特定Stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E8%A7%A3%E7%A6%81%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResumeStreamAsync(System.String,System.String,System.String)">
+            <summary>
+            解禁特定Stream
+            <para>解禁特定Domain下的特定Stream</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResumeStream(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            解禁特定Stream
+            <para>解禁特定Domain下的特定Stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E8%A7%A3%E7%A6%81%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResumeStreamAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            解禁特定Stream
+            <para>解禁特定Domain下的特定Stream</para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.DeleteStream(System.String,System.String,System.String)">
+            <summary>
+            删除特定Stream
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.DeleteStreamAsync(System.String,System.String,System.String)">
+            <summary>
+            删除特定Stream
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.DeleteStream(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            删除特定Stream
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.DeleteStreamAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            删除特定Stream
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResetStream(System.String,System.String,System.String)">
+            <summary>
+            重置特定stream
+            <para>中断当前直播流，并保证下次可以再次推流成功</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E9%87%8D%E7%BD%AE%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResetStreamAsync(System.String,System.String,System.String)">
+            <summary>
+            重置特定stream
+            <para>中断当前直播流，并保证下次可以再次推流成功</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResetStream(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            重置特定stream
+            <para>中断当前直播流，并保证下次可以再次推流成功</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E9%87%8D%E7%BD%AE%E7%89%B9%E5%AE%9Astream </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ResetStreamAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            重置特定stream
+            <para>中断当前直播流，并保证下次可以再次推流成功</para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.AddStreamMetaData(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            添加metadata信息
+            <para>为某个直播中的流添加metadata信息，本接口仅对streamingStatus=STREAMING的stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%B7%BB%E5%8A%A0metadata%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="metadata"></param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.AddStreamMetaDataAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            添加metadata信息
+            <para>为某个直播中的流添加metadata信息，本接口仅对streamingStatus=STREAMING的stream</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="metadata"></param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.AddStreamMetaData(XGBceDotNetSDK.Services.LSS.Model.XGLssAddStreamMetaDataRequest)">
+            <summary>
+            添加metadata信息
+            <para>为某个直播中的流添加metadata信息，本接口仅对streamingStatus=STREAMING的stream</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%B7%BB%E5%8A%A0metadata%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="request">XGLssAddStreamMetaDataRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.AddStreamMetaDataAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssAddStreamMetaDataRequest)">
+            <summary>
+            添加metadata信息
+            <para>为某个直播中的流添加metadata信息，本接口仅对streamingStatus=STREAMING的stream</para>
+            </summary>
+            <param name="request">XGLssAddStreamMetaDataRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.StreamUpdateWatermarks(System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            更新Stream水印模版
+            <para>更新Stream水印模版的配置</para>
+            <para>默认继承域名下配置的水印模板，也可以通过本接口，对某个Stream单独设置水印模板。</para>
+            <para>如果watermarks为空，则更新结果为null，继承域名下的水印模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E6%B0%B4%E5%8D%B0%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="image">图片水印模版名称列表</param>
+            <param name="timestamp">时间戳水印模版名称列表</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.StreamUpdateWatermarksAsync(System.String,System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            更新Stream水印模版
+            <para>更新Stream水印模版的配置</para>
+            <para>默认继承域名下配置的水印模板，也可以通过本接口，对某个Stream单独设置水印模板。</para>
+            <para>如果watermarks为空，则更新结果为null，继承域名下的水印模板配置。</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="image">图片水印模版名称列表</param>
+            <param name="timestamp">时间戳水印模版名称列表</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.StreamUpdateWatermarks(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamUpdateWatermarksRequest)">
+            <summary>
+            更新Stream水印模版
+            <para>更新Stream水印模版的配置</para>
+            <para>默认继承域名下配置的水印模板，也可以通过本接口，对某个Stream单独设置水印模板。</para>
+            <para>如果watermarks为空，则更新结果为null，继承域名下的水印模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E6%B0%B4%E5%8D%B0%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="request">XGLssStreamUpdateWatermarksRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.StreamUpdateWatermarksAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamUpdateWatermarksRequest)">
+            <summary>
+            更新Stream水印模版
+            <para>更新Stream水印模版的配置</para>
+            <para>默认继承域名下配置的水印模板，也可以通过本接口，对某个Stream单独设置水印模板。</para>
+            <para>如果watermarks为空，则更新结果为null，继承域名下的水印模板配置。</para>
+            </summary>
+            <param name="request">XGLssStreamUpdateWatermarksRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamRecording(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新Stream录制模版
+            <para>更新Stream录制模版的配置</para>
+            <para>默认继承域名下配置的录制模版，也可以通过本接口，对某个Stream单独设置录制模板。</para>
+            <para>如果本接口recording为空，则更新结果为null，继承域名下的录制模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E5%BD%95%E5%88%B6%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="recording">更新录制模板</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamRecordingAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新Stream录制模版
+            <para>更新Stream录制模版的配置</para>
+            <para>默认继承域名下配置的录制模版，也可以通过本接口，对某个Stream单独设置录制模板。</para>
+            <para>如果本接口recording为空，则更新结果为null，继承域名下的录制模板配置。</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="recording">更新录制模板</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamRecording(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamRecordingRequest)">
+            <summary>
+            更新Stream录制模版
+            <para>更新Stream录制模版的配置</para>
+            <para>默认继承域名下配置的录制模版，也可以通过本接口，对某个Stream单独设置录制模板。</para>
+            <para>如果本接口recording为空，则更新结果为null，继承域名下的录制模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E5%BD%95%E5%88%B6%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="request">XGLssUpdateStreamRecordingRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamRecordingAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamRecordingRequest)">
+            <summary>
+            更新Stream录制模版
+            <para>更新Stream录制模版的配置</para>
+            <para>默认继承域名下配置的录制模版，也可以通过本接口，对某个Stream单独设置录制模板。</para>
+            <para>如果本接口recording为空，则更新结果为null，继承域名下的录制模板配置。</para>
+            </summary>
+            <param name="request">XGLssUpdateStreamRecordingRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamTranscoding(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            更新stream转码模版
+            <para>更新stream转码模版的配置</para>
+            <para>默认继承域名下配置的转码模版，也可以通过本接口，对某个Stream单独设置转码模板。</para>
+            <para>如果本接口presets为空，则更新结果为null，继承域名下的转码模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E8%BD%AC%E7%A0%81%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="l1">L1线路下使用的转码模板名称</param>
+            <param name="l2">L2线路下使用的转码模板名称</param>
+            <param name="l3">L3线路下使用的转码模板名称</param>
+            <param name="l4">L4线路下使用的转码模板名称</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamTranscodingAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            更新stream转码模版
+            <para>更新stream转码模版的配置</para>
+            <para>默认继承域名下配置的转码模版，也可以通过本接口，对某个Stream单独设置转码模板。</para>
+            <para>如果本接口presets为空，则更新结果为null，继承域名下的转码模板配置。</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="l1">L1线路下使用的转码模板名称</param>
+            <param name="l2">L2线路下使用的转码模板名称</param>
+            <param name="l3">L3线路下使用的转码模板名称</param>
+            <param name="l4">L4线路下使用的转码模板名称</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamTranscoding(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamTranscodingRequest)">
+            <summary>
+            更新stream转码模版
+            <para>更新stream转码模版的配置</para>
+            <para>默认继承域名下配置的转码模版，也可以通过本接口，对某个Stream单独设置转码模板。</para>
+            <para>如果本接口presets为空，则更新结果为null，继承域名下的转码模板配置。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E8%BD%AC%E7%A0%81%E6%A8%A1%E7%89%88 </para>
+            </summary>
+            <param name="request">XGLssUpdateStreamTranscodingRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamTranscodingAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamTranscodingRequest)">
+            <summary>
+            更新stream转码模版
+            <para>更新stream转码模版的配置</para>
+            <para>默认继承域名下配置的转码模版，也可以通过本接口，对某个Stream单独设置转码模板。</para>
+            <para>如果本接口presets为空，则更新结果为null，继承域名下的转码模板配置。</para>
+            </summary>
+            <param name="request">XGLssUpdateStreamTranscodingRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamDestinationPushUrl(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新stream目标推流地址
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E7%9B%AE%E6%A0%87%E6%8E%A8%E6%B5%81%E5%9C%B0%E5%9D%80 </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="destinationPushUrl">目标推流地址</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamDestinationPushUrlAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            更新stream目标推流地址
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <param name="destinationPushUrl">目标推流地址</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamDestinationPushUrl(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamDestinationPushUrlRequest)">
+            <summary>
+            更新stream目标推流地址
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9B%B4%E6%96%B0stream%E7%9B%AE%E6%A0%87%E6%8E%A8%E6%B5%81%E5%9C%B0%E5%9D%80 </para>
+            </summary>
+            <param name="request">XGLssUpdateStreamDestinationPushUrlRequest</param>
+            <returns>XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.UpdateStreamDestinationPushUrlAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssUpdateStreamDestinationPushUrlRequest)">
+            <summary>
+            更新stream目标推流地址
+            </summary>
+            <param name="request">XGLssUpdateStreamDestinationPushUrlRequest</param>
+            <returns>异步任务XGLssResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamSourceInfo(System.String,System.String,System.String)">
+            <summary>
+            查询实时直播源信息
+            <para>查询某条正在直播推流的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%AE%9E%E6%97%B6%E7%9B%B4%E6%92%AD%E6%BA%90%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssQueryStreamSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamSourceInfoAsync(System.String,System.String,System.String)">
+            <summary>
+            查询实时直播源信息
+            <para>查询某条正在直播推流的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>异步任务XGLssQueryStreamSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamSourceInfo(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查询实时直播源信息
+            <para>查询某条正在直播推流的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%AE%9E%E6%97%B6%E7%9B%B4%E6%92%AD%E6%BA%90%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssQueryStreamSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryStreamSourceInfoAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查询实时直播源信息
+            <para>查询某条正在直播推流的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效</para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssQueryStreamSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamsSourceInfo(System.String)">
+            <summary>
+            查询域名下实时直播源信息
+            <para>查询域名下所有正在直播推流过程的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效。</para>
+            <para>https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E5%9F%9F%E5%90%8D%E4%B8%8B%E5%AE%9E%E6%97%B6%E7%9B%B4%E6%92%AD%E6%BA%90%E4%BF%A1%E6%81%AF </para>
+            </summary>
+            <param name="domain">域名</param>
+            <returns>XGLssDomainListStreamsSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.ListStreamsSourceInfoAsync(System.String)">
+            <summary>
+            查询域名下实时直播源信息
+            <para>查询域名下所有正在直播推流过程的直播源详细信息，本接口仅对streamingStatus=STREAMING的stream有效。</para>
+            </summary>
+            <param name="domain">域名</param>
+            <returns>异步任务XGLssDomainListStreamsSourceInfoResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryPushUrlParams(System.String,System.String,System.String)">
+            <summary>
+            查看实时流推流url参数
+            <para>查询某条正在直播推流的推流url参数信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E7%9C%8B%E5%AE%9E%E6%97%B6%E6%B5%81%E6%8E%A8%E6%B5%81url%E5%8F%82%E6%95%B0 </para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>XGLssQueryPushUrlParamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryPushUrlParamsAsync(System.String,System.String,System.String)">
+            <summary>
+            查看实时流推流url参数
+            <para>查询某条正在直播推流的推流url参数信息</para>
+            </summary>
+            <param name="playDomain">播放域名</param>
+            <param name="app">App</param>
+            <param name="stream">流名称</param>
+            <returns>异步任务XGLssQueryPushUrlParamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryPushUrlParams(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查看实时流推流url参数
+            <para>查询某条正在直播推流的推流url参数信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/LSS/s/ejwvyywbt#%E6%9F%A5%E7%9C%8B%E5%AE%9E%E6%97%B6%E6%B5%81%E6%8E%A8%E6%B5%81url%E5%8F%82%E6%95%B0 </para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>XGLssQueryPushUrlParamsResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.LSS.XGLssClient.QueryPushUrlParamsAsync(XGBceDotNetSDK.Services.LSS.Model.XGLssStreamRequest)">
+            <summary>
+            查看实时流推流url参数
+            <para>查询某条正在直播推流的推流url参数信息</para>
+            </summary>
+            <param name="request">XGLssStreamRequest</param>
+            <returns>异步任务XGLssQueryPushUrlParamsResponse</returns>
             <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
         </member>
         <member name="T:XGBceDotNetSDK.Services.MEDIA.Model.XGAbstractMediaRequest">
@@ -11289,6 +12914,686 @@
             </summary>
             <param name="request">XGVcrQueryImageLibImagesRequest</param>
             <returns>异步任务XGVcrQueryImageLibImagesResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGAbstractYuqingRequest">
+            <summary>
+            舆情服务抽象请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGAbstractYuqingRequest.YuqingVersion">
+            <summary>
+            舆情服务API版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest">
+            <summary>
+            添加自定义监测任务请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.FilterKeywords">
+            <summary>
+            任务排除词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.GeoIds">
+            <summary>
+            任务监测地域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.Name">
+            <summary>
+            监测任务名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.OptionalKeywords">
+            <summary>
+            任务搭配词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.RequiredKeywords">
+            <summary>
+            任务主监控词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest.TaskType">
+            <summary>
+            监测方案类别
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskResponse">
+            <summary>
+            添加自定义监测任务响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingBaseRequest">
+            <summary>
+            舆情服务通用请求类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingDeleteTaskRequest">
+            <summary>
+            删除自定义监测任务
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingDeleteTaskRequest.TaskId">
+            <summary>
+            任务ID
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingDeleteTaskResponse">
+            <summary>
+            删除自定义监测任务响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingEnum">
+            <summary>
+            舆情服务枚举类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingVersion">
+            <summary>
+            舆情服务API版本
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType">
+            <summary>
+            舆情媒体分类
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.APP_MEDIA">
+            <summary>
+            APP新闻
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.BBS_MEDIA">
+            <summary>
+            论坛
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.NEWS_MEDIA">
+            <summary>
+            网页新闻
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.FEED_MEDIA">
+            <summary>
+            百家号
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.WEIBO_MEDIA">
+            <summary>
+            微博
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.BOKE_MEDIA">
+            <summary>
+            博客
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.OTHER_MEDIA">
+            <summary>
+            其他
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingMediaType.VIDEO_MEDIA">
+            <summary>
+            视频
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType">
+            <summary>
+            舆情服务监测方案分类
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType.COMPANY">
+            <summary>
+            机构/企业
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType.HUMAN">
+            <summary>
+            人物/角色
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType.PRODUCT">
+            <summary>
+            品牌/产品
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType.EVENT">
+            <summary>
+            事件/专题
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskType.OTHERS">
+            <summary>
+            其他
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingSentimentType">
+            <summary>
+            舆情服务情感属性分类
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingSentimentType.POSITIVE">
+            <summary>
+            证明
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingSentimentType.NEUTRAL">
+            <summary>
+            中立
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingSentimentType.NEGATIVE">
+            <summary>
+            负面
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingOrderType">
+            <summary>
+            舆情服务排序分类
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingOrderType.ASC">
+            <summary>
+            按时间从旧到新排序
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingOrderType.DESC">
+            <summary>
+            按时间从新到旧排序
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingOrderType.RELEVANTASC">
+            <summary>
+            按相关性从低到高排序
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingOrderType.RELEVANTDESC">
+            <summary>
+            按相关性从高到低排序
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingHitTypes">
+            <summary>
+            按任务关键词/表达式命中内容的字段
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingHitTypes.ALL">
+            <summary>
+            标题和内容
+            </summary>
+        </member>
+        <member name="F:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingHitTypes.TIELE">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSelectedSystemTasksResponse">
+            <summary>
+            获取用户选中的系统监测任务列表响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSelectedSystemTasksResponse.List">
+            <summary>
+            任务列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSystemTasksResponse">
+            <summary>
+            获取系统监测任务列表响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSystemTasksResponse.LeftNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSystemTasksResponse.TotalNum">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSystemTasksResponse.UsedNum">
+            <summary>
+            使用的任务
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListSystemTasksResponse.List">
+            <summary>
+            任务列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel">
+            <summary>
+            舆情监测任务
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.GeoIds">
+            <summary>
+            任务监测地域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.FilterKeywords">
+             <summary>
+            任务排除词
+             </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.RequiredKeywords">
+            <summary>
+            任务主监控词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.TaskPattern">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.System_task">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.OptionalKeywords">
+            <summary>
+            任务搭配词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.OldGeoIds">
+            <summary>
+            老版本任务监测地域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.TaskType">
+            <summary>
+            监测方案类别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.TaskTags">
+            <summary>
+            任务标签
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.CreateTime">
+            <summary>
+            任务创建时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.KeywordNum">
+            <summary>
+            关键词数量
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.TaskName">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.Id">
+            <summary>
+            任务id
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingTaskModel.Selected">
+            <summary>
+            是否选中
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListTasksResponse">
+            <summary>
+            获取检测任务列表响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListTasksResponse.UsedKeywordNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListTasksResponse.TotalKeywordNum">
+            <summary>
+            任务id
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListTasksResponse.LeftKeywordNum">
+            <summary>
+            任务id
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingListTasksResponse.List">
+            <summary>
+            任务列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingModifyTaskRequest">
+            <summary>
+            修改自定义监测任务请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingModifyTaskRequest.TaskId">
+            <summary>
+            任务ID
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingModifyTaskResponse">
+            <summary>
+            修改自定义监测任务响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailRequest">
+            <summary>
+            获取监测任务详情请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailRequest.TaskId">
+            <summary>
+            任务ID
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse">
+            <summary>
+            获取监测任务详情响应类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.GeoIds">
+            <summary>
+            任务监测地域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.FilterKeywords">
+             <summary>
+            任务排除词
+             </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.RequiredKeywords">
+            <summary>
+            任务主监控词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.TaskPattern">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.System_task">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.OptionalKeywords">
+            <summary>
+            任务搭配词
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.OldGeoIds">
+            <summary>
+            老版本任务监测地域
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.TaskType">
+            <summary>
+            监测方案类别
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.TaskTags">
+            <summary>
+            任务标签
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.CreateTime">
+            <summary>
+            任务创建时间
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.KeywordNum">
+            <summary>
+            关键词数量
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.TaskName">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.Id">
+            <summary>
+            任务id
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailResponse.Selected">
+            <summary>
+            是否选中
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskResultRequest">
+            <summary>
+            获取监测任务结果请求类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingResponse">
+            <summary>
+            舆情服务通用响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingStringResponse">
+            <summary>
+            适配舆情服务的奇葩应答包
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingStringResponse.Result">
+            <summary>
+            响应结果
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingUpdateSystemTasksRequest">
+            <summary>
+            更新系统监测任务列表请求类
+            </summary>
+        </member>
+        <member name="P:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingUpdateSystemTasksRequest.Ids">
+            <summary>
+            系统任务id列表
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.Model.XGYuqingUpdateSystemTasksResponse">
+            <summary>
+            更新系统监测任务列表响应类
+            </summary>
+        </member>
+        <member name="T:XGBceDotNetSDK.Services.YUQING.XGYuqingClient">
+            <summary>
+            百度舆情服务客户端
+            <para>EndPoint固定为：yuqing.bce.baidu.com </para>
+            <para>使用本产品前，您必须先注册百度智能云账号（若没有百度智能云账号），并完成企业认证。</para>
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/wjwvygqak </para>
+            </summary>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.AddTask(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest)">
+            <summary>
+            添加自定义监测任务
+            <para>创建自定义监测任务</para>
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGYuqingAddTaskRequest</param>
+            <returns>XGYuqingAddTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.AddTaskAsync(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingAddTaskRequest)">
+            <summary>
+            添加自定义监测任务
+            <para>创建自定义监测任务</para>
+            </summary>
+            <param name="request">XGYuqingAddTaskRequest</param>
+            <returns>异步任务XGYuqingAddTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ModifyTask(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingModifyTaskRequest)">
+            <summary>
+            修改自定义监测任务
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E4%BF%AE%E6%94%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGYuqingModifyTaskRequest</param>
+            <returns>XGYuqingModifyTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ModifyTaskAsync(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingModifyTaskRequest)">
+            <summary>
+            修改自定义监测任务
+            </summary>
+            <param name="request">XGYuqingModifyTaskRequest</param>
+            <returns>异步任务XGYuqingModifyTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.DeleteTask(System.String)">
+            <summary>
+            删除自定义监测任务
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%8E%A5%E5%8F%A3%E5%90%8D%E7%A7%B0%EF%BC%9A%E5%88%A0%E9%99%A4%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="taskId">任务ID</param>
+            <returns>XGYuqingDeleteTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.DeleteTaskAsync(System.String)">
+            <summary>
+            删除自定义监测任务
+            </summary>
+            <param name="taskId">任务ID</param>
+            <returns>异步任务XGYuqingDeleteTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.DeleteTask(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingDeleteTaskRequest)">
+            <summary>
+            删除自定义监测任务
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%8E%A5%E5%8F%A3%E5%90%8D%E7%A7%B0%EF%BC%9A%E5%88%A0%E9%99%A4%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1 </para>
+            </summary>
+            <param name="request">XGYuqingDeleteTaskRequest</param>
+            <returns>XGYuqingDeleteTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.DeleteTaskAsync(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingDeleteTaskRequest)">
+            <summary>
+            删除自定义监测任务
+            </summary>
+            <param name="request">XGYuqingDeleteTaskRequest</param>
+            <returns>异步任务XGYuqingDeleteTaskResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListTasks">
+            <summary>
+            获取监测任务列表
+            <para>获取全部任务信息</para>
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%8E%A5%E5%8F%A3%E5%90%8D%E7%A7%B0%EF%BC%9A%E8%8E%B7%E5%8F%96%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <returns>XGYuqingListTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListTasksAsync">
+            <summary>
+            获取监测任务列表
+            <para>获取全部任务信息</para>
+            </summary>
+            <returns>异步任务XGYuqingListTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListSystemTasks">
+            <summary>
+            获取系统监测任务列表
+            <para>获取所有系统任务列表</para>
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <returns>XGYuqingListSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListSystemTasksAsync">
+            <summary>
+            获取系统监测任务列表
+            <para>获取所有系统任务列表</para>
+            </summary>
+            <returns>异步任务XGYuqingListSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.UpdateSystemTasks(System.Int32[])">
+            <summary>
+            更新系统监测任务列表
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <param name="ids">系统任务id列表</param>
+            <returns>XGYuqingUpdateSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.UpdateSystemTasksAsync(System.Int32[])">
+            <summary>
+            更新系统监测任务列表
+            </summary>
+            <param name="ids">系统任务id列表</param>
+            <returns>异步任务XGYuqingUpdateSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.UpdateSystemTasks(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingUpdateSystemTasksRequest)">
+            <summary>
+            更新系统监测任务列表
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <param name="request">XGYuqingUpdateSystemTasksRequest</param>
+            <returns>XGYuqingUpdateSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.UpdateSystemTasksAsync(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingUpdateSystemTasksRequest)">
+            <summary>
+            更新系统监测任务列表
+            </summary>
+            <param name="request">XGYuqingUpdateSystemTasksRequest</param>
+            <returns>异步任务XGYuqingUpdateSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListSelectedSystemTasks">
+            <summary>
+            获取用户选中的系统监测任务列表
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E9%80%89%E4%B8%AD%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8 </para>
+            </summary>
+            <returns>XGYuqingListSelectedSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.ListSelectedSystemTasksAsync">
+            <summary>
+            获取用户选中的系统监测任务列表
+            </summary>
+            <returns>异步任务XGYuqingListSelectedSystemTasksResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.QueryTaskDetail(System.String)">
+            <summary>
+            获取监测任务详情
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E8%8E%B7%E5%8F%96%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E8%AF%A6%E6%83%85 </para>
+            </summary>
+            <param name="taskId">任务ID</param>
+            <returns>XGYuqingQueryTaskDetailResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.QueryTaskDetailAsync(System.String)">
+            <summary>
+            获取监测任务详情
+            </summary>
+            <param name="taskId">任务ID</param>
+            <returns>异步任务XGYuqingQueryTaskDetailResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.QueryTaskDetail(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailRequest)">
+            <summary>
+            获取监测任务详情
+            <para>接口文档：https://cloud.baidu.com/doc/TRENDS/s/Vjwvygqpq#%E8%8E%B7%E5%8F%96%E7%9B%91%E6%B5%8B%E4%BB%BB%E5%8A%A1%E8%AF%A6%E6%83%85 </para>
+            </summary>
+            <param name="request">XGYuqingQueryTaskDetailRequest</param>
+            <returns>XGYuqingQueryTaskDetailResponse</returns>
+            <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
+        </member>
+        <member name="M:XGBceDotNetSDK.Services.YUQING.XGYuqingClient.QueryTaskDetailAsync(XGBceDotNetSDK.Services.YUQING.Model.XGYuqingQueryTaskDetailRequest)">
+            <summary>
+            获取监测任务详情
+            </summary>
+            <param name="request">XGYuqingQueryTaskDetailRequest</param>
+            <returns>异步任务XGYuqingQueryTaskDetailResponse</returns>
             <exception cref="T:XGBceDotNetSDK.BaseClass.XGBceClientException">XGBce客户端异常</exception>
         </member>
         <member name="T:XGBceDotNetSDK.Sign.BceSignOption">

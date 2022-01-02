@@ -1,14 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{0F063B49-BE8F-4A0D-9CE0-3AEC2D8E866E}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="XGBceDotNetSDK/Sign/XGBceDefaultBceCredentials.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="XGBceDotNetSDK/Services/MEDIA/XGMediaClient.cs" Line="2317" Column="75" />
-      <File FileName="XGBceDotNetSDKDemo/Example/McpExample.cs" Line="18" Column="61" />
-      <File FileName="XGBceDotNetSDK/Services/MEDIA/Model/XGMediaCreateThumbnailJobRequest.cs" />
-      <File FileName="XGBceDotNetSDKDemo/Example/DocExample.cs" Line="18" Column="61" />
-      <File FileName="XGBceDotNetSDKDemo/Example/SmsExample.cs" Line="17" Column="61" />
-      <File FileName="XGBceDotNetSDKDemo/Example/VcaExample.cs" Line="18" Column="61" />
-      <File FileName="XGBceDotNetSDKDemo/Example/VcrExample.cs" Line="8" Column="28" />
-      <File FileName="XGBceDotNetSDK/Sign/XGBceDefaultBceCredentials.cs" Line="8" Column="6" />
+      <File FileName="XGBceDotNetSDK/Services/LSS/XGLssClient.cs" Line="371" Column="15" />
+      <File FileName="XGBceDotNetSDKDemo/Example/LssExample.cs" Line="25" Column="38" />
+      <File FileName="XGBceDotNetSDK/Services/LSS/Model/XGLssDomainListStreamsSourceInfoResponse.cs" Line="81" Column="10" />
+      <File FileName="XGBceDotNetSDK/Services/LSS/Model/XGLssQueryPushUrlParamsResponse.cs" Line="15" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,15 +15,14 @@
                 <Node name="Handler" expanded="True" />
               </Node>
               <Node name="Services" expanded="True">
-                <Node name="DOC" expanded="True" />
-                <Node name="MEDIA" expanded="True">
+                <Node name="LSS" expanded="True">
                   <Node name="Model" expanded="True" />
+                  <Node name="XGLssClient.cs" selected="True" />
                 </Node>
+                <Node name="MEDIA" expanded="True" />
+                <Node name="VCR" expanded="True" />
+                <Node name="YUQING" expanded="True" />
               </Node>
-              <Node name="Sign" expanded="True">
-                <Node name="XGBceDefaultBceCredentials.cs" selected="True" />
-              </Node>
-              <Node name="Utils" expanded="True" />
             </Node>
             <Node name="XGBceDotNetSDKDemo" expanded="True">
               <Node name="Example" expanded="True" />

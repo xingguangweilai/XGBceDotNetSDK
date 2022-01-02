@@ -20,38 +20,38 @@ namespace XGBceDotNetSDK.Services.SMS
 
             XGSmsClient smsClient = new XGSmsClient(smsClientConfiguration);
 
-            //XGSendMessageV3Request request = new XGSendMessageV3Request()
-            //{
-            //    Mobile = "",
-            //    Template = "sms-tmpl-",
-            //    SignatureId = "sms-sign-",
-            //    ContentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试标题" } }
-            //};
-
-            //XGSendMessageV3Response response = smsClient.SendMessage(request);
-            //if (response != null && response.IsSuccess)
-            //{
-            //    Console.WriteLine("发送成功：" + response.ToString());
-            //}
-            //else
-            //{
-            //    Console.WriteLine("发送失败：" + response.Message);
-            //}
-
-            XGQuerySignatureRequest querySignatureRequest = new XGQuerySignatureRequest()
+            XGSendMessageV3Request request = new XGSendMessageV3Request()
             {
-                SignatureId = "sms-sign-"
+                Mobile = "",
+                Template = "sms-tmpl-",
+                SignatureId = "sms-sign-",
+                ContentVar = new Dictionary<string, string> { { "ticketNumber", "10010" }, { "ticketTitle", "测试标题" } }
             };
 
-            try
+            XGSendMessageV3Response response = smsClient.SendMessage(request);
+            if (response != null && response.IsSuccess)
             {
-                XGQuerySignatureResponse querySignatureResponse = smsClient.QuerySignature(querySignatureRequest);
-                Console.WriteLine("查询签名成功：" + querySignatureResponse.ToString());
+                Console.WriteLine("发送成功：" + response.ToString());
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("查询失败：" + ex.Message);
+                Console.WriteLine("发送失败：" + response.Message);
             }
+
+            //XGQuerySignatureRequest querySignatureRequest = new XGQuerySignatureRequest()
+            //{
+            //    SignatureId = "sms-sign-"
+            //};
+
+            //try
+            //{
+            //    XGQuerySignatureResponse querySignatureResponse = smsClient.QuerySignature(querySignatureRequest);
+            //    Console.WriteLine("查询签名成功：" + querySignatureResponse.ToString());
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("查询失败：" + ex.Message);
+            //}
 
         }
     }
