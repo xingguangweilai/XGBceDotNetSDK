@@ -5,18 +5,20 @@
     <ReleaseVersion>0.0.1</ReleaseVersion>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
-    <FileVersion>1.2112.11</FileVersion>
-    <Version>1.2112.11</Version>
+    <FileVersion>1.2201.3</FileVersion>
+    <Version>1.2201.3</Version>
     <AssemblyName>XG.XGBceDotNetSDK</AssemblyName>
     <PackageId>XG.XGBceDotNetSDK</PackageId>
     <PackageIcon>favicon.png</PackageIcon>
     <NeutralLanguage>zh-CN</NeutralLanguage>
     <Authors>小桥流水人家</Authors>
     <Description>百度智能云第三方 DotNetSDK</Description>
-    <PackageReleaseNotes>新版本增加产品：音视频处理MCP</PackageReleaseNotes>
+    <PackageReleaseNotes>新版本增加产品：音视频直播LSS</PackageReleaseNotes>
     <PackageTags>xg;xg.xgbcedotnetsdk;xgbcedotnetsdk;bce;baiduyun</PackageTags>
     <RepositoryUrl>https://github.com/xingguangweilai/XGBceDotNetSDK</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/xingguangweilai/XGBceDotNetSDK</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -51,6 +53,12 @@
     <Folder Include="Services\YUQING\Model\" />
     <Folder Include="Services\LSS\" />
     <Folder Include="Services\LSS\Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Update="favicon.png">
