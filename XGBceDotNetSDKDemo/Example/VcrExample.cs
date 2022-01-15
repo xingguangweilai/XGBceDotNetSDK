@@ -1,6 +1,7 @@
 ﻿using System;
 using XGBceDotNetSDK.BaseClass;
 using XGBceDotNetSDK.Services.VCR;
+using XGBceDotNetSDK.Services.VCR.Model;
 using XGBceDotNetSDK.Sign;
 
 namespace XGBceDotNetSDKDemo.Example
@@ -18,6 +19,15 @@ namespace XGBceDotNetSDKDemo.Example
             };
 
             XGVcrClient vcrClient = new XGVcrClient(vcrClientConfiguration);
+            try
+            {
+                XGVcrResponse response= vcrClient.AddFaceLibBriefImage("abc123", "","name0");
+                Console.WriteLine("face添加成功");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("face添加失败：" + ex.Message);
+            }
         }
 
         public void ListItems()

@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace XGBceDotNetSDK.Services.LSS.Model
 {
+    /// <summary>
+    /// 流信息
+    /// </summary>
     public class XGLssStreamingInfo
     {
         private string sessionId;

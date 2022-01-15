@@ -24,6 +24,11 @@ namespace XGBceDotNetSDK.Services.LSS
         private static readonly string STREAM = "stream";
         private static readonly string STREAMING = "streaming";
         private static readonly string APP = "app";
+        private static readonly string RECORDING = "recording";  //录制模板
+        private static readonly string WATERMARK = "watermark";  //水印模板
+        private static readonly string THUMBNAIL = "thumbnail";  //缩略图模板
+        private static readonly string STATISTICS = "statistics";  //统计
+        private static readonly string NOTIFICATION = "notification";  //通知
 
         /// <summary>
         /// 为适配奇葩应答包体而生
@@ -1403,23 +1408,1217 @@ namespace XGBceDotNetSDK.Services.LSS
 
         #region 模板接口
 
+        /// <summary>
+        /// 查询录制模板
+        /// <para>查询用户指定录制模板的详情。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E5%BD%95%E5%88%B6%E6%A8%A1%E6%9D%BF </para>
+        /// </summary>
+        /// <param name="name">录制模板名称</param>
+        /// <returns>XGLssQueryRecordingResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryRecordingResponse QueryRecording(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), RECORDING, name.Trim());
+            XGLssQueryRecordingResponse response = InvokeHttpClient<XGLssQueryRecordingResponse>(iternalRequest);
+            return response;
+        }
 
+        /// <summary>
+        /// 查询录制模板
+        /// <para>查询用户指定录制模板的详情。</para>
+        /// </summary>
+        /// <param name="name">录制模板名称</param>
+        /// <returns>异步任务XGLssQueryRecordingResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryRecordingResponse> QueryRecordingAsync(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), RECORDING, name.Trim());
+            XGLssQueryRecordingResponse response = await InvokeHttpClientAsync<XGLssQueryRecordingResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 录制模板列表
+        /// <para>查询用户已创建的所有录制模板详情。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%BD%95%E5%88%B6%E6%A8%A1%E6%9D%BF%E5%88%97%E8%A1%A8 </para>
+        /// </summary>
+        /// <returns>XGLssListRecordingsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssListRecordingsResponse ListRecordings()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), RECORDING);
+            XGLssListRecordingsResponse response = InvokeHttpClient<XGLssListRecordingsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 录制模板列表
+        /// <para>查询用户已创建的所有录制模板详情。</para>
+        /// </summary>
+        /// <returns>异步任务XGLssListRecordingsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssListRecordingsResponse> ListRecordingsAsync()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), RECORDING);
+            XGLssListRecordingsResponse response = await InvokeHttpClientAsync<XGLssListRecordingsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 创建图片水印模板
+        /// <para>通过定义水印的详细参数集合（大小、位置等）来创建图片水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%9B%E5%BB%BA%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0%E6%A8%A1%E6%9D%BF </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <param name="content">图片文件base64编码后字符串</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateWatermark(string name, string content)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+            AssertStringNotNullOrEmpty(content, nameof(content));
+
+            XGLssCreateWatermarkRequest request = new XGLssCreateWatermarkRequest()
+            {
+                Name=name,
+                Content=content
+            };
+            return CreateWatermark(request);
+        }
+
+        /// <summary>
+        /// 创建图片水印模板
+        /// <para>通过定义水印的详细参数集合（大小、位置等）来创建图片水印模板。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <param name="content">图片文件base64编码后字符串</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateWatermarkAsync(string name, string content)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+            AssertStringNotNullOrEmpty(content, nameof(content));
+
+            XGLssCreateWatermarkRequest request = new XGLssCreateWatermarkRequest()
+            {
+                Name = name,
+                Content = content
+            };
+            return await CreateWatermarkAsync(request);
+        }
+
+        /// <summary>
+        /// 创建图片水印模板
+        /// <para>通过定义水印的详细参数集合（大小、位置等）来创建图片水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%9B%E5%BB%BA%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0%E6%A8%A1%E6%9D%BF </para>
+        /// </summary>
+        /// <param name="request">XGLssCreateWatermarkRequest</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateWatermark(XGLssCreateWatermarkRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name,nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), WATERMARK, "image");
+            XGLssQueryPushUrlParamsResponse response = InvokeHttpClient<XGLssQueryPushUrlParamsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 创建图片水印模板
+        /// <para>通过定义水印的详细参数集合（大小、位置等）来创建图片水印模板。</para>
+        /// </summary>
+        /// <param name="request">XGLssCreateWatermarkRequest</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateWatermarkAsync(XGLssCreateWatermarkRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Content, nameof(request.Content));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), WATERMARK, "image");
+            XGLssQueryPushUrlParamsResponse response = await InvokeHttpClientAsync<XGLssQueryPushUrlParamsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询图片水印
+        /// <para>通过指定水印名称查询特定图片水印的详细信息，包括图片URL、大小、位置、创建时间等。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0 </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>XGLssQueryWatermarkResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryWatermarkResponse QueryWatermark(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "image",name.Trim());
+            XGLssQueryWatermarkResponse response = InvokeHttpClient<XGLssQueryWatermarkResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询图片水印
+        /// <para>通过指定水印名称查询特定图片水印的详细信息，包括图片URL、大小、位置、创建时间等。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>异步任务XGLssQueryWatermarkResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryWatermarkResponse> QueryWatermarkAsync(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "image", name.Trim());
+            XGLssQueryWatermarkResponse response = await InvokeHttpClientAsync<XGLssQueryWatermarkResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询图片水印列表
+        /// <para>查询用户的所有图片水印模板的详细信息。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0%E5%88%97%E8%A1%A8 </para>
+        /// </summary>
+        /// <returns>XGLssListWatermarksResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssListWatermarksResponse ListWatermarks()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "image");
+            XGLssListWatermarksResponse response = InvokeHttpClient<XGLssListWatermarksResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询图片水印列表
+        /// <para>查询用户的所有图片水印模板的详细信息。</para>
+        /// </summary>
+        /// <returns>异步任务XGLssListWatermarksResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssListWatermarksResponse> ListWatermarksAsync()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "image");
+            XGLssListWatermarksResponse response = await InvokeHttpClientAsync<XGLssListWatermarksResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除图片水印
+        /// <para>通过指定水印名称删除特定图片水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%A0%E9%99%A4%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0 </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse DeleteWatermark(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), WATERMARK, "image", name.Trim());
+            XGLssResponse response = InvokeHttpClient<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除图片水印
+        /// <para>通过指定水印名称删除特定图片水印模板。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> DeleteWatermarkAsync(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), WATERMARK, "image", name.Trim());
+            XGLssResponse response = await InvokeHttpClientAsync<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 创建时间戳水印
+        /// <para>通过定义水印的详细参数集合（时区、文字、背景、位置等）来创建时间戳水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%9B%E5%BB%BA%E6%97%B6%E9%97%B4%E6%88%B3%E6%B0%B4%E5%8D%B0 </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <param name="timezone">时区</param>
+        /// <param name="alpha">水印透明度</param>
+        /// <param name="request">XGLssCreateTimestampWatermarkRequest</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateTimestampWatermark(string name, XGLssTimezone? timezone=null, float? alpha=null)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssCreateTimestampWatermarkRequest request = new XGLssCreateTimestampWatermarkRequest()
+            {
+                Name=name,
+                Timezone=timezone,
+                Alpha=alpha
+            };
+            return CreateTimestampWatermark(request);
+        }
+
+        /// <summary>
+        /// 创建时间戳水印
+        /// <para>通过定义水印的详细参数集合（时区、文字、背景、位置等）来创建时间戳水印模板。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <param name="timezone">时区</param>
+        /// <param name="alpha">水印透明度</param>
+        /// <param name="request">XGLssCreateTimestampWatermarkRequest</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateTimestampWatermarkAsync(string name, XGLssTimezone? timezone = null, float? alpha = null)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssCreateTimestampWatermarkRequest request = new XGLssCreateTimestampWatermarkRequest()
+            {
+                Name = name,
+                Timezone = timezone,
+                Alpha = alpha
+            };
+            return await CreateTimestampWatermarkAsync(request);
+        }
+
+        /// <summary>
+        /// 创建时间戳水印
+        /// <para>通过定义水印的详细参数集合（时区、文字、背景、位置等）来创建时间戳水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%9B%E5%BB%BA%E6%97%B6%E9%97%B4%E6%88%B3%E6%B0%B4%E5%8D%B0 </para>
+        /// </summary>
+        /// <param name="request">XGLssCreateTimestampWatermarkRequest</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateTimestampWatermark(XGLssCreateTimestampWatermarkRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), WATERMARK, "timestamp");
+            XGLssResponse response = InvokeHttpClient<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 创建时间戳水印
+        /// <para>通过定义水印的详细参数集合（时区、文字、背景、位置等）来创建时间戳水印模板。</para>
+        /// </summary>
+        /// <param name="request">XGLssCreateTimestampWatermarkRequest</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateTimestampWatermarkAsync(XGLssCreateTimestampWatermarkRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), WATERMARK, "timestamp");
+            XGLssResponse response = await InvokeHttpClientAsync<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询时间戳水印
+        /// <para>通过指定水印名称查询特定时间戳水印的详细信息，包括时间戳的时区、文字、位置、创建时间等。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E6%97%B6%E9%97%B4%E6%88%B3%E6%B0%B4%E5%8D%B0 </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>XGLssQueryTimestampWatermarkResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryTimestampWatermarkResponse QueryTimestampWatermark(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "timestamp", name.Trim());
+            XGLssQueryTimestampWatermarkResponse response = InvokeHttpClient<XGLssQueryTimestampWatermarkResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询时间戳水印
+        /// <para>通过指定水印名称查询特定时间戳水印的详细信息，包括时间戳的时区、文字、位置、创建时间等。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>异步任务XGLssQueryTimestampWatermarkResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryTimestampWatermarkResponse> QueryTimestampWatermarkAsync(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "timestamp", name.Trim());
+            XGLssQueryTimestampWatermarkResponse response = await InvokeHttpClientAsync<XGLssQueryTimestampWatermarkResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询时间戳水印列表
+        /// <para>查询用户的所有时间戳水印模板的详细信息。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E6%97%B6%E9%97%B4%E6%88%B3%E5%88%97%E8%A1%A8 </para>
+        /// </summary>
+        /// <returns>XGLssListTimestampWatermarksResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssListTimestampWatermarksResponse ListTimestampWatermarks()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "timestamp");
+            XGLssListTimestampWatermarksResponse response = InvokeHttpClient<XGLssListTimestampWatermarksResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询时间戳水印列表
+        /// <para>查询用户的所有时间戳水印模板的详细信息。</para>
+        /// </summary>
+        /// <returns>异步任务XGLssListTimestampWatermarksResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssListTimestampWatermarksResponse> ListTimestampWatermarksAsync()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), WATERMARK, "timestamp");
+            XGLssListTimestampWatermarksResponse response = await InvokeHttpClientAsync<XGLssListTimestampWatermarksResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除时间戳水印
+        /// <para>通过指定水印名称删除特定时间戳水印模板。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E5%88%A0%E9%99%A4%E6%97%B6%E9%97%B4%E6%88%B3 </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse DeleteTimestampWatermark(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), WATERMARK, "timestamp", name.Trim());
+            XGLssResponse response = InvokeHttpClient<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除时间戳水印
+        /// <para>通过指定水印名称删除特定时间戳水印模板。</para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> DeleteTimestampWatermarkAsync(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), WATERMARK, "timestamp", name.Trim());
+            XGLssResponse response = await InvokeHttpClientAsync<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询缩略图模板
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E6%9F%A5%E8%AF%A2%E7%BC%A9%E7%95%A5%E5%9B%BE%E6%A8%A1%E6%9D%BF </para>
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>XGLssQueryThumbnailResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryThumbnailResponse QueryThumbnail(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), THUMBNAIL, name.Trim());
+            XGLssQueryThumbnailResponse response = InvokeHttpClient<XGLssQueryThumbnailResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询缩略图模板
+        /// </summary>
+        /// <param name="name">水印名称</param>
+        /// <returns>异步任务XGLssQueryThumbnailResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryThumbnailResponse> QueryThumbnailAsync(string name)
+        {
+            AssertNotNullOrEmpty(name, nameof(name));
+
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), THUMBNAIL, name.Trim());
+            XGLssQueryThumbnailResponse response = await InvokeHttpClientAsync<XGLssQueryThumbnailResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 列举缩略图模板
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Sjwvyyuxb#%E7%BC%A9%E7%95%A5%E5%9B%BE%E5%88%97%E8%A1%A8 </para>
+        /// </summary>
+        /// <returns>XGLssListThumbnailsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssListThumbnailsResponse ListThumbnails()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), THUMBNAIL);
+            XGLssListThumbnailsResponse response = InvokeHttpClient<XGLssListThumbnailsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 列举缩略图模板
+        /// </summary>
+        /// <returns>异步任务XGLssListThumbnailsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssListThumbnailsResponse> ListThumbnailsAsync()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), THUMBNAIL);
+            XGLssListThumbnailsResponse response = await InvokeHttpClientAsync<XGLssListThumbnailsResponse>(iternalRequest);
+            return response;
+        }
 
         #endregion
 
         #region 统计接口
 
+        /// <summary>
+        /// 查询统计数据
+        /// <para>查询特定Domain的统计数据。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE </para>
+        /// </summary>
+        /// <param name="playDomain">直播域名</param>
+        /// <param name="startDate">起始时间</param>
+        /// <param name="endDate">结束时间</param>
+        /// <param name="aggregate">指定是否聚合，即数据聚合统计或按日统计</param>
+        /// <returns>XGLssQueryDomainStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainStatisticsResponse QueryDomainStatistics(string playDomain, string startDate, string endDate, bool? aggregate=null)
+        {
+            XGLssQueryDomainStatisticsRequest request = new XGLssQueryDomainStatisticsRequest()
+            {
+                PlayDomain=playDomain,
+                StartDate=startDate,
+                EndDate=endDate,
+                Aggregate=aggregate
+            };
+            return QueryDomainStatistics(request);
+        }
 
+        /// <summary>
+        /// 查询统计数据
+        /// <para>查询特定Domain的统计数据。</para>
+        /// </summary>
+        /// <param name="playDomain">直播域名</param>
+        /// <param name="startDate">起始时间</param>
+        /// <param name="endDate">结束时间</param>
+        /// <param name="aggregate">指定是否聚合，即数据聚合统计或按日统计</param>
+        /// <returns>异步任务XGLssQueryDomainStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainStatisticsResponse> QueryDomainStatisticsAsync(string playDomain, string startDate, string endDate, bool? aggregate = null)
+        {
+            XGLssQueryDomainStatisticsRequest request = new XGLssQueryDomainStatisticsRequest()
+            {
+                PlayDomain = playDomain,
+                StartDate = startDate,
+                EndDate = endDate,
+                Aggregate = aggregate
+            };
+            return await QueryDomainStatisticsAsync(request);
+        }
+
+        /// <summary>
+        /// 查询统计数据
+        /// <para>查询特定Domain的统计数据。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainStatisticsRequest</param>
+        /// <returns>XGLssQueryDomainStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainStatisticsResponse QueryDomainStatistics(XGLssQueryDomainStatisticsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.StartDate, nameof(request.StartDate));
+            AssertStringNotNullOrEmpty(request.EndDate, nameof(request.EndDate));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN,request.PlayDomain.Trim());
+            iternalRequest.AddParameter("startDate",request.StartDate.Trim());
+            iternalRequest.AddParameter("endDate",request.EndDate.Trim());
+            if (request.Aggregate != null)
+                iternalRequest.AddParameter("aggregate",request.Aggregate.Value.ToString().Trim());
+            XGLssQueryDomainStatisticsResponse response = InvokeHttpClient<XGLssQueryDomainStatisticsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询统计数据
+        /// <para>查询特定Domain的统计数据。</para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainStatisticsRequest</param>
+        /// <returns>异步任务XGLssQueryDomainStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainStatisticsResponse> QueryDomainStatisticsAsync(XGLssQueryDomainStatisticsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.StartDate, nameof(request.StartDate));
+            AssertStringNotNullOrEmpty(request.EndDate, nameof(request.EndDate));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim());
+            iternalRequest.AddParameter("startDate", request.StartDate.Trim());
+            iternalRequest.AddParameter("endDate", request.EndDate.Trim());
+            if (request.Aggregate != null)
+                iternalRequest.AddParameter("aggregate", request.Aggregate.Value.ToString().Trim());
+            XGLssQueryDomainStatisticsResponse response = await InvokeHttpClientAsync<XGLssQueryDomainStatisticsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询统计概要
+        /// <para>查询当前用户所有Domain的统计概要。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E7%BB%9F%E8%AE%A1%E6%A6%82%E8%A6%81 </para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="endTime">结束时间</param>
+        /// <returns>XGLssQueryDomainSummaryStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainSummaryStatisticsResponse QueryDomainSummaryStatistics(DateTime startTime, DateTime? endTime=null)
+        {
+            XGLssQueryDomainSummaryStatisticsRequest request = new XGLssQueryDomainSummaryStatisticsRequest()
+            {
+                StartTime=startTime,
+                EndTime=endTime
+            };
+
+            return QueryDomainSummaryStatistics(request);
+        }
+
+        /// <summary>
+        /// 查询统计概要
+        /// <para>查询当前用户所有Domain的统计概要。</para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="endTime">结束时间</param>
+        /// <returns>异步任务XGLssQueryDomainSummaryStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainSummaryStatisticsResponse> QueryDomainSummaryStatisticsAsync(DateTime startTime, DateTime? endTime = null)
+        {
+            XGLssQueryDomainSummaryStatisticsRequest request = new XGLssQueryDomainSummaryStatisticsRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime
+            };
+
+            return await QueryDomainSummaryStatisticsAsync(request);
+        }
+
+        /// <summary>
+        /// 查询统计概要
+        /// <para>查询当前用户所有Domain的统计概要。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E7%BB%9F%E8%AE%A1%E6%A6%82%E8%A6%81 </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainSummaryStatisticsRequest</param>
+        /// <returns>XGLssQueryDomainSummaryStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainSummaryStatisticsResponse QueryDomainSummaryStatistics(XGLssQueryDomainSummaryStatisticsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "summary");
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if(request.EndTime!=null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            XGLssQueryDomainSummaryStatisticsResponse response = InvokeHttpClient<XGLssQueryDomainSummaryStatisticsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询统计概要
+        /// <para>查询当前用户所有Domain的统计概要。</para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainSummaryStatisticsRequest</param>
+        /// <returns>异步任务XGLssQueryDomainSummaryStatisticsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainSummaryStatisticsResponse> QueryDomainSummaryStatisticsAsync(XGLssQueryDomainSummaryStatisticsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "summary");
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            XGLssQueryDomainSummaryStatisticsResponse response = await InvokeHttpClientAsync<XGLssQueryDomainSummaryStatisticsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总请求数
+        /// <para>查询当前用户所有Domain的总请求数。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E8%AF%B7%E6%B1%82%E6%95%B0 </para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总请求数可不填</param>
+        /// <returns>XGLssQueryDomainPlayCountResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainPlayCountResponse QueryDomainPlayCount(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime=null, string playDomain=null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainPlayCountRequest request = new XGLssQueryDomainPlayCountRequest()
+            {
+                StartTime=startTime,
+                EndTime=endTime,
+                TimeInterval=timeInterval,
+                PlayDomain=playDomain
+            };
+
+            return QueryDomainPlayCount(request);
+        }
+
+        /// <summary>
+        /// 查询总请求数
+        /// <para>查询当前用户所有Domain的总请求数。</para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总请求数可不填</param>
+        /// <returns>异步任务XGLssQueryDomainPlayCountResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainPlayCountResponse> QueryDomainPlayCountAsync(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime = null, string playDomain = null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainPlayCountRequest request = new XGLssQueryDomainPlayCountRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TimeInterval = timeInterval,
+                PlayDomain=playDomain
+            };
+
+            return await QueryDomainPlayCountAsync(request);
+        }
+
+        /// <summary>
+        /// 查询总请求数
+        /// <para>查询当前用户所有Domain的总请求数。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E8%AF%B7%E6%B1%82%E6%95%B0 </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryAllDomainPlayCountRequest</param>
+        /// <returns>XGLssQueryDomainPlayCountResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainPlayCountResponse QueryDomainPlayCount(XGLssQueryDomainPlayCountRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "playcount");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "playcount");
+            }
+            
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval",request.TimeInterval.Value.ToString());
+            XGLssQueryDomainPlayCountResponse response = InvokeHttpClient<XGLssQueryDomainPlayCountResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总请求数
+        /// <para>查询当前用户所有Domain的总请求数。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E8%AF%B7%E6%B1%82%E6%95%B0 </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryAllDomainPlayCountRequest</param>
+        /// <returns>异步任务XGLssQueryDomainPlayCountResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainPlayCountResponse> QueryDomainPlayCountAsync(XGLssQueryDomainPlayCountRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "playcount");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "playcount");
+            }
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval", request.TimeInterval.Value.ToString());
+            XGLssQueryDomainPlayCountResponse response = await InvokeHttpClientAsync<XGLssQueryDomainPlayCountResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总带宽
+        /// <para>查询当前用户所有Domain的总带宽。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E5%B8%A6%E5%AE%BD </para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总带宽可不填</param>
+        /// <returns>XGLssQueryDomainBandWidthResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainBandWidthResponse QueryDomainBandWidth(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime = null, string playDomain = null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainBandWidthRequest request = new XGLssQueryDomainBandWidthRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TimeInterval = timeInterval,
+                PlayDomain = playDomain
+            };
+
+            return QueryDomainBandWidth(request);
+        }
+
+        /// <summary>
+        /// 查询总带宽
+        /// <para>查询当前用户所有Domain的总带宽。</para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总带宽可不填</param>
+        /// <returns>异步任务XGLssQueryDomainBandWidthResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainBandWidthResponse> QueryDomainBandWidthAsync(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime = null, string playDomain = null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainBandWidthRequest request = new XGLssQueryDomainBandWidthRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TimeInterval = timeInterval,
+                PlayDomain = playDomain
+            };
+
+            return await QueryDomainBandWidthAsync(request);
+        }
+
+        /// <summary>
+        /// 查询总带宽
+        /// <para>查询当前用户所有Domain的总带宽。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E5%B8%A6%E5%AE%BD </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainBandWidthRequest</param>
+        /// <returns>XGLssQueryDomainBandWidthResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainBandWidthResponse QueryDomainBandWidth(XGLssQueryDomainBandWidthRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "bandwidth");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "bandwidth");
+            }
+
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval", request.TimeInterval.Value.ToString());
+            XGLssQueryDomainBandWidthResponse response = InvokeHttpClient<XGLssQueryDomainBandWidthResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总带宽
+        /// <para查询当前用户所有Domain的总带宽。</para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainBandWidthRequest</param>
+        /// <returns>异步任务XGLssQueryDomainBandWidthResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainBandWidthResponse> QueryDomainBandWidthAsync(XGLssQueryDomainBandWidthRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "bandwidth");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "bandwidth");
+            }
+
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval", request.TimeInterval.Value.ToString());
+            XGLssQueryDomainBandWidthResponse response = await InvokeHttpClientAsync<XGLssQueryDomainBandWidthResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总流量
+        /// <para>查询当前用户所有Domain的总流量。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E6%B5%81%E9%87%8F </para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总流量可不填</param>
+        /// <returns>XGLssQueryDomainTrafficResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainTrafficResponse QueryDomainTraffic(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime = null, string playDomain = null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainTrafficRequest request = new XGLssQueryDomainTrafficRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TimeInterval = timeInterval,
+                PlayDomain = playDomain
+            };
+
+            return QueryDomainTraffic(request);
+        }
+
+        /// <summary>
+        /// 查询总流量
+        /// <para>查询当前用户所有Domain的总流量。</para>
+        /// </summary>
+        /// <param name="startTime">起始时间</param>
+        /// <param name="timeInterval">时间间隔</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="playDomain">直播域名，查询总流量可不填</param>
+        /// <returns>异步任务XGLssQueryDomainTrafficResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainTrafficResponse> QueryDomainTrafficAsync(DateTime startTime, XGLssStatisticsTimeInterval? timeInterval, DateTime? endTime = null, string playDomain = null)
+        {
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(timeInterval, nameof(timeInterval));
+            XGLssQueryDomainTrafficRequest request = new XGLssQueryDomainTrafficRequest()
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TimeInterval = timeInterval,
+                PlayDomain = playDomain
+            };
+
+            return await QueryDomainTrafficAsync(request);
+        }
+
+        /// <summary>
+        /// 查询总流量
+        /// <para>查询当前用户所有Domain的总流量。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/bjwvyyujl#%E6%9F%A5%E8%AF%A2%E6%80%BB%E6%B5%81%E9%87%8F </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainTrafficRequest</param>
+        /// <returns>XGLssQueryDomainTrafficResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryDomainTrafficResponse QueryDomainTraffic(XGLssQueryDomainTrafficRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "traffic");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "traffic");
+            }
+
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval", request.TimeInterval.Value.ToString());
+            XGLssQueryDomainTrafficResponse response = InvokeHttpClient<XGLssQueryDomainTrafficResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询总流量
+        /// <para>查询当前用户所有Domain的总流量。</para>
+        /// </summary>
+        /// <param name="request">XGLssQueryDomainTrafficRequest</param>
+        /// <returns>异步任务XGLssQueryDomainTrafficResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryDomainTrafficResponse> QueryDomainTrafficAsync(XGLssQueryDomainTrafficRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.TimeInterval, nameof(request.TimeInterval));
+            XGBceIternalRequest iternalRequest;
+            if (!string.IsNullOrEmpty(request.PlayDomain) && !string.IsNullOrWhiteSpace(request.PlayDomain))
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "traffic");
+            }
+            else
+            {
+                iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, "traffic");
+            }
+
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            if (request.EndTime != null)
+                iternalRequest.AddParameter("endTime", request.EndTime.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            iternalRequest.AddParameter("timeInterval", request.TimeInterval.Value.ToString());
+            XGLssQueryDomainTrafficResponse response = await InvokeHttpClientAsync<XGLssQueryDomainTrafficResponse>(iternalRequest);
+            return response;
+        }
 
         #endregion
 
         #region 通知接口
 
+        /// <summary>
+        /// 创建通知
+        /// <para>通过用户提供的回调地址创建通知，在创建域名时可以指定通知接口，则直播过程中直播状态改变等情况下，LSS会向您指定的回调地址推送通知消息。</para>
+        /// <para>默认情况下，同一个域名下的流使用同一个通知接口。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/3jwvyyvkw#%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5 </para>
+        /// </summary>
+        /// <param name="name">接口名称，开头必须是小写字母</param>
+        /// <param name="endpoint">通知消息接口地址，不超过256字符</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateNotification(string name, string endpoint)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringNotNullOrEmpty(endpoint, nameof(endpoint));
+            XGLssCreateNotificationRequest request = new XGLssCreateNotificationRequest()
+            {
+                Name=name,
+                Endpoint=endpoint
+            };
+            return CreateNotification(request);
+        }
 
+        /// <summary>
+        /// 创建通知
+        /// <para>通过用户提供的回调地址创建通知，在创建域名时可以指定通知接口，则直播过程中直播状态改变等情况下，LSS会向您指定的回调地址推送通知消息。</para>
+        /// <para>默认情况下，同一个域名下的流使用同一个通知接口。</para>
+        /// </summary>
+        /// <param name="name">接口名称，开头必须是小写字母</param>
+        /// <param name="endpoint">通知消息接口地址，不超过256字符</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateNotificationAsync(string name, string endpoint)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            AssertStringNotNullOrEmpty(endpoint, nameof(endpoint));
+            XGLssCreateNotificationRequest request = new XGLssCreateNotificationRequest()
+            {
+                Name = name,
+                Endpoint = endpoint
+            };
+            return await CreateNotificationAsync(request);
+        }
+
+        /// <summary>
+        /// 创建通知
+        /// <para>通过用户提供的回调地址创建通知，在创建域名时可以指定通知接口，则直播过程中直播状态改变等情况下，LSS会向您指定的回调地址推送通知消息。</para>
+        /// <para>默认情况下，同一个域名下的流使用同一个通知接口。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/3jwvyyvkw#%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5 </para>
+        /// </summary>
+        /// <param name="request">XGLssCreateNotificationRequest</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse CreateNotification(XGLssCreateNotificationRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Endpoint, nameof(request.Endpoint));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), NOTIFICATION);
+            XGLssResponse response = InvokeHttpClient<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 创建通知
+        /// <para>通过用户提供的回调地址创建通知，在创建域名时可以指定通知接口，则直播过程中直播状态改变等情况下，LSS会向您指定的回调地址推送通知消息。</para>
+        /// <para>默认情况下，同一个域名下的流使用同一个通知接口。</para>
+        /// </summary>
+        /// <param name="request">XGLssCreateNotificationRequest</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> CreateNotificationAsync(XGLssCreateNotificationRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.Endpoint, nameof(request.Endpoint));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), NOTIFICATION);
+            XGLssResponse response = await InvokeHttpClientAsync<XGLssResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询通知
+        /// <para>查询通知的接口名称和接口地址。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/3jwvyyvkw#%E6%9F%A5%E8%AF%A2%E9%80%9A%E7%9F%A5 </para>
+        /// </summary>
+        /// <param name="name">通知名称</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryNotificationResponse QueryNotification(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), NOTIFICATION,name.Trim());
+            XGLssQueryNotificationResponse response = InvokeHttpClient<XGLssQueryNotificationResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 查询通知
+        /// <para>查询通知的接口名称和接口地址。</para>
+        /// </summary>
+        /// <param name="name">通知名称</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryNotificationResponse> QueryNotificationAsync(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), NOTIFICATION, name.Trim());
+            XGLssQueryNotificationResponse response = await InvokeHttpClientAsync<XGLssQueryNotificationResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 列举通知
+        /// <para>获取已创建的全部通知。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/3jwvyyvkw#%E9%80%9A%E7%9F%A5%E5%88%97%E8%A1%A8 </para>
+        /// </summary>
+        /// <returns>XGLssListNotificationsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssListNotificationsResponse ListNotifications()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), NOTIFICATION);
+            XGLssListNotificationsResponse response = InvokeHttpClient<XGLssListNotificationsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 列举通知
+        /// <para>获取已创建的全部通知。</para>
+        /// </summary>
+        /// <returns>异步任务XGLssListNotificationsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssListNotificationsResponse> ListNotificationsAsync()
+        {
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), NOTIFICATION);
+            XGLssListNotificationsResponse response = await InvokeHttpClientAsync<XGLssListNotificationsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除通知
+        /// <para>删除指定的直播通知。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/3jwvyyvkw#%E5%88%A0%E9%99%A4%E9%80%9A%E7%9F%A5 </para>
+        /// </summary>
+        /// <param name="name">通知名称</param>
+        /// <returns>XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssResponse DeleteNotification(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), NOTIFICATION, name.Trim());
+            XGLssQueryNotificationResponse response = InvokeHttpClient<XGLssQueryNotificationResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 删除通知
+        /// <para>删除指定的直播通知。</para>
+        /// </summary>
+        /// <param name="name">通知名称</param>
+        /// <returns>异步任务XGLssResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssResponse> DeleteNotificationAsync(string name)
+        {
+            AssertStringNotNullOrEmpty(name, nameof(name));
+            XGLssBaseRequest request = new XGLssBaseRequest();
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, request.LssVersion.ToString(), NOTIFICATION, name.Trim());
+            XGLssResponse response = await InvokeHttpClientAsync<XGLssResponse>(iternalRequest);
+            return response;
+        }
 
         #endregion
 
         #region 录制视频裁剪接口
+
+        /// <summary>
+        /// 录制视频裁剪
+        /// <para>裁剪录制视频接口，输入绝对开始时间和结束时间，可以获取视频回放。</para>
+        /// <para>本接口仅支持已经录制的m3u8视频， 裁剪后输出可以是m3u8或mp4格式。</para>
+        /// <para>只能剪裁已经录制完成的视频，不能干预直播中正在录制的或即将录制的视频。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/Ejwvyyx2z </para>
+        /// </summary>
+        /// <param name="request">XGLssRecordingClipRequest</param>
+        /// <returns>XGLssRecordingClipResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssRecordingClipResponse RecordingClip(XGLssRecordingClipRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PlayDomain, nameof(request.PlayDomain));
+            AssertStringNotNullOrEmpty(request.App, nameof(request.App));
+            AssertStringNotNullOrEmpty(request.Stream, nameof(request.Stream));
+            AssertStringNotNullOrEmpty(request.SourceFile, nameof(request.SourceFile));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), "recording", "clip");
+            XGLssRecordingClipResponse response = InvokeHttpClient<XGLssRecordingClipResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 录制视频裁剪
+        /// <para>裁剪录制视频接口，输入绝对开始时间和结束时间，可以获取视频回放。</para>
+        /// <para>本接口仅支持已经录制的m3u8视频， 裁剪后输出可以是m3u8或mp4格式。</para>
+        /// <para>只能剪裁已经录制完成的视频，不能干预直播中正在录制的或即将录制的视频。</para>
+        /// </summary>
+        /// <param name="request">XGLssRecordingClipRequest</param>
+        /// <returns>异步任务XGLssRecordingClipResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssRecordingClipResponse> RecordingClipAsync(XGLssRecordingClipRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PlayDomain, nameof(request.PlayDomain));
+            AssertStringNotNullOrEmpty(request.App, nameof(request.App));
+            AssertStringNotNullOrEmpty(request.Stream, nameof(request.Stream));
+            AssertStringNotNullOrEmpty(request.SourceFile, nameof(request.SourceFile));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, request.LssVersion.ToString(), "recording", "clip");
+            XGLssRecordingClipResponse response = await InvokeHttpClientAsync<XGLssRecordingClipResponse>(iternalRequest);
+            return response;
+        }
+
+        #endregion
+
+        #region  生成推拉流地址
 
 
 
@@ -1427,7 +2626,90 @@ namespace XGBceDotNetSDK.Services.LSS
 
         #region 日志下载接口
 
+        /// <summary>
+        /// 获取日志下载地址
+        /// <para>提供日志下载URL。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/lk2zv7chu#%E6%97%A5%E5%BF%97%E4%B8%8B%E8%BD%BD%E6%8E%A5%E5%8F%A3 </para>
+        /// </summary>
+        /// <param name="playDomain">直播域名</param>
+        /// <param name="startTime">起始时间，UTC时间</param>
+        /// <param name="endTime">结束时间，UTC时间</param>
+        /// <returns>XGLssQueryOriginalLogsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryOriginalLogsResponse QueryOriginalLogs(string playDomain, DateTime startTime, DateTime endTime)
+        {
+            AssertStringNotNullOrEmpty(playDomain, nameof(playDomain));
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(endTime, nameof(endTime));
+            XGLssQueryOriginalLogsRequest request = new XGLssQueryOriginalLogsRequest()
+            {
+                PlayDomain=playDomain,
+                StartTime=startTime,
+                EndTime=endTime
+            };
+            return QueryOriginalLogs(request);
+        }
 
+        /// <summary>
+        /// 获取日志下载地址
+        /// <para>提供日志下载URL。</para>
+        /// </summary>
+        /// <param name="playDomain">直播域名</param>
+        /// <param name="startTime">起始时间，UTC时间</param>
+        /// <param name="endTime">结束时间，UTC时间</param>
+        /// <returns>异步任务XGLssQueryOriginalLogsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryOriginalLogsResponse> QueryOriginalLogsAsync(string playDomain, DateTime startTime, DateTime endTime)
+        {
+            AssertStringNotNullOrEmpty(playDomain, nameof(playDomain));
+            AssertNotNullOrEmpty(startTime, nameof(startTime));
+            AssertNotNullOrEmpty(endTime, nameof(endTime));
+            XGLssQueryOriginalLogsRequest request = new XGLssQueryOriginalLogsRequest()
+            {
+                PlayDomain = playDomain,
+                StartTime = startTime,
+                EndTime = endTime
+            };
+            return await QueryOriginalLogsAsync(request);
+        }
+
+        /// <summary>
+        /// 获取日志下载地址
+        /// <para>提供日志下载URL。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/lk2zv7chu#%E6%97%A5%E5%BF%97%E4%B8%8B%E8%BD%BD%E6%8E%A5%E5%8F%A3 </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryOriginalLogsRequest</param>
+        /// <returns>XGLssQueryOriginalLogsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public XGLssQueryOriginalLogsResponse QueryOriginalLogs(XGLssQueryOriginalLogsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PlayDomain,nameof(request.PlayDomain));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.EndTime, nameof(request.EndTime));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS,DOMAIN,request.PlayDomain.Trim(), "originallogs");
+            XGLssQueryOriginalLogsResponse response = InvokeHttpClient<XGLssQueryOriginalLogsResponse>(iternalRequest);
+            return response;
+        }
+
+        /// <summary>
+        /// 获取日志下载地址
+        /// <para>提供日志下载URL。</para>
+        /// <para>接口文档：https://cloud.baidu.com/doc/LSS/s/lk2zv7chu#%E6%97%A5%E5%BF%97%E4%B8%8B%E8%BD%BD%E6%8E%A5%E5%8F%A3 </para>
+        /// </summary>
+        /// <param name="request">XGLssQueryOriginalLogsRequest</param>
+        /// <returns>异步任务XGLssQueryOriginalLogsResponse</returns>
+        /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
+        public async Task<XGLssQueryOriginalLogsResponse> QueryOriginalLogsAsync(XGLssQueryOriginalLogsRequest request)
+        {
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.PlayDomain, nameof(request.PlayDomain));
+            AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
+            AssertNotNullOrEmpty(request.EndTime, nameof(request.EndTime));
+            XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "originallogs");
+            XGLssQueryOriginalLogsResponse response = await InvokeHttpClientAsync<XGLssQueryOriginalLogsResponse>(iternalRequest);
+            return response;
+        }
 
         #endregion
 

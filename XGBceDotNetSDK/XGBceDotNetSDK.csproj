@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ReleaseVersion>0.0.1</ReleaseVersion>
+    <ReleaseVersion>1.2201.15</ReleaseVersion>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
-    <FileVersion>1.2201.3</FileVersion>
-    <Version>1.2201.3</Version>
+    <FileVersion>1.2201.15</FileVersion>
+    <Version>1.2201.15</Version>
     <AssemblyName>XG.XGBceDotNetSDK</AssemblyName>
     <PackageId>XG.XGBceDotNetSDK</PackageId>
     <PackageIcon>favicon.png</PackageIcon>
     <NeutralLanguage>zh-CN</NeutralLanguage>
     <Authors>小桥流水人家</Authors>
     <Description>百度智能云第三方 DotNetSDK</Description>
-    <PackageReleaseNotes>新版本增加产品：音视频直播LSS</PackageReleaseNotes>
+    <PackageReleaseNotes>新版本完善产品：音视频直播LSS</PackageReleaseNotes>
     <PackageTags>xg;xg.xgbcedotnetsdk;xgbcedotnetsdk;bce;baiduyun</PackageTags>
     <RepositoryUrl>https://github.com/xingguangweilai/XGBceDotNetSDK</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

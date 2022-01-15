@@ -21,8 +21,6 @@ namespace XGBceDotNetSDKDemo
 
     class Program
     {
-        private static string access_key_id = @"";
-        private static string secret_access_key = @"";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -32,6 +30,7 @@ namespace XGBceDotNetSDKDemo
             //new McpExample();
             //new YuqingExample();
             new LssExample();
+            //new VcrExample();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace XGBceDotNetSDK.Services.SMS
 {
     public class SmsExample
     {
-        private string access_key_id;
-        private string secret_access_key;
+        private string access_key_id="";
+        private string secret_access_key="";
 
         public SmsExample()
         {

@@ -12,9 +12,9 @@ namespace XGBceDotNetSDK.Sign
         public XGBceDefaultBceCredentials(string accesskeyid, string secretkey)
         {
             if (string.IsNullOrEmpty(accesskeyid))
-                throw new ArgumentNullException("accesskeyid不能为空");
+                throw new ArgumentNullException(nameof(accesskeyid), "accesskeyid 不能为空");
             if (string.IsNullOrEmpty(secretkey))
-                throw new ArgumentNullException("secretkey不能为空");
+                throw new ArgumentNullException(nameof(secretkey), "secretkey 不能为空");
             accessKeyId = accesskeyid;
             secretKey = secretkey;
         }
