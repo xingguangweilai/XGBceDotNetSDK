@@ -15,7 +15,7 @@
 
     private static string access_key_id = "your-access-key-id";
     private static string secret_access_key = "your-secret-access-key";
-    private static string endpoint = ""http://media.bj.baidubce.com";";
+    private static string endpoint = "http://media.bj.baidubce.com";
 
     //初始化一个MediaClient
     XGBceClientConfiguration bceClientConfiguration = new XGBceClientConfiguration()
