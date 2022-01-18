@@ -26,10 +26,5 @@ namespace XGBceDotNetSDK.Services.IoTCore.Model
         /// </summary>
         [JsonIgnore]
         public string DeviceName { get => deviceName; set => deviceName = value; }
-
-        public override string ToString()
-        {
-            return GetType().ToString() + "\n" + JsonConvert.SerializeObject(this);
-        }
     }
 }

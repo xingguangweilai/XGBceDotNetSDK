@@ -29,13 +29,13 @@ namespace XGBceDotNetSDK.Services.IoTCore.Model
         /// 设备在此 IoT Core 内的唯一标识，与deviceName、deviceId 同义
         /// <para> 必需 </para>
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get => name; set => name = value; }
         /// <summary>
         /// 设备模板的Id，可在控制台查看
         /// <para> 必需 </para>
         /// </summary>
-        [JsonProperty("templateId")]
+        [JsonProperty(PropertyName = "templateId", NullValueHandling = NullValueHandling.Ignore)]
         public string TemplateId { get => templateId; set => templateId = value; }
         /// <summary>
         /// 认证类型
@@ -47,7 +47,7 @@ namespace XGBceDotNetSDK.Services.IoTCore.Model
         /// device 的描述信息0-128任意字符
         /// <para> 必需 </para>
         /// </summary>
-        [JsonProperty("desc")]
+        [JsonProperty(PropertyName = "desc", NullValueHandling = NullValueHandling.Ignore)]
         public string Desc { get => desc; set => desc = value; }
 
         public override string ToString()

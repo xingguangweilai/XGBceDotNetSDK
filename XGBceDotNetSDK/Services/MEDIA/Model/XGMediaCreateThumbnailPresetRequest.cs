@@ -170,7 +170,7 @@ namespace XGBceDotNetSDK.Services.MEDIA.Model
         /// <para>字符串长度范围为1 ~ 100</para>
         /// <para>非必需</para>
         /// </summary>
-        [JsonProperty(PropertyName = "skipBlackFrame", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "SpriteKeyTag", NullValueHandling = NullValueHandling.Ignore)]
         public string SpriteKeyTag { get => spriteKeyTag; set => spriteKeyTag = value; }
 
         public override string ToString()
@@ -210,7 +210,7 @@ namespace XGBceDotNetSDK.Services.MEDIA.Model
         /// <para>取值范围：10 ~ 2000</para>
         /// <para>非必需</para>
         /// </summary>
-        [JsonProperty(PropertyName = "description", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "widthInPixel", NullValueHandling = NullValueHandling.Ignore)]
         public int? WidthInPixel { get => widthInPixel; set => widthInPixel = value; }
         /// <summary>
         /// 目标缩略图的高

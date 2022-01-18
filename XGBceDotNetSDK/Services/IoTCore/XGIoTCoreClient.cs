@@ -37,18 +37,11 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGAbstractIoTCoreCreateDeviceResponse CreateDevice(XGIoTCoreCreateDeviceRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.IotCoreId) || string.IsNullOrWhiteSpace(request.IotCoreId))
-                throw new ArgumentNullException("IotCoreId 不能为空");
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (string.IsNullOrEmpty(request.TemplateId) || string.IsNullOrWhiteSpace(request.TemplateId))
-                throw new ArgumentNullException("TemplateId 不能为空");
-            if (string.IsNullOrEmpty(request.Desc) || string.IsNullOrWhiteSpace(request.Desc))
-                throw new ArgumentNullException("Desc 不能为空");
+            AssertNotNullOrEmpty(request,nameof(request));
+            AssertStringNotNullOrEmpty(request.IotCoreId,nameof(request.IotCoreId));
+            AssertStringNotNullOrEmpty(request.Name,nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.TemplateId,nameof(request.TemplateId));
+            AssertStringNotNullOrEmpty(request.Desc,nameof(request.Desc));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, "v1/iotcore", request.IotCoreId, "device/new");
             XGAbstractIoTCoreCreateDeviceResponse response;
             if (request.AuthType == XGIoTCoreDeviceAuthType.SIGNATURE)
@@ -70,18 +63,11 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGAbstractIoTCoreCreateDeviceResponse> CreateDeviceAsync(XGIoTCoreCreateDeviceRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.IotCoreId) || string.IsNullOrWhiteSpace(request.IotCoreId))
-                throw new ArgumentNullException("IotCoreId 不能为空");
-            if (string.IsNullOrEmpty(request.Name) || string.IsNullOrWhiteSpace(request.Name))
-                throw new ArgumentNullException("Name 不能为空");
-            if (string.IsNullOrEmpty(request.TemplateId) || string.IsNullOrWhiteSpace(request.TemplateId))
-                throw new ArgumentNullException("TemplateId 不能为空");
-            if (string.IsNullOrEmpty(request.Desc) || string.IsNullOrWhiteSpace(request.Desc))
-                throw new ArgumentNullException("Desc 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.IotCoreId, nameof(request.IotCoreId));
+            AssertStringNotNullOrEmpty(request.Name, nameof(request.Name));
+            AssertStringNotNullOrEmpty(request.TemplateId, nameof(request.TemplateId));
+            AssertStringNotNullOrEmpty(request.Desc, nameof(request.Desc));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.POST, "v1/iotcore", request.IotCoreId, "device/new");
             XGAbstractIoTCoreCreateDeviceResponse response;
             if (request.AuthType == XGIoTCoreDeviceAuthType.SIGNATURE)
@@ -106,10 +92,8 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGIoTCoreResponse DeleteDevice(string iotCoreId,string deviceName)
         {
-            if (string.IsNullOrEmpty(iotCoreId) || string.IsNullOrWhiteSpace(iotCoreId))
-                throw new ArgumentNullException("iotCoreId 不能为空");
-            if (string.IsNullOrEmpty(deviceName) || string.IsNullOrWhiteSpace(deviceName))
-                throw new ArgumentNullException("DeviceName 不能为空");
+            AssertStringNotNullOrEmpty(iotCoreId, nameof(iotCoreId));
+            AssertStringNotNullOrEmpty(deviceName, nameof(deviceName));
             XGIoTCoreDeleteDeviceRequest request = new XGIoTCoreDeleteDeviceRequest()
             {
                 IotCoreId=iotCoreId,
@@ -128,10 +112,8 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGIoTCoreResponse> DeleteDeviceAsync(string iotCoreId, string deviceName)
         {
-            if (string.IsNullOrEmpty(iotCoreId) || string.IsNullOrWhiteSpace(iotCoreId))
-                throw new ArgumentNullException("iotCoreId 不能为空");
-            if (string.IsNullOrEmpty(deviceName) || string.IsNullOrWhiteSpace(deviceName))
-                throw new ArgumentNullException("DeviceName 不能为空");
+            AssertStringNotNullOrEmpty(iotCoreId, nameof(iotCoreId));
+            AssertStringNotNullOrEmpty(deviceName, nameof(deviceName));
             XGIoTCoreDeleteDeviceRequest request = new XGIoTCoreDeleteDeviceRequest()
             {
                 IotCoreId = iotCoreId,
@@ -150,14 +132,9 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public XGIoTCoreResponse DeleteDevice(XGIoTCoreDeleteDeviceRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.IotCoreId) || string.IsNullOrWhiteSpace(request.IotCoreId))
-                throw new ArgumentNullException("IotCoreId 不能为空");
-            if (string.IsNullOrEmpty(request.DeviceName) || string.IsNullOrWhiteSpace(request.DeviceName))
-                throw new ArgumentNullException("DeviceName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.IotCoreId, nameof(request.IotCoreId));
+            AssertStringNotNullOrEmpty(request.DeviceName, nameof(request.DeviceName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, "v1/iotcore", request.IotCoreId, "device",request.DeviceName);
             XGIoTCoreResponse response = InvokeHttpClient<XGIoTCoreResponse>(iternalRequest);
             return response;
@@ -172,14 +149,9 @@ namespace XGBceDotNetSDK.Services.IoTCore
         /// <exception cref="XGBceClientException">XGBce客户端异常</exception>
         public async Task<XGIoTCoreResponse> DeleteDeviceAsync(XGIoTCoreDeleteDeviceRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request 不能为空");
-            }
-            if (string.IsNullOrEmpty(request.IotCoreId) || string.IsNullOrWhiteSpace(request.IotCoreId))
-                throw new ArgumentNullException("IotCoreId 不能为空");
-            if (string.IsNullOrEmpty(request.DeviceName) || string.IsNullOrWhiteSpace(request.DeviceName))
-                throw new ArgumentNullException("DeviceName 不能为空");
+            AssertNotNullOrEmpty(request, nameof(request));
+            AssertStringNotNullOrEmpty(request.IotCoreId, nameof(request.IotCoreId));
+            AssertStringNotNullOrEmpty(request.DeviceName, nameof(request.DeviceName));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.DELETE, "v1/iotcore", request.IotCoreId, "device", request.DeviceName);
             XGIoTCoreResponse response = await InvokeHttpClientAsync<XGIoTCoreResponse>(iternalRequest);
             return response;
@@ -219,5 +191,32 @@ namespace XGBceDotNetSDK.Services.IoTCore
             iternalRequest.AddMoreHeader(XGBceHeaders.BCE_DATE, HttpUtil.FormatUTCTime(DateTime.Now));
             return iternalRequest;
         }
+
+        #region
+
+        private static void AssertNotNullOrEmpty(object param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+            if (param == null)
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        private static void AssertStringNotNullOrEmpty(string param, string nameofParam = null, string errorMessage = " 不能为空")
+        {
+
+            if (string.IsNullOrEmpty(param) || string.IsNullOrWhiteSpace(param))
+            {
+                if (string.IsNullOrEmpty(nameofParam) || string.IsNullOrWhiteSpace(nameofParam))
+                    nameofParam = nameof(param);
+                errorMessage = nameofParam + errorMessage;
+                throw new ArgumentNullException(nameofParam, errorMessage);
+            }
+        }
+
+        #endregion
     }
 }
