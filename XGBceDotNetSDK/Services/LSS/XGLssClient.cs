@@ -2688,6 +2688,8 @@ namespace XGBceDotNetSDK.Services.LSS
             AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
             AssertNotNullOrEmpty(request.EndTime, nameof(request.EndTime));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS,DOMAIN,request.PlayDomain.Trim(), "originallogs");
+            iternalRequest.AddParameter("startTime",request.StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+            iternalRequest.AddParameter("endTime",request.EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
             XGLssQueryOriginalLogsResponse response = InvokeHttpClient<XGLssQueryOriginalLogsResponse>(iternalRequest);
             return response;
         }
@@ -2707,6 +2709,8 @@ namespace XGBceDotNetSDK.Services.LSS
             AssertNotNullOrEmpty(request.StartTime, nameof(request.StartTime));
             AssertNotNullOrEmpty(request.EndTime, nameof(request.EndTime));
             XGBceIternalRequest iternalRequest = CreateRequest(request, BceHttpMethod.GET, request.LssVersion.ToString(), STATISTICS, DOMAIN, request.PlayDomain.Trim(), "originallogs");
+            iternalRequest.AddParameter("startTime", request.StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+            iternalRequest.AddParameter("endTime", request.EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
             XGLssQueryOriginalLogsResponse response = await InvokeHttpClientAsync<XGLssQueryOriginalLogsResponse>(iternalRequest);
             return response;
         }

@@ -170,7 +170,7 @@ namespace XGBceDotNetSDK.Services.MEDIA.Model
         /// <para>字符串长度范围为1 ~ 100</para>
         /// <para>非必需</para>
         /// </summary>
-        [JsonProperty(PropertyName = "SpriteKeyTag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "spriteKeyTag", NullValueHandling = NullValueHandling.Ignore)]
         public string SpriteKeyTag { get => spriteKeyTag; set => spriteKeyTag = value; }
 
         public override string ToString()

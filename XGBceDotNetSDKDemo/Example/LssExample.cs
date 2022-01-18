@@ -41,7 +41,8 @@ namespace XGBceDotNetSDKDemo.Example
             //QueryDomainBandWidth(lssClient);
             //QueryDomainTraffic(lssClient);
             //ListNotifications(lssClient);
-            DeleteNotification(lssClient);
+            //DeleteNotification(lssClient);
+            QueryOriginalLogs(lssClient);
         }
 
         /// <summary>
@@ -437,6 +438,24 @@ namespace XGBceDotNetSDKDemo.Example
             catch (Exception ex)
             {
                 Console.WriteLine("删除通知失败：\n" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 获取日志下载地址
+        /// </summary>
+        /// <param name="lssClient"></param>
+        public static void QueryOriginalLogs(XGLssClient lssClient)
+        {
+            try
+            {
+                DateTime endTime = DateTime.UtcNow;
+                XGLssQueryOriginalLogsResponse response = lssClient.QueryOriginalLogs("",endTime.AddDays(-30),endTime);
+                Console.WriteLine("获取日志下载地址成功：\n" + response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("获取日志下载地址败：\n" + ex.Message);
             }
         }
     }
